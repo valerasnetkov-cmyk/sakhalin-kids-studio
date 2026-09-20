@@ -1,0 +1,24 @@
+version: "1.0"
+id: sea_lion_cartoon
+
+parts:
+  required:
+    - body
+    - head
+    - eye_left
+    - eye_right
+    - pupil_left
+    - pupil_right
+    - mouth
+    - flipper_left
+    - flipper_right
+
+capabilities:
+  blink: true
+  gaze: true
+  mouth_visemes: true
+  head_turn: true
+  arm_gestures: false
+  tail_motion: false
+  flipper_gestures: true
+  wing_gestures: false

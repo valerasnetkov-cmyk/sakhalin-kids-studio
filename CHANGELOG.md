@@ -22,6 +22,20 @@
 
 ## 2026-09-20
 
+### Added — SKIDS-004
+
+- `schemas/sakhalin/rig_profile.schema.json` — RigProfile domain contract (JSON Schema Draft 2020-12).
+- `library/rig_profiles/fox_cartoon.yaml` — canonical fox rig profile.
+- `library/rig_profiles/sea_lion_cartoon.yaml` — canonical sea lion rig profile.
+- `tests/sakhalin/test_rig_profile_schema.py` — 35 RigProfile schema tests.
+
+### Changed — SKIDS-004
+
+- RigProfile marked VERIFIED in compatibility docs.
+- CharacterSpec/RigProfile identifier patterns verified consistent.
+
+## 2026-09-20
+
 ### Added — SKIDS-002
 
 - `schemas/sakhalin/character_spec.schema.json` — CharacterSpec domain contract (JSON Schema Draft 2020-12).

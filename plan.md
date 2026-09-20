@@ -5,6 +5,7 @@
 SKIDS-001 repository scaffolding complete.
 SKIDS-002 CharacterSpec schema complete.
 SKIDS-003 CharacterLoader domain service complete.
+SKIDS-004 RigProfile contract and canonical profiles complete.
 
 Primary development workflow: OpenCode.
 
@@ -26,7 +27,7 @@ Tasks:
 - [x] SKIDS-001 — repository scaffolding for runtime modules.
 - [x] SKIDS-002 — CharacterSpec domain schema.
 - [x] SKIDS-003 — character loader.
-- [ ] SKIDS-004 — rig profile contract.
+- [x] SKIDS-004 — rig profile contract.
 - [ ] SKIDS-005 — pose/action contract.
 - [ ] SKIDS-006 — viseme contract.
 - [ ] SKIDS-007 — acting + mouth timeline merge.

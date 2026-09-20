@@ -1,0 +1,27 @@
+version: "1.0"
+id: fox_cartoon
+
+parts:
+  required:
+    - body
+    - head
+    - eye_left
+    - eye_right
+    - pupil_left
+    - pupil_right
+    - mouth
+    - arm_left
+    - arm_right
+    - leg_left
+    - leg_right
+    - tail
+
+capabilities:
+  blink: true
+  gaze: true
+  mouth_visemes: true
+  head_turn: true
+  arm_gestures: true
+  tail_motion: true
+  flipper_gestures: false
+  wing_gestures: false
