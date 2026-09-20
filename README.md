@@ -38,6 +38,8 @@ Key documents:
 - `docs/sakhalin/CHARACTER_FORMAT.md` — reusable character contract.
 - `docs/sakhalin/LIPSYNC.md` — Russian viseme/lip-sync design.
 - `pipeline_defs/sakhalin-kids.yaml` — initial pipeline manifest draft.
+- `docs/sakhalin/CONTROL_PLANE.md` — approved future Hermes control-plane architecture.
+- `docs/sakhalin/HARNESS_INTEGRATION.md` — approved future DeepSeek Harness research/review/QA architecture.
 
 ## OpenMontage upstream
 
@@ -87,3 +89,12 @@ Before substantial implementation:
 5. Run the available verification gates before reporting completion.
 
 The first implementation cycle remains `SKIDS-001 -> SKIDS-013`.
+
+## Future operator and agent layers
+
+After the first Character Runtime proof is accepted:
+
+- Hermes is planned as the operator / Telegram control plane through a narrow MCP/API surface.
+- OpenMontage remains the single owner of production workflow state.
+- DeepSeek Harness is planned only for bounded cognitive workflows such as research, script review, factual QA, and production QA.
+- These layers must not be implemented during `SKIDS-001 -> SKIDS-013`.
