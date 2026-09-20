@@ -30,6 +30,11 @@ Use these documents as durable project guidance:
 - `docs/sakhalin/CHARACTER_FORMAT.md`
 - `docs/sakhalin/LIPSYNC.md`
 - `pipeline_defs/sakhalin-kids.yaml`
+- `docs/sakhalin/RUNTIME_AND_UPSTREAM.md`
+- `docs/sakhalin/ASSET_LIFECYCLE.md`
+- `docs/sakhalin/JOB_EXECUTION.md`
+- `docs/sakhalin/MEDIA_DELIVERY.md`
+- `docs/sakhalin/EDITORIAL_AND_PUBLISHING.md`
 
 Load them on a need-to-know basis. Do not read every document for every small task.
 
@@ -251,6 +256,8 @@ Stop after the proof and evaluate visual quality before expanding to all five ch
 
 Do not prematurely implement the full 4–6 minute production pipeline.
 
+Post-proof infrastructure is documented but deferred. In particular, do not add PostgreSQL, distributed workers, object storage, ComfyUI production orchestration, Hermes, Harness, Langfuse, automated YouTube publishing, or editable delivery infrastructure during Milestone 01 unless the user explicitly changes scope.
+
 ## Milestone 01 acceptance
 
 The proof must demonstrate:
@@ -290,6 +297,17 @@ At minimum consider:
 Do not claim a check passed if it was not run.
 
 If a required check cannot run, state what was not verified and why.
+
+## Production and upstream rules
+
+- Treat OpenMontage as a pinned upstream dependency; never silently follow upstream `main`.
+- Validate the Sakhalin pipeline against the pinned OpenMontage schema and contracts.
+- Separate the developer role from the Production Director role.
+- Technical render success does not equal artistic approval.
+- Approved asset versions are immutable by default.
+- Approval must bind to a specific revision/hash.
+- Expensive jobs must eventually be idempotent and resumable; Milestone 01 may remain sequential.
+- ComfyUI, WhisperX, OpenTimelineIO, restic, PostgreSQL, Langfuse, Hermes, and Harness are planned/candidate integrations, not assumed installed dependencies.
 
 ## Generated and upstream files
 
