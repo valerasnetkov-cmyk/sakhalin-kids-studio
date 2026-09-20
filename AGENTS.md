@@ -28,6 +28,7 @@ Use these documents as durable project guidance:
 - `docs/sakhalin/ARCHITECTURE.md`
 - `docs/sakhalin/IMPLEMENTATION_PLAN.md`
 - `docs/sakhalin/CHARACTER_FORMAT.md`
+- `docs/sakhalin/TEAM_CANON.md`
 - `docs/sakhalin/LIPSYNC.md`
 - `pipeline_defs/sakhalin-kids.yaml`
 - `docs/sakhalin/RUNTIME_AND_UPSTREAM.md`
@@ -46,7 +47,7 @@ The persistent cast is closed by default:
 - `leva` — Лёва, sea lion, calm reasoning partner.
 - `tikhon` — Тихон, bear cub, forest and safety.
 - `anna` — Анна, seal, sea and underwater world.
-- `antoshka` — Антошка, seagull, traveler and story collector.
+- `antoshka` — Антошка, human boy, traveler and story collector.
 
 Do not introduce another persistent core character without an explicit project decision and configuration change.
 
