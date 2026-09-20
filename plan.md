@@ -9,6 +9,7 @@ SKIDS-004 RigProfile contract and canonical profiles complete.
 SKIDS-005 Pose/Action domain contracts complete.
 SKIDS-006 VisemeTimeline domain contract complete.
 SKIDS-007 deterministic acting/mouth timeline merge complete.
+SKIDS-008 SVG scene renderer complete.
 
 Primary development workflow: OpenCode.
 
@@ -34,7 +35,7 @@ Tasks:
 - [x] SKIDS-005 — pose/action contract.
 - [x] SKIDS-006 — viseme contract.
 - [x] SKIDS-007 — acting + mouth timeline merge.
-- [ ] SKIDS-008 — SVG scene renderer.
+- [x] SKIDS-008 — SVG scene renderer.
 - [ ] SKIDS-009 — HyperFrames or Remotion handoff.
 - [ ] SKIDS-010 — character QA.
 - [ ] SKIDS-011 — Makar fixture assets.

@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-09-21
+
+### Added — SKIDS-008
+
+- `tools/character/sakhalin/svg_scene_renderer.py` — SvgSceneRenderer domain service for deterministic frame-oriented SVG scene composition.
+- `tests/sakhalin/test_svg_scene_renderer.py` — 33 renderer tests covering composition, timestamp boundary, pose resolution, rig matching, SVG state application, expression/gaze/viseme, placement, safety, and immutability.
+
+### Changed — SKIDS-008
+
+- SvgSceneRenderer marked IMPLEMENTED in OpenMontage compatibility documentation.
+
 ## 2026-09-20
 
 ### Added — SKIDS-007
