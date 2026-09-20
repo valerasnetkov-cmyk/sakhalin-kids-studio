@@ -114,6 +114,8 @@ allowed_cast:
 
 Временные персонажи выпуска допускаются только как explicit guest/non-core character и не должны автоматически становиться частью библиотеки.
 
+Канонические species/type, narrative roles и signature details core cast определены в `TEAM_CANON.md`. В частности, `antoshka` — маленький человеческий мальчик, не чайка и не animal mascot.
+
 ## 5. Character runtime
 
 Целевой flow:
@@ -175,7 +177,7 @@ MVP:
 
 - `bear_cartoon` — Тихон;
 - `seal_cartoon` — Анна;
-- `seagull_cartoon` — Антошка.
+- `human_child_cartoon` — Антошка (candidate profile; not implemented yet).
 
 Профиль задаёт:
 
