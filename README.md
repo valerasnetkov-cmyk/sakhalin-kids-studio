@@ -40,6 +40,11 @@ Key documents:
 - `pipeline_defs/sakhalin-kids.yaml` — initial pipeline manifest draft.
 - `docs/sakhalin/CONTROL_PLANE.md` — approved future Hermes control-plane architecture.
 - `docs/sakhalin/HARNESS_INTEGRATION.md` — approved future DeepSeek Harness research/review/QA architecture.
+- `docs/sakhalin/RUNTIME_AND_UPSTREAM.md` — Production Director role and pinned OpenMontage integration.
+- `docs/sakhalin/ASSET_LIFECYCLE.md` — versioned media, provenance, rights, storage, and backup.
+- `docs/sakhalin/JOB_EXECUTION.md` — resumable/idempotent production jobs and cost handling.
+- `docs/sakhalin/MEDIA_DELIVERY.md` — render profiles, editable delivery, audio/subtitle and technical QA.
+- `docs/sakhalin/EDITORIAL_AND_PUBLISHING.md` — editorial contract, claims ledger, publishing and analytics.
 
 ## OpenMontage upstream
 
@@ -89,6 +94,8 @@ Before substantial implementation:
 5. Run the available verification gates before reporting completion.
 
 The first implementation cycle remains `SKIDS-001 -> SKIDS-013`.
+
+Before implementing production orchestration, asset storage, ComfyUI workers, Hermes, Harness, or automated publishing, read the relevant architecture document and respect its stated rollout phase.
 
 ## Future operator and agent layers
 
