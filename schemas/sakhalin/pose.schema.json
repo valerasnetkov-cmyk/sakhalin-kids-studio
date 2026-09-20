@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sakhalin/pose",
+  "title": "Sakhalin Kids Pose",
+  "type": "object",
+  "required": ["version", "id", "rig_profile", "state"],
+  "properties": {
+    "version": { "const": "1.0" },
+    "id": { "$ref": "#/$defs/identifier" },
+    "rig_profile": { "$ref": "#/$defs/identifier" },
+    "state": { "$ref": "#/$defs/state" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+    "state": {
+      "type": "object",
+      "properties": {
+        "parts": { "$ref": "#/$defs/parts" },
+        "expression": { "$ref": "#/$defs/identifier" },
+        "gaze": { "$ref": "#/$defs/gaze" }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    },
+    "parts": {
+      "type": "object",
+      "propertyNames": {
+        "allOf": [
+          { "$ref": "#/$defs/identifier" },
+          { "not": { "const": "mouth" } }
+        ]
+      },
+      "additionalProperties": { "$ref": "#/$defs/part_state" },
+      "minProperties": 1
+    },
+    "part_state": {
+      "type": "object",
+      "properties": {
+        "variant": { "$ref": "#/$defs/identifier" },
+        "rotation_deg": { "type": "number" }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    },
+    "gaze": {
+      "type": "object",
+      "required": ["direction"],
+      "properties": {
+        "direction": { "enum": ["left", "center", "right", "up", "down"] }
+      },
+      "additionalProperties": false
+    }
+  }
+}
