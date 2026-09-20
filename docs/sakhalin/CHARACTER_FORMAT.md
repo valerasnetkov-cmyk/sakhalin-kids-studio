@@ -36,6 +36,9 @@ library/characters/<character-id>/
 
 ## 3. Core character IDs
 
+Canonical identity/species/role reference: `docs/sakhalin/TEAM_CANON.md`.
+
+
 ```text
 makar
 leva
