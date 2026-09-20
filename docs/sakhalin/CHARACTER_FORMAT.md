@@ -193,57 +193,20 @@ body:
 
 Expression не должен содержать произвольный JS.
 
-## 8. Pose
+## 8. Pose and Action
 
-Пример:
+Pose и Action определены отдельным motion-domain контрактом.
 
-```yaml
-id: point_right
+См. `docs/sakhalin/MOTION_CONTRACT.md`.
 
-duration_hint_ms: 650
+Ключевая граница:
 
-parts:
-  arm_right:
-    rotation: -42
-  head:
-    rotation: 6
+- Pose хранит reusable state;
+- Action хранит timed sequence ссылок на Pose;
+- mouth animation не принадлежит Pose/Action и определяется через VisemeTimeline;
+- renderer/OpenMontage mapping выполняется будущим resolver/compiler.
 
-gaze:
-  direction: right
-```
-
-Pose задаёт состояние.
-
-Action задаёт изменение во времени.
-
-## 9. Action
-
-Пример:
-
-```yaml
-id: point
-
-phases:
-  - name: anticipation
-    duration_ms: 180
-    pose: idle
-
-  - name: move
-    duration_ms: 320
-    pose: point_right
-
-  - name: hold
-    duration_ms: 500
-    pose: point_right
-
-  - name: settle
-    duration_ms: 260
-    pose: idle
-```
-
-Реальный runtime может преобразовывать это в GSAP/Remotion animation.
-
-## 10. Mouth set
+## 9. Mouth set
 
 Все production characters должны поддерживать единые semantic viseme IDs:
 
@@ -262,7 +225,7 @@ S
 
 Character art для viseme отличается, semantic IDs одинаковы.
 
-## 11. Voice profile reference
+## 9. Voice profile reference
 
 В character definition:
 
@@ -294,7 +257,7 @@ secret_refs:
 
 Нельзя хранить secret value.
 
-## 12. Character scale
+## 9. Character scale
 
 Нужно зафиксировать относительный scale персонажей.
 
@@ -311,7 +274,7 @@ stage_scale:
 
 Точные значения должны быть утверждены после финальных model sheets.
 
-## 13. Cast validation
+## 9. Cast validation
 
 Episode cast:
 
@@ -333,7 +296,7 @@ guest_characters:
 
 Guest character не добавляется автоматически в core library.
 
-## 14. Scene character state
+## 9. Scene character state
 
 Scene plan может задавать:
 
@@ -348,7 +311,7 @@ character_state:
 
 Runtime связывает scene state с библиотекой assets.
 
-## 15. Character QA reference frames
+## 9. Character QA reference frames
 
 Для каждого production hero:
 
@@ -372,7 +335,7 @@ QA не должен полагаться только на perceptual similarit
 - scale не выходит за пределы;
 - wrong character ID невозможен.
 
-## 16. MVP profiles
+## 9. MVP profiles
 
 Milestone 01 поддерживает:
 
@@ -386,7 +349,7 @@ Milestone 01 поддерживает:
 
 Остальные профили добавляются после успешного proof.
 
-## 17. Data migration
+## 9. Data migration
 
 Character format должен иметь:
 
