@@ -83,7 +83,7 @@ Statuses:
 | `RigProfile` | VERIFIED | SKIDS-004 |
 | `Pose` | VERIFIED | SKIDS-005 |
 | `Action` | VERIFIED | SKIDS-005 |
-| `VisemeTimeline` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-006 |
+| `VisemeTimeline` | VERIFIED | SKIDS-006 |
 | `dialogue_manifest` | SAKHALIN_EXTENSION_REQUIRED | Milestone 02 |
 | `viseme_timelines` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-006 |
 | `child_content_qa` | SAKHALIN_EXTENSION_REQUIRED | post-proof |

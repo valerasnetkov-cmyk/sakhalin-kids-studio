@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sakhalin/viseme_timeline",
+  "title": "Sakhalin Kids VisemeTimeline",
+  "description": "Renderer-agnostic mouth viseme timeline for Russian lip-sync. Long-lived domain contract, not a production-run artifact.",
+  "type": "object",
+  "required": ["version", "id", "duration_ms", "cues"],
+  "properties": {
+    "version": {
+      "const": "1.0"
+    },
+    "id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "cues": {
+      "$ref": "#/$defs/cues"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]*$"
+    },
+    "viseme": {
+      "enum": [
+        "REST",
+        "A",
+        "E",
+        "O",
+        "U",
+        "MBP",
+        "FV",
+        "SH",
+        "L",
+        "S"
+      ]
+    },
+    "cue": {
+      "type": "object",
+      "required": ["start_ms", "end_ms", "viseme"],
+      "properties": {
+        "start_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "viseme": {
+          "$ref": "#/$defs/viseme"
+        }
+      },
+      "additionalProperties": false
+    },
+    "cues": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/cue"
+      }
+    }
+  }
+}

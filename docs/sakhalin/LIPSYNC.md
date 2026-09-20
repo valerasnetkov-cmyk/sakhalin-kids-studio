@@ -82,22 +82,28 @@ S
 
 Это animation mapping, а не лингвистическая фонетическая модель.
 
-## 5. Data model
+## 5. Domain contract: VisemeTimeline
 
-```json
-{
-  "version": "1.0",
-  "character_id": "makar",
-  "audio_asset_id": "dialogue_scene_01_makar",
-  "start_seconds": 0.0,
-  "events": [
-    {"t": 0.00, "viseme": "A"},
-    {"t": 0.10, "viseme": "S"},
-    {"t": 0.19, "viseme": "E"},
-    {"t": 0.31, "viseme": "REST"}
-  ]
-}
+Renderer-agnostic mouth-only domain contract:
+
+```text
+schemas/sakhalin/viseme_timeline.schema.json
+$sid: sakhalin/viseme_timeline
 ```
+
+`VisemeTimeline` is a long-lived domain contract, not a production-run artifact.
+
+Root fields: `version`, `id`, `duration_ms`, `cues`.
+
+Each cue contains `start_ms` (inclusive), `end_ms` (exclusive), and `viseme`.
+
+Cue interval convention: `[start_ms, end_ms)`.
+
+`duration_ms` is local to the associated utterance, not a scene timestamp.
+
+`VisemeTimeline` does not contain: `character_id`, `rig_profile`, `audio_path`, `scene_id`, `provider`, `fps`, `renderer`, or any body/head/gaze/expression fields.
+
+See: `docs/sakhalin/MOTION_CONTRACT.md` for ownership boundaries.
 
 ## 6. MVP alignment
 

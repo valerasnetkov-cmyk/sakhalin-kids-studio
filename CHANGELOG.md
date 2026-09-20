@@ -2,6 +2,20 @@
 
 ## 2026-09-20
 
+### Added — SKIDS-006
+
+- `schemas/sakhalin/viseme_timeline.schema.json` — renderer-agnostic VisemeTimeline domain contract for Russian lip-sync.
+- `tests/sakhalin/test_viseme_timeline_schema.py` — 31 VisemeTimeline contract tests.
+
+### Changed — SKIDS-006
+
+- VisemeTimeline marked VERIFIED in OpenMontage compatibility documentation.
+- LIPSYNC.md data model section updated to reference VisemeTimeline domain contract.
+- Mouth ownership boundary documented: VisemeTimeline owns lip-sync data; Pose/Action cannot control mouth.
+- VisemeTimeline is character-independent and provider-independent.
+
+## 2026-09-20
+
 ### Added — SKIDS-005
 
 - `schemas/sakhalin/pose.schema.json` — reusable Pose domain contract.
