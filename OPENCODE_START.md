@@ -135,15 +135,13 @@ character spec
 
 Не добавлять лишние abstractions.
 
-### SKIDS-002 — schemas
+### SKIDS-002 — CharacterSpec schema
 
-Добавить schemas для:
+Создать `schemas/sakhalin/character_spec.schema.json` — long-lived character domain contract.
 
-- CharacterSpec;
-- RigProfile;
-- Pose;
-- Action;
-- VisemeTimeline.
+CharacterSpec != character_design (production-run artifact).
+
+Не включает: RigProfile, Pose, Action, VisemeTimeline — эти schemas в SKIDS-004–SKIDS-006.
 
 ### SKIDS-003 — character loader
 

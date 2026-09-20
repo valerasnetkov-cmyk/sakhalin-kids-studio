@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sakhalin/character_spec",
+  "title": "Sakhalin Kids CharacterSpec",
+  "description": "Long-lived character definition for the Sakhalin Kids channel. Not a production-run artifact.",
+  "type": "object",
+  "required": [
+    "version",
+    "id",
+    "display_name",
+    "species",
+    "rig_profile",
+    "role",
+    "story",
+    "visual",
+    "required_views",
+    "required_expressions",
+    "required_actions",
+    "props",
+    "voice",
+    "continuity"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "species": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rig_profile": {
+      "$ref": "#/$defs/identifier"
+    },
+    "role": {
+      "type": "string",
+      "minLength": 1
+    },
+    "story": {
+      "type": "object",
+      "required": ["primary_question", "catchphrase"],
+      "properties": {
+        "primary_question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "catchphrase": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "visual": {
+      "type": "object",
+      "required": [
+        "palette_locked",
+        "proportions_locked",
+        "wardrobe_locked",
+        "base_regeneration_allowed"
+      ],
+      "properties": {
+        "palette_locked": {
+          "type": "boolean"
+        },
+        "proportions_locked": {
+          "type": "boolean"
+        },
+        "wardrobe_locked": {
+          "type": "boolean"
+        },
+        "base_regeneration_allowed": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "required_views": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "required_expressions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "required_actions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "props": {
+      "type": "object",
+      "required": ["required"],
+      "properties": {
+        "required": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        },
+        "optional": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/identifier"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "voice": {
+      "type": "object",
+      "required": ["profile"],
+      "properties": {
+        "profile": {
+          "$ref": "#/$defs/identifier"
+        }
+      },
+      "additionalProperties": false
+    },
+    "continuity": {
+      "type": "object",
+      "required": ["identity_locked", "redesign_requires_approval"],
+      "properties": {
+        "identity_locked": {
+          "type": "boolean"
+        },
+        "redesign_requires_approval": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]*$"
+    }
+  }
+}

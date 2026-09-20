@@ -3,6 +3,7 @@
 ## Current phase
 
 SKIDS-001 repository scaffolding complete.
+SKIDS-002 CharacterSpec schema complete.
 
 Primary development workflow: OpenCode.
 
@@ -22,7 +23,7 @@ Scope:
 Tasks:
 
 - [x] SKIDS-001 — repository scaffolding for runtime modules.
-- [ ] SKIDS-002 — character/rig/pose/action/viseme schemas.
+- [x] SKIDS-002 — CharacterSpec domain schema.
 - [ ] SKIDS-003 — character loader.
 - [ ] SKIDS-004 — rig profile contract.
 - [ ] SKIDS-005 — pose/action contract.

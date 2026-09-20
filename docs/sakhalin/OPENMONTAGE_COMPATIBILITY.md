@@ -79,10 +79,10 @@ Statuses:
 
 | Item | Status | Target milestone |
 |---|---|---|
-| `CharacterSpec` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-002 |
+| `CharacterSpec` | VERIFIED | SKIDS-002 |
 | `RigProfile` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-004 |
 | `VisemeTimeline` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-006 |
-| `dialogue_manifest` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-002 |
+| `dialogue_manifest` | SAKHALIN_EXTENSION_REQUIRED | Milestone 02 |
 | `viseme_timelines` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-006 |
 | `child_content_qa` | SAKHALIN_EXTENSION_REQUIRED | post-proof |
 | `factual_qa` | SAKHALIN_EXTENSION_REQUIRED | post-proof |

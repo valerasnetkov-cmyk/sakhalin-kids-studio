@@ -2,6 +2,19 @@
 
 ## 2026-09-20
 
+### Added — SKIDS-002
+
+- `schemas/sakhalin/character_spec.schema.json` — CharacterSpec domain contract (JSON Schema Draft 2020-12).
+- `tests/sakhalin/test_character_spec_schema.py` — 44 targeted schema validation tests.
+
+### Changed — SKIDS-002
+
+- SKIDS-002 narrowed from "all character schemas" to "CharacterSpec only".
+- `dialogue_manifest` target milestone moved from SKIDS-002 to Milestone 02.
+- `OPENCODE_START.md` and `plan.md` updated to reflect revised task scope.
+
+## 2026-09-20
+
 ### Added
 
 - SKIDS-001 repository scaffolding: allowed cast policy, OpenMontage compatibility matrix, verification script.
