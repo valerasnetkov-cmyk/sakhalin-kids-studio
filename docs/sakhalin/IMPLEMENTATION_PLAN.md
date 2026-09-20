@@ -243,6 +243,8 @@ Provider substitution требует decision log и approval, если меня
 
 # Milestone 06 — Full Core Cast
 
+Канонические identities брать из `docs/sakhalin/TEAM_CANON.md`.
+
 Добавить:
 
 - Тихон;
@@ -253,7 +255,7 @@ Provider substitution требует decision log и approval, если меня
 
 - bear_cartoon;
 - seal_cartoon;
-- seagull_cartoon.
+- human_child_cartoon — Антошка (candidate profile; formal RigProfile contract to be defined when this character enters implementation).
 
 ## Acceptance
 
