@@ -81,6 +81,8 @@ Statuses:
 |---|---|---|
 | `CharacterSpec` | VERIFIED | SKIDS-002 |
 | `RigProfile` | VERIFIED | SKIDS-004 |
+| `Pose` | VERIFIED | SKIDS-005 |
+| `Action` | VERIFIED | SKIDS-005 |
 | `VisemeTimeline` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-006 |
 | `dialogue_manifest` | SAKHALIN_EXTENSION_REQUIRED | Milestone 02 |
 | `viseme_timelines` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-006 |
@@ -163,7 +165,7 @@ character_design is a production-run artifact.
 
 They must not automatically become the same entity.
 
-The same applies to RigProfile vs rig_plan, Pose vs pose_library entries, and Action vs action_timeline. Lifecycle and semantics may differ; adapters are required.
+The same applies to RigProfile vs rig_plan, Pose vs pose_library entries, and Action vs action_timeline. Pose/Action contracts are defined by SKIDS-005, but runtime mapping remains intentionally deferred. Lifecycle and semantics may differ; adapters are required.
 
 ## Verified against pinned checkout (SKIDS-001)
 
