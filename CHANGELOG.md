@@ -2,6 +2,19 @@
 
 ## 2026-09-20
 
+### Added — SKIDS-007
+
+- `tools/character/sakhalin/timeline_merger.py` — TimelineMerger domain service for deterministic acting + mouth merge.
+- `tests/sakhalin/test_timeline_merger.py` — 34 merger tests covering validation, temporal semantics, output invariants, and ownership boundary.
+- `docs/sakhalin/TIMELINE_MERGE.md` — merge algorithm, duration policy, and output contract documentation.
+
+### Changed — SKIDS-007
+
+- TimelineMerger marked IMPLEMENTED in OpenMontage compatibility documentation.
+- MOTION_CONTRACT.md references timeline merge in the ownership boundary section.
+
+## 2026-09-20
+
 ### Added — SKIDS-006
 
 - `schemas/sakhalin/viseme_timeline.schema.json` — renderer-agnostic VisemeTimeline domain contract for Russian lip-sync.

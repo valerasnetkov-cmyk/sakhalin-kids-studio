@@ -95,6 +95,7 @@ Statuses:
 | Item | Status | Notes |
 |---|---|---|
 | `CharacterLoader` domain service | IMPLEMENTED | SKIDS-003; standalone domain service, no OpenMontage coupling |
+| `TimelineMerger` domain service | IMPLEMENTED | SKIDS-007; deterministic acting + mouth merge, no OpenMontage coupling |
 
 ### Sakhalin custom tools (SAKHALIN_EXTENSION_REQUIRED)
 

@@ -85,7 +85,21 @@ mouth animation                           -> VisemeTimeline
 
 VisemeTimeline is defined in SKIDS-006.
 
-## 6. Action
+## 6. Timeline Merge
+
+SKIDS-007 combines Action + Pose + VisemeTimeline into renderer-ready segments:
+
+```text
+Action + Pose references + VisemeTimeline
+            |
+     TimelineMerger
+            |
+  combined segments (pose + viseme per interval)
+```
+
+See: `docs/sakhalin/TIMELINE_MERGE.md`
+
+## 7. Action
 
 Action is a reusable timed sequence of Pose references:
 
