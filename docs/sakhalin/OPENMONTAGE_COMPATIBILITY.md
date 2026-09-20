@@ -159,22 +159,33 @@ They must not automatically become the same entity.
 
 The same applies to RigProfile vs rig_plan, Pose vs pose_library entries, and Action vs action_timeline. Lifecycle and semantics may differ; adapters are required.
 
+## Verified against pinned checkout (SKIDS-001)
+
+All checks below were executed against the pinned OpenMontage checkout at `08e2151fa02de28a5d6a312b3d575692bf147ad7`:
+
+- pipeline manifest schema validation (name, version, stability, extensions, stage count);
+- meta skills file existence (`reviewer`, `checkpoint-protocol`, `animation-runtime-selector`, `voice-performance-director`);
+- upstream artifact schema file existence (all 15 production artifacts);
+- upstream character tool file existence (`character_animation.py`, `__init__.py`);
+- `compatible_playbooks` references (recommended + also_works);
+- Sakhalin extension cross-reference (24/24 referenced in manifest).
+
+See `scripts/verify-skids-001.py` output for full details.
+
 ## Known gaps (expected, non-blocking for SKIDS-001)
 
 1. Sakhalin director skills are not yet implemented.
 2. Sakhalin custom tools are not yet implemented.
-3. dialogue_manifest and viseme_timelines require Sakhalin contracts.
+3. `dialogue_manifest` and `viseme_timelines` require Sakhalin contracts.
 4. child/factual/production QA artifacts require Sakhalin contracts.
 5. Custom Sakhalin playbook is not yet implemented.
 6. Full pipeline execution is not possible until subsequent milestones.
-7. If local pinned checkout is unavailable, upstream execution checks remain NOT_VERIFIED.
 
 These are planned extension points, not defects.
 
-## NOT_VERIFIED items
+## NOT_VERIFIED items (future integration)
 
-- Pipeline load via upstream `lib.pipeline_loader.load_pipeline` (requires local OpenMontage checkout with dependencies installed).
-- Upstream tool registry discovery for custom tools (requires local OpenMontage checkout).
-- Upstream style/playbook validation for custom playbook (requires local OpenMontage checkout).
-- HyperFrames/Remotion rendering integration.
+- HyperFrames/Remotion Sakhalin render integration.
 - TTS provider integration.
+- Custom Sakhalin tools until implemented.
+- Custom Sakhalin playbook until implemented.
