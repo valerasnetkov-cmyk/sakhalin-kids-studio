@@ -79,3 +79,63 @@ Roll out only after the core production contracts are stable:
 Do not use Harness for episode state transitions, publishing, render orchestration, or core-character mutation.
 
 See: `docs/sakhalin/HARNESS_INTEGRATION.md`.
+
+## Production architecture backlog
+
+These items are approved but deferred until the Character Runtime Proof is accepted.
+
+### Runtime / upstream
+
+- [ ] Pin and integrate an executable OpenMontage checkout.
+- [ ] Validate `sakhalin-kids.yaml` with the pinned OpenMontage loader/schema.
+- [ ] Implement all referenced Sakhalin director skills/tools before declaring the pipeline executable.
+- [ ] Define and test the Production Director execution role.
+- [ ] Add upstream compatibility/upgrade checks.
+
+See: `docs/sakhalin/RUNTIME_AND_UPSTREAM.md`.
+
+### Asset lifecycle
+
+- [ ] Add stable asset IDs, versions, checksums, provenance, and rights metadata.
+- [ ] Pin exact asset versions per episode revision.
+- [ ] Add dependency invalidation so only affected outputs become stale.
+- [ ] Separate Git, durable media storage, and workspace/cache.
+- [ ] Add S3-compatible storage only when needed.
+- [ ] Add backup plus tested restore procedure.
+
+See: `docs/sakhalin/ASSET_LIFECYCLE.md`.
+
+### Job execution
+
+- [ ] Add explicit job/attempt states and idempotency for paid/long-running work.
+- [ ] Track external provider request IDs and unknown external state.
+- [ ] Add resume/retry/cancel semantics.
+- [ ] Add approval receipts bound to revision/hash.
+- [ ] Add per-job/attempt cost reservation and reconciliation.
+- [ ] Introduce PostgreSQL only when multi-worker/control-plane reliability requires it.
+
+See: `docs/sakhalin/JOB_EXECUTION.md`.
+
+### Media delivery
+
+- [ ] Define named proof/review/master render profiles.
+- [ ] Keep dialogue/music/SFX stems where practical.
+- [ ] Evaluate WhisperX for Russian alignment after the proof.
+- [ ] Add pronunciation dictionary and listening review.
+- [ ] Add deterministic FFmpeg media QA.
+- [ ] Evaluate OpenTimelineIO/editable timeline export before routine full episodes.
+- [ ] Add curated ComfyUI workflows only after character/runtime contracts stabilize.
+
+See: `docs/sakhalin/MEDIA_DELIVERY.md`.
+
+### Editorial / publishing
+
+- [ ] Define explicit target age/audience and episode editorial contract.
+- [ ] Add a claims ledger mapping educational claims to sources and script/scene usage.
+- [ ] Track documentary vs generated/reconstructed visual provenance.
+- [ ] Add rights, safety, pronunciation, and character-continuity release checks.
+- [ ] Keep YouTube publication manual-first.
+- [ ] Verify current YouTube audience/synthetic-media requirements before automation.
+- [ ] Later connect production cost/revision data to audience-retention analytics.
+
+See: `docs/sakhalin/EDITORIAL_AND_PUBLISHING.md`.
