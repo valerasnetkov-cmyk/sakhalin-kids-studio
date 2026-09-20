@@ -133,11 +133,13 @@ dialogue audio
       |
 viseme timeline
       |
-acting timeline merge
+acting timeline merge (TimelineMerger)
       |
-render package
+SVG scene render (SvgSceneRenderer)
       |
-HyperFrames / Remotion
+HyperFrames workspace handoff
+      |
+OpenMontage hyperframes_compose.render_existing
       |
 MP4
 ```

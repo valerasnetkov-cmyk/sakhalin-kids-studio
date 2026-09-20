@@ -10,6 +10,7 @@ SKIDS-005 Pose/Action domain contracts complete.
 SKIDS-006 VisemeTimeline domain contract complete.
 SKIDS-007 deterministic acting/mouth timeline merge complete.
 SKIDS-008 SVG scene renderer complete.
+SKIDS-009 HyperFrames runtime handoff complete.
 
 Primary development workflow: OpenCode.
 
@@ -36,7 +37,7 @@ Tasks:
 - [x] SKIDS-006 — viseme contract.
 - [x] SKIDS-007 — acting + mouth timeline merge.
 - [x] SKIDS-008 — SVG scene renderer.
-- [ ] SKIDS-009 — HyperFrames or Remotion handoff.
+- [x] SKIDS-009 — HyperFrames or Remotion handoff.
 - [ ] SKIDS-010 — character QA.
 - [ ] SKIDS-011 — Makar fixture assets.
 - [ ] SKIDS-012 — Leva fixture assets.

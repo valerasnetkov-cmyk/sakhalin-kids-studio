@@ -2,6 +2,18 @@
 
 ## 2026-09-21
 
+### Added — SKIDS-009
+
+- `tools/character/sakhalin/hyperframes_handoff.py` — HyperFramesHandoff domain service for deterministic offline workspace generation.
+- `tests/sakhalin/test_hyperframes_handoff.py` — 23 handoff tests covering boundary union, interval generation, ms→seconds conversion, determinism, immutability, path safety, workspace structure, and SvgSceneRenderer integration.
+
+### Changed — SKIDS-009
+
+- HyperFramesHandoff marked IMPLEMENTED in OpenMontage compatibility documentation.
+- ARCHITECTURE.md character runtime flow updated to include TimelineMerger → SvgSceneRenderer → HyperFrames handoff.
+
+## 2026-09-21
+
 ### Added — SKIDS-008
 
 - `tools/character/sakhalin/svg_scene_renderer.py` — SvgSceneRenderer domain service for deterministic frame-oriented SVG scene composition.
