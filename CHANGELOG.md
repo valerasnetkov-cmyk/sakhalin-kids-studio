@@ -2,6 +2,15 @@
 
 ## 2026-09-21
 
+### Changed — Core character canon
+
+- Added `docs/sakhalin/TEAM_CANON.md` as the canonical persistent-cast identity reference.
+- Corrected `antoshka`: Antoshka is a small human boy, traveler and storyteller, not a seagull/animal mascot.
+- Replaced stale future `seagull_cartoon` references for Antoshka with candidate `human_child_cartoon` terminology.
+- Added explicit SKIDS-010/011/012 character QA and fixture priorities without expanding the current Makar + Leva proof scope.
+
+## 2026-09-21
+
 ### Added — SKIDS-008
 
 - `tools/character/sakhalin/svg_scene_renderer.py` — SvgSceneRenderer domain service for deterministic frame-oriented SVG scene composition.
