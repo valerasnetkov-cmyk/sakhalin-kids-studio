@@ -2,6 +2,23 @@
 
 ## 2026-09-20
 
+### Added — SKIDS-005
+
+- `schemas/sakhalin/pose.schema.json` — reusable Pose domain contract.
+- `schemas/sakhalin/action.schema.json` — timed Action domain contract.
+- `tests/sakhalin/test_pose_schema.py` — 20 Pose contract tests.
+- `tests/sakhalin/test_action_schema.py` — 20 Action contract tests.
+- `docs/sakhalin/MOTION_CONTRACT.md` — motion ownership, talk/viseme boundary, and future compiler boundary.
+
+### Changed — SKIDS-005
+
+- Pose and Action marked VERIFIED in OpenMontage compatibility documentation.
+- Character format now references the canonical motion contract instead of duplicating Pose/Action examples.
+- Mouth ownership is explicit: Pose/Action cannot control `mouth`; VisemeTimeline owns lip-sync data.
+- No canonical pose/action library or OpenMontage adapter/compiler added in this milestone.
+
+## 2026-09-20
+
 ### Added — SKIDS-003
 
 - `tools/character/sakhalin/__init__.py` — Sakhalin character tools package.
