@@ -1,6 +1,6 @@
 # Sakhalin Kids Studio
 
-AI-assisted production layer for a children's educational YouTube channel about Sakhalin, designed to run on top of OpenMontage.
+AI-assisted production layer for a children's educational YouTube channel about Sakhalin, designed to run on top of OpenMontage. OpenCode is the primary coding agent for this repository.
 
 ## Status
 
@@ -32,7 +32,7 @@ Episodes / assets
 
 Key documents:
 
-- `CODEX_START.md` — first instructions for Codex.
+- `AGENTS.md` — persistent project instructions for OpenCode.\n- `OPENCODE_START.md` — first-session implementation brief for OpenCode.\n- `CODEX_START.md` — legacy bootstrap brief retained for history.
 - `docs/sakhalin/ARCHITECTURE.md` — system architecture.
 - `docs/sakhalin/IMPLEMENTATION_PLAN.md` — milestones and acceptance criteria.
 - `docs/sakhalin/CHARACTER_FORMAT.md` — reusable character contract.
@@ -73,3 +73,17 @@ Acceptance focuses on stable identity, two rig profiles, gaze, blink, gesture, R
 - Paid provider calls must pass explicit budget checks.
 - No silent fallback from local core-character animation to regenerated text-to-video characters.
 - Keep authored source files at or below 400 physical lines.
+
+## OpenCode workflow
+
+Use OpenCode as the primary development workflow.
+
+Before substantial implementation:
+
+1. Read `AGENTS.md`.
+2. Read `OPENCODE_START.md` for the current bootstrap cycle.
+3. Load only the relevant durable docs under `docs/sakhalin/`.
+4. Implement the smallest complete SKIDS slice.
+5. Run the available verification gates before reporting completion.
+
+The first implementation cycle remains `SKIDS-001 -> SKIDS-013`.
