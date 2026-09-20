@@ -4,6 +4,13 @@
 
 ### Added
 
+- SKIDS-001 repository scaffolding: allowed cast policy, OpenMontage compatibility matrix, verification script.
+- `config/sakhalin/allowed_cast.json` — core cast policy with closed roster.
+- `docs/sakhalin/OPENMONTAGE_COMPATIBILITY.md` — pinned upstream, compatibility matrix, domain boundary.
+- `scripts/verify-skids-001.py` — automated verification for manifest, cast, line gate, secrets.
+
+### Changed
+
 - Initial Sakhalin Kids Studio architecture on top of OpenMontage.
 - Core project documentation for architecture, character format, implementation plan, and Russian lip-sync.
 - Initial `sakhalin-kids` pipeline manifest.

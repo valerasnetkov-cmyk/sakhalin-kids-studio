@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "description": "Closed core cast for Sakhalin Kids Studio. Unknown persistent core character IDs must fail closed.",
+  "core_cast": [
+    "makar",
+    "leva",
+    "tikhon",
+    "anna",
+    "antoshka"
+  ],
+  "policy": {
+    "core_cast_closed": true,
+    "guest_characters_allowed": true,
+    "guest_persistence": "episode_only",
+    "new_core_character_requires": "explicit project decision and configuration change"
+  }
+}

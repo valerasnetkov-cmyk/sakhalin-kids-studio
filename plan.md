@@ -2,7 +2,7 @@
 
 ## Current phase
 
-Pre-scaffold architecture is complete.
+SKIDS-001 repository scaffolding complete.
 
 Primary development workflow: OpenCode.
 
@@ -21,7 +21,7 @@ Scope:
 
 Tasks:
 
-- [ ] SKIDS-001 — repository scaffolding for runtime modules.
+- [x] SKIDS-001 — repository scaffolding for runtime modules.
 - [ ] SKIDS-002 — character/rig/pose/action/viseme schemas.
 - [ ] SKIDS-003 — character loader.
 - [ ] SKIDS-004 — rig profile contract.
