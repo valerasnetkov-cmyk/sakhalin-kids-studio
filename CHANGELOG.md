@@ -2,6 +2,18 @@
 
 ## 2026-09-20
 
+### Added — SKIDS-003
+
+- `tools/character/sakhalin/__init__.py` — Sakhalin character tools package.
+- `tools/character/sakhalin/character_loader.py` — CharacterLoader domain service for persistent core characters.
+- `tests/sakhalin/test_character_loader.py` — 24 loader test cases (68 total with SKIDS-002).
+
+### Changed — SKIDS-003
+
+- CharacterLoader domain service distinguishes from OpenMontage tool adapter in compatibility docs.
+
+## 2026-09-20
+
 ### Added — SKIDS-002
 
 - `schemas/sakhalin/character_spec.schema.json` — CharacterSpec domain contract (JSON Schema Draft 2020-12).

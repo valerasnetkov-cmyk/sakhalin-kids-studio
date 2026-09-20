@@ -88,12 +88,18 @@ Statuses:
 | `factual_qa` | SAKHALIN_EXTENSION_REQUIRED | post-proof |
 | `production_qa` | SAKHALIN_EXTENSION_REQUIRED | post-proof |
 
+### Sakhalin domain services (implemented)
+
+| Item | Status | Notes |
+|---|---|---|
+| `CharacterLoader` domain service | IMPLEMENTED | SKIDS-003; standalone domain service, no OpenMontage coupling |
+
 ### Sakhalin custom tools (SAKHALIN_EXTENSION_REQUIRED)
 
 | Item | Status | Target milestone |
 |---|---|---|
 | `sakhalin_lipsync` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-006 |
-| `sakhalin_character_loader` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-003 |
+| `sakhalin_character_loader` | SAKHALIN_EXTENSION_REQUIRED | pending; thin adapter over domain `CharacterLoader` |
 | `sakhalin_media_library` | SAKHALIN_EXTENSION_REQUIRED | post-proof |
 | `sakhalin_action_timeline` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-007 |
 | `sakhalin_character_renderer` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-008 |
