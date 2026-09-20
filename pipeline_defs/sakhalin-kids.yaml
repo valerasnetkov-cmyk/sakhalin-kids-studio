@@ -6,7 +6,7 @@ description: >
   educational motion graphics, Russian dialogue/lip-sync, human approval gates,
   and multi-layer QA.
 category: animation
-stability: experimental
+stability: beta
 default_checkpoint_policy: guided
 
 reference_input:
@@ -23,7 +23,7 @@ extensions:
   custom_scripts: true
   custom_playbooks: true
   custom_skills: true
-  custom_tools: false
+  custom_tools: true
 
 required_skills:
   - pipelines/sakhalin-kids/executive-producer
