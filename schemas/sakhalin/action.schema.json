@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sakhalin/action",
+  "title": "Sakhalin Kids Action",
+  "type": "object",
+  "required": ["version", "id", "rig_profile", "phases"],
+  "properties": {
+    "version": { "const": "1.0" },
+    "id": { "$ref": "#/$defs/identifier" },
+    "rig_profile": { "$ref": "#/$defs/identifier" },
+    "phases": { "$ref": "#/$defs/phases" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+    "phases": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/phase" }
+    },
+    "phase": {
+      "type": "object",
+      "required": ["name", "duration_ms", "pose"],
+      "properties": {
+        "name": { "$ref": "#/$defs/identifier" },
+        "duration_ms": { "type": "integer", "minimum": 1 },
+        "pose": { "$ref": "#/$defs/identifier" }
+      },
+      "additionalProperties": false
+    }
+  }
+}
