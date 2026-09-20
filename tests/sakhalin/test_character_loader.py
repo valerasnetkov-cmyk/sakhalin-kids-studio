@@ -254,6 +254,70 @@ class TestEncoding(_LoaderTestBase):
             loader.load_core("makar")
 
 
+class TestHardening(_LoaderTestBase):
+    """Regression tests for SKIDS-003 hardening pass."""
+
+    def test_identifier_pattern_from_schema(self):
+        loader = self._loader()
+        import re
+        self.assertIsInstance(loader._identifier_re, re.Pattern)
+        self.assertEqual(loader._identifier_re.pattern, "^[a-z][a-z0-9_-]*$")
+
+    def test_malformed_schema_identifier_fails_construction(self):
+        import json as _json
+        bad_schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
+        del bad_schema["$defs"]["identifier"]["pattern"]
+        tmp = self._root / "bad_schema.json"
+        tmp.write_text(_json.dumps(bad_schema), encoding="utf-8")
+        with self.assertRaises(CharacterLoadError):
+            CharacterLoader(
+                library_root=self._lib,
+                schema_path=tmp,
+                allowed_cast_path=self._cast_path,
+            )
+
+    def test_missing_schema_defs_fails_construction(self):
+        import json as _json
+        bad_schema = {"type": "object"}
+        tmp = self._root / "bad_schema.json"
+        tmp.write_text(_json.dumps(bad_schema), encoding="utf-8")
+        with self.assertRaises(CharacterLoadError):
+            CharacterLoader(
+                library_root=self._lib,
+                schema_path=tmp,
+                allowed_cast_path=self._cast_path,
+            )
+
+    def test_schema_validation_error_does_not_echo_manifest_value(self):
+        bad = _valid_manifest()
+        bad["visual"]["palette_locked"] = "not_a_boolean"
+        self._write_manifest("makar", json.dumps(bad))
+        loader = self._loader()
+        with self.assertRaises(CharacterValidationError) as ctx:
+            loader.load_core("makar")
+        msg = str(ctx.exception)
+        self.assertNotIn("not_a_boolean", msg)
+        self.assertIn("palette_locked", msg)
+
+    def test_resolved_path_is_same_for_reading(self):
+        self._write_manifest("makar", json.dumps(_valid_manifest()))
+        loader = self._loader()
+        path = loader._resolve_contained_manifest_path("makar")
+        self.assertTrue(path.is_file())
+
+    def test_containment_outside_library_root(self):
+        from tools.character.sakhalin.character_loader import CharacterLoader as CL
+        outside = self._root / "outside_chars"
+        outside.mkdir()
+        loader = CL(
+            library_root=outside,
+            schema_path=SCHEMA_PATH,
+            allowed_cast_path=self._cast_path,
+        )
+        with self.assertRaises(CharacterNotAllowedError):
+            loader._resolve_contained_manifest_path("../sneaky")
+
+
 class TestPolicyValidation(_LoaderTestBase):
     """allowed_cast.json structural validation."""
 

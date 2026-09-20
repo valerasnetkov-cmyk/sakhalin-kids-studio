@@ -12,6 +12,14 @@
 
 - CharacterLoader domain service distinguishes from OpenMontage tool adapter in compatibility docs.
 
+### Fixed — SKIDS-003 hardening
+
+- Eliminated double-resolve TOCTOU: single `_resolve_contained_manifest_path` method.
+- Bounded file read: `fh.read(MAX + 1)` instead of unbounded `read_bytes()`.
+- Schema validation errors redacted: report field + validator, not raw manifest values.
+- Identifier pattern extracted from CharacterSpec schema `$defs.identifier.pattern`.
+- `Draft202012Validator.check_schema` errors wrapped in `CharacterLoadError`.
+
 ## 2026-09-20
 
 ### Added — SKIDS-002

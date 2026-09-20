@@ -44,7 +44,6 @@ class CharacterValidationError(CharacterLoadError):
 
 _MANIFEST_NAME = "character.yaml"
 _MAX_MANIFEST_BYTES = 128 * 1024  # 128 KiB
-_IDENTIFIER_PATTERN = re.compile(r"^[a-z][a-z0-9_-]*$")
 
 # ---------------------------------------------------------------------------
 # Loader
@@ -69,7 +68,7 @@ class CharacterLoader:
         self._allowed_cast_path = allowed_cast_path.resolve()
 
         self._schema = self._load_schema()
-        self._identifier_re = _IDENTIFIER_PATTERN
+        self._identifier_re = self._extract_identifier_pattern()
         self._core_ids = self._load_and_validate_policy()
 
     # -- public API --------------------------------------------------------
@@ -91,11 +90,9 @@ class CharacterLoader:
         """
         self._check_id_pattern(character_id)
         self._check_core_admission(character_id)
-        self._check_filesystem_containment(character_id)
-
-        manifest_path = self._resolve_manifest_path(character_id)
+        manifest_path = self._resolve_contained_manifest_path(character_id)
         self._check_manifest_exists(manifest_path, character_id)
-        raw = self._read_manifest(manifest_path, character_id)
+        raw = self._read_manifest_bounded(manifest_path, character_id)
         manifest = self._parse_yaml(raw, character_id)
         self._validate_schema(manifest, character_id)
         self._validate_identity(manifest, character_id)
@@ -119,8 +116,29 @@ class CharacterLoader:
                 f"Schema is not valid JSON: {self._schema_path}"
             ) from exc
 
-        Draft202012Validator.check_schema(schema)
+        try:
+            Draft202012Validator.check_schema(schema)
+        except Exception as exc:
+            raise CharacterLoadError(
+                "CharacterSpec schema is invalid"
+            ) from exc
+
         return schema
+
+    def _extract_identifier_pattern(self) -> re.Pattern[str]:
+        defs = self._schema.get("$defs", {})
+        ident = defs.get("identifier", {})
+        pattern_str = ident.get("pattern")
+        if not pattern_str or not isinstance(pattern_str, str):
+            raise CharacterLoadError(
+                "CharacterSpec schema missing $defs.identifier.pattern"
+            )
+        try:
+            return re.compile(pattern_str)
+        except re.error as exc:
+            raise CharacterLoadError(
+                f"CharacterSpec schema identifier pattern is invalid"
+            ) from exc
 
     # -- policy loading ----------------------------------------------------
 
@@ -193,7 +211,7 @@ class CharacterLoader:
 
     # -- filesystem containment ---------------------------------------------
 
-    def _check_filesystem_containment(self, character_id: str) -> None:
+    def _resolve_contained_manifest_path(self, character_id: str) -> Path:
         resolved = (self._library_root / character_id / _MANIFEST_NAME).resolve()
         try:
             resolved.relative_to(self._library_root)
@@ -201,9 +219,7 @@ class CharacterLoader:
             raise CharacterNotAllowedError(
                 f"Path traversal detected for character: {character_id!r}"
             )
-
-    def _resolve_manifest_path(self, character_id: str) -> Path:
-        return (self._library_root / character_id / _MANIFEST_NAME).resolve()
+        return resolved
 
     # -- manifest reading --------------------------------------------------
 
@@ -213,9 +229,10 @@ class CharacterLoader:
                 f"Manifest not found for character: {character_id!r}"
             )
 
-    def _read_manifest(self, path: Path, character_id: str) -> bytes:
+    def _read_manifest_bounded(self, path: Path, character_id: str) -> str:
         try:
-            raw = path.read_bytes()
+            with path.open("rb") as fh:
+                raw = fh.read(_MAX_MANIFEST_BYTES + 1)
         except OSError as exc:
             raise CharacterManifestError(
                 f"Cannot read manifest for {character_id!r}"
@@ -256,10 +273,13 @@ class CharacterLoader:
         validator = Draft202012Validator(self._schema)
         errors = list(validator.iter_errors(manifest))
         if errors:
-            messages = [f"  - {e.message}" for e in errors[:5]]
+            items = []
+            for e in errors[:5]:
+                loc = ".".join(str(p) for p in e.absolute_path) if e.absolute_path else "(root)"
+                items.append(f"  - {loc} [{e.validator}]")
             raise CharacterValidationError(
                 f"CharacterSpec validation failed for {character_id!r}:\n"
-                + "\n".join(messages)
+                + "\n".join(items)
             )
 
     def _validate_identity(self, manifest: Dict[str, Any], character_id: str) -> None:
