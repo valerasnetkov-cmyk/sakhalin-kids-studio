@@ -53,3 +53,29 @@ Milestone 02 — Russian Voice + Lip Sync refinement.
 - No silent character regeneration.
 - No paid AI-video in Milestone 01.
 - Provider calls must be budget bounded.
+
+## Approved future architecture
+
+After the visual proof is accepted:
+
+### Control plane
+
+- [ ] Add a narrow Sakhalin Kids Control API.
+- [ ] Expose bounded MCP tools for episode/status/approval/render operations.
+- [ ] Connect a dedicated Hermes `sakhalin-kids` profile.
+- [ ] Keep OpenMontage as the only production-state owner.
+
+See: `docs/sakhalin/CONTROL_PLANE.md`.
+
+### DeepSeek Harness
+
+Roll out only after the core production contracts are stable:
+
+- [ ] H1 — research workflow.
+- [ ] H2 — script review.
+- [ ] H2 — factual QA.
+- [ ] H3 — production QA.
+
+Do not use Harness for episode state transitions, publishing, render orchestration, or core-character mutation.
+
+See: `docs/sakhalin/HARNESS_INTEGRATION.md`.
