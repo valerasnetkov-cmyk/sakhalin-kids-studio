@@ -34,6 +34,7 @@ Use these documents as durable project guidance:
 - `docs/sakhalin/ASSET_LIFECYCLE.md`
 - `docs/sakhalin/JOB_EXECUTION.md`
 - `docs/sakhalin/MEDIA_DELIVERY.md`
+- `docs/sakhalin/HYPIT_INTEGRATION.md`
 - `docs/sakhalin/EDITORIAL_AND_PUBLISHING.md`
 
 Load them on a need-to-know basis. Do not read every document for every small task.
@@ -158,6 +159,8 @@ Default routing:
 - `ai_cinematic` -> OpenMontage video selector;
 - `historical_reconstruction` -> approved image/video generation path.
 
+Cross-scene semantic composition and derivative outputs may later use Hypit only through a bounded adapter after `HYPIT-P01` is approved. Hypit must not replace the local Character Runtime, own production state, bypass scene routing, or silently regenerate core characters.
+
 Do not use generative video merely because it is available.
 
 ## Russian lip-sync
@@ -256,7 +259,7 @@ Stop after the proof and evaluate visual quality before expanding to all five ch
 
 Do not prematurely implement the full 4–6 minute production pipeline.
 
-Post-proof infrastructure is documented but deferred. In particular, do not add PostgreSQL, distributed workers, object storage, ComfyUI production orchestration, Hermes, Harness, Langfuse, automated YouTube publishing, or editable delivery infrastructure during Milestone 01 unless the user explicitly changes scope.
+Post-proof infrastructure is documented but deferred. In particular, do not add PostgreSQL, distributed workers, object storage, ComfyUI production orchestration, Hermes, Harness, Hypit, Langfuse, automated YouTube publishing, or editable delivery infrastructure during Milestone 01 unless the user explicitly changes scope.
 
 ## Milestone 01 acceptance
 
@@ -307,7 +310,8 @@ If a required check cannot run, state what was not verified and why.
 - Approved asset versions are immutable by default.
 - Approval must bind to a specific revision/hash.
 - Expensive jobs must eventually be idempotent and resumable; Milestone 01 may remain sequential.
-- ComfyUI, WhisperX, OpenTimelineIO, restic, PostgreSQL, Langfuse, Hermes, and Harness are planned/candidate integrations, not assumed installed dependencies.
+- ComfyUI, WhisperX, OpenTimelineIO, restic, PostgreSQL, Langfuse, Hermes, Harness, and Hypit are planned/candidate integrations, not assumed installed dependencies.
+- If Hypit is evaluated, pin an exact release/commit for the pilot and complete license/security review before production adoption.
 
 ## Generated and upstream files
 
