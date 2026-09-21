@@ -138,6 +138,14 @@ Default:
 - educational cards;
 - mixed video/graphics.
 
+### Hypit
+
+Approved candidate для optional semantic composition и derivative production после отдельного pilot gate.
+
+Hypit может собирать утверждённые scene outputs, captions/B-roll и ограниченный набор platform derivatives, но не должен владеть episode/job/approval state, перегенерировать core-character identity, обходить scene routing/budget/provenance или получать arbitrary shell/filesystem/network authority.
+
+При использовании exact Hypit release/commit должен фиксироваться в run metadata.
+
 FFmpeg используется как post-processing/assembly layer, но не как полноценный acting runtime.
 
 ## 16. Детерминизм
@@ -177,4 +185,5 @@ Backlot используется как production board, но его отсут
 - сложный neural lip-sync;
 - fine-tuning video models;
 - самостоятельный web SaaS;
-- arbitrary multi-agent orchestration.
+- arbitrary multi-agent orchestration;
+- Hypit production integration или массовое клонирование/вариативное производство видео.
