@@ -83,6 +83,21 @@ Do not use Harness for episode state transitions, publishing, render orchestrati
 
 See: `docs/sakhalin/HARNESS_INTEGRATION.md`.
 
+### Hypit semantic composition
+
+Hypit is approved only as a candidate optional adapter; it is not part of the active Character Runtime milestone.
+
+- [ ] HYPIT-P01 — start only after `SKIDS-013` visual acceptance.
+- [ ] Pin exact Hypit release/commit for the pilot.
+- [ ] Complete license/security review before any production adoption.
+- [ ] Define a narrow semantic-composition handoff from approved Sakhalin/OpenMontage artifacts.
+- [ ] Reuse locked core-character outputs/assets; prohibit hidden text-to-video character regeneration.
+- [ ] Produce 16:9, 9:16 and teaser outputs from one approved source revision.
+- [ ] Measure edit time, render time, retries/failures and provider cost against the non-Hypit path.
+- [ ] Make production adoption decision only after the Milestone 07 integration episode contracts are stable.
+
+See: `docs/sakhalin/HYPIT_INTEGRATION.md`.
+
 ## Production architecture backlog
 
 These items are approved but deferred until the Character Runtime Proof is accepted.
