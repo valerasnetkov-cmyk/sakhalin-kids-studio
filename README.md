@@ -44,6 +44,7 @@ Key documents:
 - `docs/sakhalin/ASSET_LIFECYCLE.md` — versioned media, provenance, rights, storage, and backup.
 - `docs/sakhalin/JOB_EXECUTION.md` — resumable/idempotent production jobs and cost handling.
 - `docs/sakhalin/MEDIA_DELIVERY.md` — render profiles, editable delivery, audio/subtitle and technical QA.
+- `docs/sakhalin/HYPIT_INTEGRATION.md` — optional semantic-composition and derivative-production pilot architecture.
 - `docs/sakhalin/EDITORIAL_AND_PUBLISHING.md` — editorial contract, claims ledger, publishing and analytics.
 
 ## OpenMontage upstream
@@ -104,4 +105,6 @@ After the first Character Runtime proof is accepted:
 - Hermes is planned as the operator / Telegram control plane through a narrow MCP/API surface.
 - OpenMontage remains the single owner of production workflow state.
 - DeepSeek Harness is planned only for bounded cognitive workflows such as research, script review, factual QA, and production QA.
+- Hypit is approved only as an optional future semantic-composition/derivative adapter. It is not a production-state owner or a replacement for the local Character Runtime.
+- `HYPIT-P01` may be evaluated only after the Character Runtime proof is visually accepted; production adoption additionally requires version pinning plus license/security review.
 - These layers must not be implemented during `SKIDS-001 -> SKIDS-013`.
