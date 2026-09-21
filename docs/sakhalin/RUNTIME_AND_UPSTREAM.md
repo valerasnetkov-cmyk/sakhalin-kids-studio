@@ -30,6 +30,9 @@ Hermes
 
 DeepSeek Harness
   -> future bounded research/review/QA layer
+
+Hypit
+  -> future optional semantic-composition/derivative adapter
 ```
 
 Development and production are separate roles even if OpenCode is temporarily used for both during early proofs.
@@ -162,6 +165,7 @@ Every production run should record:
 - style/playbook version;
 - provider/model identifiers;
 - ComfyUI workflow/model versions when used;
+- Hypit release/commit when used;
 - render runtime version;
 - important seeds where applicable.
 
@@ -221,7 +225,8 @@ OpenMontage pipeline
 See:
 
 - `CONTROL_PLANE.md`;
-- `JOB_EXECUTION.md`.
+- `JOB_EXECUTION.md`;
+- `HYPIT_INTEGRATION.md` for the optional post-proof composition adapter.
 
 ## Upstream upgrade procedure
 
