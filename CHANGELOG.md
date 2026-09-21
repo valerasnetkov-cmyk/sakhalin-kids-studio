@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-09-21
+
+### Added — Hypit integration architecture
+
+- `docs/sakhalin/HYPIT_INTEGRATION.md` — bounded optional semantic-composition and derivative-production architecture plus `HYPIT-P01` pilot gate.
+- Pilot acceptance criteria cover version pinning, license/security review, provenance, budget controls, derivative lineage, and comparison with the current non-Hypit path.
+
+### Changed — production documentation
+
+- Architecture places Hypit below Sakhalin/OpenMontage production-state ownership, never as a replacement for Character Runtime.
+- Media delivery defines purposeful 16:9, 9:16, and teaser derivatives tied to one approved source revision.
+- Runtime metadata records the exact Hypit release/commit when used.
+- `plan.md`, `README.md`, `AGENTS.md`, and `OPENCODE_START.md` explicitly defer Hypit from Milestone 01.
+
+### Notes
+
+- Documentation only: no Hypit runtime dependency, provider integration, or production workflow was enabled.
+- Active implementation remains `SKIDS-005` inside the Character Runtime Proof.
+
 ## 2026-09-20
 
 ### Added — SKIDS-003
