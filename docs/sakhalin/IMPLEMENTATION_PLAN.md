@@ -323,7 +323,7 @@ Provider substitution требует decision log и approval, если меня
 - улучшать forced alignment;
 - кешировать reusable renders;
 - улучшать scene routing;
-- автоматизировать Shorts derivatives;
+- автоматизировать Shorts derivatives only after `HYPIT-P01` (or equivalent pilot) passes;
 - добавлять thumbnail pipeline.
 
 Не оптимизировать гипотетические проблемы заранее.
