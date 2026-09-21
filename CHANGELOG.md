@@ -2,7 +2,29 @@
 
 ## 2026-09-21
 
-### Added — SKIDS-009
+### Added — SKIDS-010
+
+- `tools/character/sakhalin/character_qa.py` — CharacterReviewer domain service for deterministic structural character QA.
+- `tests/sakhalin/test_character_qa.py` — 48 character QA tests covering canon, schema, rig, visemes, gaze, expressions, blink, poses, actions, continuity, determinism, OpenMontage report, and visual boundary.
+- `config/sakhalin/team_canon.json` — machine-readable team canon (version 1.0).
+- `docs/sakhalin/CHARACTER_QA.md` — character QA documentation.
+
+### Changed — SKIDS-010
+
+- CharacterReviewer marked IMPLEMENTED in OpenMontage compatibility documentation.
+- TEAM_CANON.md updated with machine-readable canon reference (section 12).
+- CHARACTER_FORMAT.md duplicate section numbering fixed (9→10–16).
+- ARCHITECTURE.md character runtime flow updated to include CharacterReviewer.
+- plan.md SKIDS-010 marked complete.
+
+### Changed — Core character canon
+
+- Added `docs/sakhalin/TEAM_CANON.md` as the canonical persistent-cast identity reference.
+- Corrected `antoshka`: Antoshka is a small human boy, traveler and storyteller, not a seagull/animal mascot.
+- Replaced stale future `seagull_cartoon` references for Antoshka with candidate `human_child_cartoon` terminology.
+- Added explicit SKIDS-010/011/012 character QA and fixture priorities without expanding the current Makar + Leva proof scope.
+
+## 2026-09-21
 
 - `tools/character/sakhalin/hyperframes_handoff.py` — HyperFramesHandoff domain service for deterministic offline workspace generation.
 - `tests/sakhalin/test_hyperframes_handoff.py` — 23 handoff tests covering boundary union, interval generation, ms→seconds conversion, determinism, immutability, path safety, workspace structure, and SvgSceneRenderer integration.

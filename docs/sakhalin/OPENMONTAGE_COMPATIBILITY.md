@@ -98,6 +98,7 @@ Statuses:
 | `TimelineMerger` domain service | IMPLEMENTED | SKIDS-007; deterministic acting + mouth merge, no OpenMontage coupling |
 | `SvgSceneRenderer` domain service | IMPLEMENTED | SKIDS-008; deterministic frame-oriented SVG scene renderer, no animation runtime |
 | `HyperFramesHandoff` domain service | IMPLEMENTED | SKIDS-009; deterministic offline HyperFrames workspace generation, no JS animation |
+| `CharacterReviewer` domain service | IMPLEMENTED | SKIDS-010; deterministic structural QA, no AI, no computer vision |
 
 ### Sakhalin custom tools (SAKHALIN_EXTENSION_REQUIRED)
 
@@ -108,7 +109,7 @@ Statuses:
 | `sakhalin_media_library` | SAKHALIN_EXTENSION_REQUIRED | post-proof |
 | `sakhalin_action_timeline` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-007 |
 | `sakhalin_character_renderer` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-008 |
-| `sakhalin_character_reviewer` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-010 |
+| `sakhalin_character_reviewer` | SAKHALIN_EXTENSION_REQUIRED | SKIDS-010; domain service implemented, thin OpenMontage tool adapter pending |
 
 ### Sakhalin director skills (MISSING)
 

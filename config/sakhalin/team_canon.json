@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "characters": {
+    "makar": {
+      "species": "fox",
+      "rig_profile": "fox_cartoon"
+    },
+    "leva": {
+      "species": "sea_lion",
+      "rig_profile": "sea_lion_cartoon"
+    },
+    "tikhon": {
+      "species": "bear",
+      "rig_profile": null
+    },
+    "anna": {
+      "species": "seal",
+      "rig_profile": null
+    },
+    "antoshka": {
+      "species": "human",
+      "rig_profile": null
+    }
+  }
+}

@@ -228,7 +228,7 @@ S
 
 Character art для viseme отличается, semantic IDs одинаковы.
 
-## 9. Voice profile reference
+## 10. Voice profile reference
 
 В character definition:
 
@@ -260,7 +260,7 @@ secret_refs:
 
 Нельзя хранить secret value.
 
-## 9. Character scale
+## 11. Character scale
 
 Нужно зафиксировать относительный scale персонажей.
 
@@ -277,7 +277,7 @@ stage_scale:
 
 Точные значения должны быть утверждены после финальных model sheets.
 
-## 9. Cast validation
+## 12. Cast validation
 
 Episode cast:
 
@@ -299,7 +299,7 @@ guest_characters:
 
 Guest character не добавляется автоматически в core library.
 
-## 9. Scene character state
+## 13. Scene character state
 
 Scene plan может задавать:
 
@@ -314,7 +314,7 @@ character_state:
 
 Runtime связывает scene state с библиотекой assets.
 
-## 9. Character QA reference frames
+## 14. Character QA reference frames
 
 Для каждого production hero:
 
@@ -338,7 +338,7 @@ QA не должен полагаться только на perceptual similarit
 - scale не выходит за пределы;
 - wrong character ID невозможен.
 
-## 9. MVP profiles
+## 15. MVP profiles
 
 Milestone 01 поддерживает:
 
@@ -352,7 +352,7 @@ Milestone 01 поддерживает:
 
 Остальные профили добавляются после успешного proof.
 
-## 9. Data migration
+## 16. Data migration
 
 Character format должен иметь:
 

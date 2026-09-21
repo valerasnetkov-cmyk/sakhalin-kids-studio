@@ -397,5 +397,4 @@ Paid call не выполняется после hard limit.
 ## Stop condition
 
 После `SKIDS-013` остановиться и оценить video proof.
-
 Не переходить к остальным персонажам, пока quality bar первого proof не принят.
