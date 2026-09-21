@@ -76,7 +76,10 @@ Loads machine-readable team canon from JSON.
 5. **Visemes** — all 10 approved visemes present, no duplicates, no unknown
 6. **Gaze** — all 5 required gaze directions present
 7. **Expressions** — required expressions present in SVG
-8. **Blink** — blink capability declared but no blink action → warning
+8. **Blink** — blink semantics depend on `required_actions`:
+   - capability=true + "blink" in required_actions + missing → **blocking** (fail)
+   - capability=true + "blink" NOT in required_actions + missing → **warning** (revise)
+   - capability=true + blink action present but invalid → **blocking** (fail)
 9. **Pose validation** — schema, rig match, no unknown parts
 10. **Action validation** — schema, rig match, all phases resolve to known poses
 11. **Determinism** — results are deterministic, inputs not mutated

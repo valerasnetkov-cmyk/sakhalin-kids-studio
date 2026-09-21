@@ -122,6 +122,23 @@ class TBlinkCheck(unittest.TestCase):
             self.assertTrue(any(f["code"] == "missing_blink_action" for f in r["findings"]))
             self.assertEqual(r["status"], "revise")
 
+    def test_required_blink_missing_fails(self):
+        with tempfile.TemporaryDirectory() as td:
+            s = _spec()
+            s["required_actions"] = ["idle", "blink"]
+            r = review_character(**_ok(td, spec=s, actions={"idle": _action()}))
+            self.assertTrue(any(f["code"] == "missing_required_blink" for f in r["findings"]))
+            self.assertEqual(r["status"], "fail")
+
+    def test_required_valid_blink_passes(self):
+        with tempfile.TemporaryDirectory() as td:
+            s = _spec()
+            s["required_actions"] = ["idle", "blink"]
+            r = review_character(**_ok(td, spec=s))
+            blink_f = [f for f in r["findings"] if "blink" in f["code"]]
+            self.assertEqual(len(blink_f), 0)
+            self.assertEqual(r["status"], "pass")
+
 
 # ---------------------------------------------------------------------------
 # Expressions

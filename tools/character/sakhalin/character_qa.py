@@ -247,7 +247,17 @@ def _check_blink(spec: dict, rig: dict, actions_by_id: dict) -> List[dict]:
     caps = rig.get("capabilities", {})
     if caps.get("blink"):
         if "blink" not in actions_by_id:
-            findings.append(_warning("missing_blink_action", "blink capability declared but no blink action provided"))
+            required = set(spec.get("required_actions", []))
+            if "blink" in required:
+                findings.append(_blocking(
+                    "missing_required_blink",
+                    "blink capability declared, blink in required_actions, but no blink action provided",
+                ))
+            else:
+                findings.append(_warning(
+                    "missing_blink_action",
+                    "blink capability declared but no blink action provided",
+                ))
     return findings
 
 
