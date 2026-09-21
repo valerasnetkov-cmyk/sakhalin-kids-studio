@@ -26,6 +26,19 @@ Examples:
 
 The approved release-quality video.
 
+### Platform derivatives
+
+Limited, purposeful derivatives may be produced from the same approved episode revision, for example:
+
+- `youtube-master` / 16:9;
+- `vertical-short` / 9:16;
+- short teaser;
+- alternate caption-safe crop when required by a platform.
+
+A derivative is not a new source of editorial truth. It must retain lineage to the approved source revision, dialogue, character assets, rights metadata, and factual approvals.
+
+Do not treat mass generation of near-identical variants as a delivery goal.
+
 ### Editable package
 
 A package suitable for manual finishing without regenerating the episode.
@@ -108,6 +121,24 @@ Each profile should define:
 - subtitle behavior.
 
 Do not invent final platform settings until the real delivery workflow is tested.
+
+## Semantic derivative adapter
+
+Hypit is an approved candidate to evaluate for semantic composition and derivative generation after the Character Runtime proof.
+
+If `HYPIT-P01` is executed:
+
+- inputs must reference one approved episode/scene revision;
+- character media must reference locked local Character Runtime outputs/assets;
+- timing/caption changes must not silently alter approved dialogue meaning;
+- output profiles must remain explicit and named;
+- every derivative must record its source revision and asset lineage;
+- external provider calls remain subject to normal budget/provenance controls;
+- exact Hypit version/commit must be recorded.
+
+Hypit output does not supersede the editable package or manual finishing workflow.
+
+See `HYPIT_INTEGRATION.md`.
 
 ## FFmpeg technical QA
 
@@ -290,4 +321,5 @@ Media delivery architecture is ready when:
 - final technical QA is reproducible;
 - edit timing can be exported in an editable form;
 - a manual finishing pass does not destroy provenance;
-- replaced scene takes remain recoverable.
+- replaced scene takes remain recoverable;
+- platform derivatives, when produced, retain source-revision and asset lineage.
