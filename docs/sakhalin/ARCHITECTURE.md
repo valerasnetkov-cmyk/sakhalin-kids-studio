@@ -87,6 +87,12 @@ OpenMontage core не должен зависеть от Sakhalin-specific code.
 
 Выбор идёт через scene router и существующие selector tools.
 
+### Composition & Derivatives
+
+Отвечает за cross-scene assembly и platform derivatives поверх уже утверждённых scene outputs.
+
+Default path остаётся локальным и детерминированным. Hypit рассматривается как optional adapter после отдельного pilot gate, а не как новый production-state owner или character generator.
+
 ### QA
 
 Разделить:
@@ -223,7 +229,36 @@ transition
 
 Провайдер не должен быть жёстко прописан в сценарии.
 
-## 9. Hybrid episode
+## 9. Semantic composition and derivatives
+
+Целевая dependency direction для optional Hypit integration:
+
+```text
+OpenMontage episode state / approved revision
+        |
+Sakhalin scene router
+        |
+approved scene outputs + asset refs
+        |
+optional Hypit adapter
+        |
+HyperFrames / Remotion / FFmpeg
+        |
+review / master / vertical / teaser outputs
+```
+
+Инварианты:
+
+- OpenMontage/Sakhalin Kids остаётся владельцем episode state, approvals, costs и artifact lineage;
+- Hypit получает только schema-validated inputs и approved asset references;
+- core characters всегда приходят из local Character Runtime и не перегенерируются скрыто;
+- reference/viral videos могут использоваться только как источник общей format grammar при наличии необходимых прав;
+- массовые почти идентичные варианты не являются целевым production mode;
+- adoption возможен только после `HYPIT-P01`, pin версии/commit и license/security review.
+
+Подробно: [HYPIT_INTEGRATION.md](HYPIT_INTEGRATION.md).
+
+## 10. Hybrid episode
 
 Целевая структура 4–6 минут:
 
