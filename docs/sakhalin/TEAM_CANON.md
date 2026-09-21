@@ -341,3 +341,25 @@ Changing any of the following is a canon change and requires explicit approval:
 
 Runtime implementation details may evolve without changing canon, provided
 character identity and approved visual references remain intact.
+
+
+## Narrative character profiles
+
+Detailed narrative/behavior canon for each core character is stored in:
+
+```text
+docs/sakhalin/characters/
+  makar.md
+  leva.md
+  tikhon.md
+  anna.md
+  antoshka.md
+```
+
+These profiles are the project source of truth for personality, thinking pattern,
+team relationships, recurring phrases, strengths/weaknesses, and story function.
+
+Identity/type conflicts still resolve through this document plus
+`config/sakhalin/team_canon.json`; do not silently reinterpret a character.
+
+Sima remains excluded from the persistent cast.
