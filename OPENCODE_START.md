@@ -84,6 +84,8 @@ character spec
 
 Обычный диалог постоянных героев должен идти через local character runtime.
 
+Hypit не вводить в первый implementation cycle. Это только будущий optional semantic-composition/derivative adapter; он не заменяет Character Runtime и не становится владельцем production state.
+
 ## Первый implementation cycle
 
 Выполнять:
@@ -245,7 +247,8 @@ Mouth track не должен переписывать acting.
 - автоматическую публикацию;
 - собственный SaaS;
 - fine-tuning моделей;
-- отдельный renderer для каждого персонажа.
+- отдельный renderer для каждого персонажа;
+- Hypit production integration или массовую генерацию вариаций роликов.
 
 ## Ограничения по коду
 
@@ -295,6 +298,7 @@ Mouth track не должен переписывать acting.
 - `docs/sakhalin/IMPLEMENTATION_PLAN.md`
 - `docs/sakhalin/CHARACTER_FORMAT.md`
 - `docs/sakhalin/LIPSYNC.md`
+- `docs/sakhalin/HYPIT_INTEGRATION.md` — только если задача касается semantic composition/derivatives после proof
 - `pipeline_defs/sakhalin-kids.yaml`
 
 ## Формат отчёта OpenCode
