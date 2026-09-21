@@ -1,0 +1,46 @@
+version: "1.0"
+
+id: makar
+display_name: "Макар"
+
+species: fox
+rig_profile: fox_cartoon
+
+role: lead_researcher
+
+story:
+  primary_question: "Почему?"
+  catchphrase: "А давайте проверим!"
+
+visual:
+  palette_locked: true
+  proportions_locked: true
+  wardrobe_locked: true
+  base_regeneration_allowed: false
+
+required_views:
+  - front
+
+required_expressions:
+  - neutral
+  - curious
+
+required_actions:
+  - idle
+  - blink
+  - look
+  - point
+  - talk
+
+props:
+  required:
+    - backpack
+  optional:
+    - notebook
+
+voice:
+  profile: makar
+
+continuity:
+  identity_locked: true
+  redesign_requires_approval: true

@@ -1,0 +1,7 @@
+version: "1.0"
+id: talk
+rig_profile: fox_cartoon
+state:
+  parts:
+    head:
+      rotation_deg: -3

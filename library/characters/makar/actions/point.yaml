@@ -1,0 +1,16 @@
+version: "1.0"
+id: point
+rig_profile: fox_cartoon
+phases:
+  - name: anticipation
+    duration_ms: 180
+    pose: idle
+  - name: move
+    duration_ms: 320
+    pose: point
+  - name: hold
+    duration_ms: 500
+    pose: point
+  - name: settle
+    duration_ms: 260
+    pose: idle

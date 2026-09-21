@@ -1,0 +1,10 @@
+version: "1.0"
+id: point
+rig_profile: fox_cartoon
+state:
+  parts:
+    arm_right:
+      rotation_deg: -45
+  expression: curious
+  gaze:
+    direction: right

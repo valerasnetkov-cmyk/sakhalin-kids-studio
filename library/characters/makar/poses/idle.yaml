@@ -1,0 +1,7 @@
+version: "1.0"
+id: idle
+rig_profile: fox_cartoon
+state:
+  expression: neutral
+  gaze:
+    direction: center

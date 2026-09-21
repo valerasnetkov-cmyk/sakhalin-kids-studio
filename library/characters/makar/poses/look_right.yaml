@@ -1,0 +1,11 @@
+version: "1.0"
+id: look_right
+rig_profile: fox_cartoon
+state:
+  gaze:
+    direction: right
+  parts:
+    pupil_left:
+      variant: right
+    pupil_right:
+      variant: right

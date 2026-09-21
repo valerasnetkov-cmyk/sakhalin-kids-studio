@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 700" data-rig-profile="fox_cartoon">
+
+  <!-- body -->
+  <g data-part="body">
+    <g data-motion-root="">
+      <rect x="180" y="280" width="140" height="200" rx="30" fill="#E87A2E"/>
+      <ellipse cx="250" cy="380" rx="50" ry="60" fill="#F5DEB3"/>
+      <rect x="195" y="290" width="110" height="80" rx="10" fill="#5B8C5A" opacity="0.85"/>
+      <rect x="200" y="285" width="12" height="70" rx="4" fill="#8B6914"/>
+      <rect x="288" y="285" width="12" height="70" rx="4" fill="#8B6914"/>
+      <rect x="210" y="260" width="80" height="70" rx="12" fill="#A0782C"/>
+      <rect x="215" y="258" width="70" height="25" rx="8" fill="#8B6914"/>
+    </g>
+  </g>
+
+  <!-- tail -->
+  <g data-part="tail">
+    <g data-motion-root="">
+      <ellipse cx="340" cy="440" rx="18" ry="55" fill="#E87A2E" transform="rotate(20 340 440)"/>
+      <ellipse cx="345" cy="410" rx="10" ry="20" fill="#F5DEB3" transform="rotate(20 345 410)"/>
+    </g>
+  </g>
+
+  <!-- leg_left -->
+  <g data-part="leg_left">
+    <g data-motion-root="">
+      <rect x="195" y="470" width="30" height="60" rx="10" fill="#E87A2E"/>
+      <ellipse cx="210" cy="535" rx="18" ry="10" fill="#D46A1E"/>
+    </g>
+  </g>
+
+  <!-- leg_right -->
+  <g data-part="leg_right">
+    <g data-motion-root="">
+      <rect x="275" y="470" width="30" height="60" rx="10" fill="#E87A2E"/>
+      <ellipse cx="290" cy="535" rx="18" ry="10" fill="#D46A1E"/>
+    </g>
+  </g>
+
+  <!-- arm_left -->
+  <g data-part="arm_left">
+    <g data-motion-root="">
+      <rect x="150" y="290" width="28" height="70" rx="12" fill="#E87A2E"/>
+      <ellipse cx="164" cy="365" rx="14" ry="10" fill="#D46A1E"/>
+    </g>
+  </g>
+
+  <!-- arm_right -->
+  <g data-part="arm_right">
+    <g data-motion-root="">
+      <rect x="322" y="290" width="28" height="70" rx="12" fill="#E87A2E"/>
+      <ellipse cx="336" cy="365" rx="14" ry="10" fill="#D46A1E"/>
+    </g>
+  </g>
+
+  <!-- head -->
+  <g data-part="head">
+    <g data-motion-root="">
+      <ellipse cx="250" cy="200" rx="95" ry="85" fill="#E87A2E"/>
+      <ellipse cx="250" cy="220" rx="60" ry="50" fill="#F5DEB3"/>
+      <polygon points="175,145 160,80 205,130" fill="#E87A2E"/>
+      <polygon points="178,140 168,95 200,132" fill="#F5DEB3"/>
+      <polygon points="325,145 340,80 295,130" fill="#E87A2E"/>
+      <polygon points="322,140 332,95 300,132" fill="#F5DEB3"/>
+      <ellipse cx="250" cy="235" rx="8" ry="5" fill="#2D1B0E"/>
+    </g>
+  </g>
+
+  <!-- eye_left -->
+  <g data-part="eye_left" data-default-variant="open">
+    <g data-variant="open">
+      <ellipse cx="220" cy="195" rx="16" ry="18" fill="white"/>
+      <circle cx="220" cy="197" r="9" fill="#2D1B0E"/>
+      <circle cx="224" cy="193" r="3" fill="white"/>
+    </g>
+    <g data-variant="closed" display="none">
+      <path d="M204,197 Q220,205 236,197" stroke="#2D1B0E" stroke-width="2.5" fill="none"/>
+    </g>
+  </g>
+
+  <!-- eye_right -->
+  <g data-part="eye_right" data-default-variant="open">
+    <g data-variant="open">
+      <ellipse cx="280" cy="195" rx="16" ry="18" fill="white"/>
+      <circle cx="280" cy="197" r="9" fill="#2D1B0E"/>
+      <circle cx="284" cy="193" r="3" fill="white"/>
+    </g>
+    <g data-variant="closed" display="none">
+      <path d="M264,197 Q280,205 296,197" stroke="#2D1B0E" stroke-width="2.5" fill="none"/>
+    </g>
+  </g>
+
+  <!-- pupil_left -->
+  <g data-part="pupil_left" data-default-variant="center">
+    <g data-variant="center">
+      <circle cx="220" cy="197" r="9" fill="#2D1B0E"/>
+      <circle cx="224" cy="193" r="3" fill="white"/>
+    </g>
+    <g data-variant="left" display="none">
+      <circle cx="214" cy="197" r="9" fill="#2D1B0E"/>
+      <circle cx="218" cy="193" r="3" fill="white"/>
+    </g>
+    <g data-variant="right" display="none">
+      <circle cx="226" cy="197" r="9" fill="#2D1B0E"/>
+      <circle cx="230" cy="193" r="3" fill="white"/>
+    </g>
+    <g data-variant="up" display="none">
+      <circle cx="220" cy="191" r="9" fill="#2D1B0E"/>
+      <circle cx="224" cy="187" r="3" fill="white"/>
+    </g>
+    <g data-variant="down" display="none">
+      <circle cx="220" cy="203" r="9" fill="#2D1B0E"/>
+      <circle cx="224" cy="199" r="3" fill="white"/>
+    </g>
+  </g>
+
+  <!-- pupil_right -->
+  <g data-part="pupil_right" data-default-variant="center">
+    <g data-variant="center">
+      <circle cx="280" cy="197" r="9" fill="#2D1B0E"/>
+      <circle cx="284" cy="193" r="3" fill="white"/>
+    </g>
+    <g data-variant="left" display="none">
+      <circle cx="274" cy="197" r="9" fill="#2D1B0E"/>
+      <circle cx="278" cy="193" r="3" fill="white"/>
+    </g>
+    <g data-variant="right" display="none">
+      <circle cx="286" cy="197" r="9" fill="#2D1B0E"/>
+      <circle cx="290" cy="193" r="3" fill="white"/>
+    </g>
+    <g data-variant="up" display="none">
+      <circle cx="280" cy="191" r="9" fill="#2D1B0E"/>
+      <circle cx="284" cy="187" r="3" fill="white"/>
+    </g>
+    <g data-variant="down" display="none">
+      <circle cx="280" cy="203" r="9" fill="#2D1B0E"/>
+      <circle cx="284" cy="199" r="3" fill="white"/>
+    </g>
+  </g>
+
+  <!-- mouth -->
+  <g data-part="mouth">
+    <g data-viseme="REST">
+      <path d="M240,248 Q250,253 260,248" stroke="#2D1B0E" stroke-width="2" fill="none"/>
+    </g>
+    <g data-viseme="A" display="none">
+      <ellipse cx="250" cy="252" rx="10" ry="7" fill="#2D1B0E"/>
+      <ellipse cx="250" cy="250" rx="7" ry="4" fill="#C0392B"/>
+    </g>
+    <g data-viseme="E" display="none">
+      <ellipse cx="250" cy="250" rx="12" ry="5" fill="#2D1B0E"/>
+      <rect x="243" y="248" width="14" height="2" fill="white"/>
+    </g>
+    <g data-viseme="O" display="none">
+      <ellipse cx="250" cy="252" rx="8" ry="9" fill="#2D1B0E"/>
+      <ellipse cx="250" cy="250" rx="5" ry="5" fill="#C0392B"/>
+    </g>
+    <g data-viseme="U" display="none">
+      <ellipse cx="250" cy="252" rx="6" ry="8" fill="#2D1B0E"/>
+      <ellipse cx="250" cy="250" rx="4" ry="4" fill="#C0392B"/>
+    </g>
+    <g data-viseme="MBP" display="none">
+      <path d="M240,248 Q250,258 260,248" stroke="#2D1B0E" stroke-width="2" fill="#C0392B"/>
+      <line x1="240" y1="248" x2="260" y2="248" stroke="#2D1B0E" stroke-width="2"/>
+    </g>
+    <g data-viseme="FV" display="none">
+      <path d="M240,248 Q250,254 260,248" stroke="#2D1B0E" stroke-width="2" fill="none"/>
+      <line x1="250" y1="248" x2="250" y2="242" stroke="white" stroke-width="2"/>
+    </g>
+    <g data-viseme="SH" display="none">
+      <rect x="242" y="247" width="16" height="7" rx="3" fill="#2D1B0E"/>
+      <rect x="244" y="248" width="12" height="2" fill="white"/>
+    </g>
+    <g data-viseme="L" display="none">
+      <path d="M240,248 Q250,253 260,248" stroke="#2D1B0E" stroke-width="2" fill="none"/>
+      <line x1="250" y1="248" x2="250" y2="256" stroke="#C0392B" stroke-width="2"/>
+    </g>
+    <g data-viseme="S" display="none">
+      <path d="M242,250 Q250,246 258,250" stroke="#2D1B0E" stroke-width="2" fill="none"/>
+      <line x1="242" y1="250" x2="258" y2="250" stroke="#2D1B0E" stroke-width="1.5"/>
+    </g>
+  </g>
+
+  <!-- expressions -->
+  <g data-expression="neutral">
+    <rect x="0" y="0" width="0" height="0" fill="none"/>
+  </g>
+  <g data-expression="curious">
+    <path d="M195,170 Q210,158 230,168" stroke="#2D1B0E" stroke-width="2" fill="none"/>
+    <path d="M270,168 Q290,158 305,170" stroke="#2D1B0E" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- gaze directions -->
+  <g data-gaze="center">
+    <rect x="0" y="0" width="0" height="0" fill="none"/>
+  </g>
+  <g data-gaze="left">
+    <rect x="0" y="0" width="0" height="0" fill="none"/>
+  </g>
+  <g data-gaze="right">
+    <rect x="0" y="0" width="0" height="0" fill="none"/>
+  </g>
+  <g data-gaze="up">
+    <rect x="0" y="0" width="0" height="0" fill="none"/>
+  </g>
+  <g data-gaze="down">
+    <rect x="0" y="0" width="0" height="0" fill="none"/>
+  </g>
+
+</svg>

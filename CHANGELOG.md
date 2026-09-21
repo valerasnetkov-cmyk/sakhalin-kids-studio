@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-09-22
+
+### Added — SKIDS-011
+
+- `library/characters/makar/` — first reusable structured Makar character bundle (proof fixture).
+- `library/characters/makar/character.yaml` — Makar CharacterSpec (fox, fox_cartoon, lead_researcher).
+- `library/characters/makar/art/front.svg` — structured rigged SVG with 12 fox_cartoon parts, 10 visemes, 5 gaze directions, 2 expressions, blink variants.
+- `library/characters/makar/poses/` — 7 proof poses: idle, blink_closed, look_left, look_right, point, talk, curious.
+- `library/characters/makar/actions/` — 5 proof actions: idle, blink, look, point, talk.
+- `tests/sakhalin/test_makar_fixture.py` — 30 tests covering spec schema, identity, art structure, visemes, gaze, expressions, action existence, pose/action validation, mouth ownership, CharacterQA pass, SvgSceneRenderer proof (idle, blink, gaze, point, viseme, deterministic), security, and size limits.
+- `docs/sakhalin/MAKAR_FIXTURE.md` — fixture documentation with artistic QA boundary.
+
+### Changed — SKIDS-011
+
+- plan.md SKIDS-011 marked complete.
+
 ## 2026-09-21
 
 ### Added — SKIDS-010

@@ -1,0 +1,13 @@
+version: "1.0"
+id: talk
+rig_profile: fox_cartoon
+phases:
+  - name: start
+    duration_ms: 200
+    pose: idle
+  - name: speak
+    duration_ms: 600
+    pose: talk
+  - name: end
+    duration_ms: 200
+    pose: idle

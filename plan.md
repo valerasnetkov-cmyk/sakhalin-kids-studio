@@ -12,6 +12,7 @@ SKIDS-007 deterministic acting/mouth timeline merge complete.
 SKIDS-008 SVG scene renderer complete.
 SKIDS-009 HyperFrames runtime handoff complete.
 SKIDS-010 character QA complete.
+SKIDS-011 Makar fixture assets complete.
 
 Primary development workflow: OpenCode.
 
@@ -40,7 +41,7 @@ Tasks:
 - [x] SKIDS-008 — SVG scene renderer.
 - [x] SKIDS-009 — HyperFrames or Remotion handoff.
 - [x] SKIDS-010 — character QA.
-- [ ] SKIDS-011 — Makar fixture assets.
+- [x] SKIDS-011 — Makar fixture assets.
 - [ ] SKIDS-012 — Leva fixture assets.
 - [ ] SKIDS-013 — 10–15 second render smoke test.
 
