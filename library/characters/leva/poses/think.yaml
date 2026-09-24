@@ -1,0 +1,10 @@
+version: "1.0"
+id: think
+rig_profile: sea_lion_cartoon
+state:
+  parts:
+    head:
+      rotation_deg: -4
+  expression: thinking
+  gaze:
+    direction: up

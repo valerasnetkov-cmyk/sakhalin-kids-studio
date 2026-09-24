@@ -1,0 +1,11 @@
+version: "1.0"
+id: look_left
+rig_profile: sea_lion_cartoon
+state:
+  gaze:
+    direction: left
+  parts:
+    pupil_left:
+      variant: left
+    pupil_right:
+      variant: left

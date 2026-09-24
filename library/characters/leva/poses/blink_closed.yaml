@@ -1,0 +1,9 @@
+version: "1.0"
+id: blink_closed
+rig_profile: sea_lion_cartoon
+state:
+  parts:
+    eye_left:
+      variant: closed
+    eye_right:
+      variant: closed

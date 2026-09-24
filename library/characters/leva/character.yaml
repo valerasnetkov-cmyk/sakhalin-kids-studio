@@ -1,0 +1,46 @@
+version: "1.0"
+
+id: leva
+display_name: "Лёва"
+
+species: sea_lion
+rig_profile: sea_lion_cartoon
+
+role: calm_reasoning_partner
+
+story:
+  primary_question: "Как это работает?"
+  catchphrase: "Давайте сначала разберёмся."
+
+visual:
+  palette_locked: true
+  proportions_locked: true
+  wardrobe_locked: true
+  base_regeneration_allowed: false
+
+required_views:
+  - front
+
+required_expressions:
+  - neutral
+  - thinking
+
+required_actions:
+  - idle
+  - blink
+  - look
+  - think
+  - talk
+
+props:
+  required:
+    - scarf
+  optional:
+    - compass
+
+voice:
+  profile: leva
+
+continuity:
+  identity_locked: true
+  redesign_requires_approval: true

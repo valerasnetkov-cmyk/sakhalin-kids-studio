@@ -1,0 +1,7 @@
+version: "1.0"
+id: talk
+rig_profile: sea_lion_cartoon
+state:
+  parts:
+    head:
+      rotation_deg: -2

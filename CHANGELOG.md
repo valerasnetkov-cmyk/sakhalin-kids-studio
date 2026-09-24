@@ -2,6 +2,22 @@
 
 ## 2026-09-22
 
+### Added — SKIDS-012
+
+- `library/characters/leva/` — first reusable structured Leva character bundle (proof fixture).
+- `library/characters/leva/character.yaml` — Leva CharacterSpec (sea_lion, sea_lion_cartoon, calm_reasoning_partner).
+- `library/characters/leva/art/front.svg` — structured rigged SVG with 9 sea_lion_cartoon parts, 10 visemes, 5 gaze directions, 2 expressions, blink variants.
+- `library/characters/leva/poses/` — 6 proof poses: idle, blink_closed, look_left, look_right, think, talk.
+- `library/characters/leva/actions/` — 5 proof actions: idle, blink, look, think, talk.
+- `tests/sakhalin/test_leva_fixture.py` — 30 tests covering spec schema, identity, art structure, visemes, gaze, expressions, action existence, pose/action validation, mouth ownership, CharacterQA pass, SvgSceneRenderer proof (idle, blink, gaze, think, viseme, deterministic), security, and size limits.
+- `docs/sakhalin/LEVA_FIXTURE.md` — fixture documentation with artistic QA boundary.
+
+### Changed — SKIDS-012
+
+- plan.md SKIDS-012 marked complete.
+
+## 2026-09-22
+
 ### Added — SKIDS-011
 
 - `library/characters/makar/` — first reusable structured Makar character bundle (proof fixture).

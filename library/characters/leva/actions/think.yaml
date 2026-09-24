@@ -1,0 +1,13 @@
+version: "1.0"
+id: think
+rig_profile: sea_lion_cartoon
+phases:
+  - name: settle
+    duration_ms: 200
+    pose: idle
+  - name: contemplate
+    duration_ms: 800
+    pose: think
+  - name: return
+    duration_ms: 200
+    pose: idle
