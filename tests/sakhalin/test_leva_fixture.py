@@ -75,6 +75,27 @@ def _svg_info():
             "gaze": gaze, "expressions": expr}
 
 
+def _local_tag(elem):
+    return elem.tag.split("}")[-1]
+
+
+def _parse_frame(svg_text):
+    return ET.fromstring(svg_text)
+
+
+def _active_variant(root, part_id):
+    parts = [e for e in root.iter() if e.get("data-part") == part_id]
+    if len(parts) != 1:
+        raise AssertionError(f"expected 1 part {part_id!r}, found {len(parts)}")
+    return [v.get("data-variant") for v in parts[0].iter()
+            if v.get("data-variant") is not None and v.get("display") != "none"]
+
+
+def _active_layer(root, attr):
+    return [e.get(attr) for e in root.iter()
+            if e.get(attr) is not None and e.get("display") != "none"]
+
+
 def _tl(rig="sea_lion_cartoon", dur=1000, segs=None):
     if segs is None:
         segs = [{"start_ms": 0, "end_ms": dur, "pose": "idle", "viseme": "REST"}]
@@ -133,6 +154,26 @@ class TArt(unittest.TestCase):
     def test_12_thinking_expression(self):
         self.assertIn("thinking", _svg_info()["expressions"])
 
+    def test_31_eye_open_variant_has_no_drawn_pupil(self):
+        root = ET.parse(_ART).getroot()
+        for eye in ("eye_left", "eye_right"):
+            part = next(e for e in root.iter() if e.get("data-part") == eye)
+            open_v = next(e for e in part.iter() if e.get("data-variant") == "open")
+            tags = [_local_tag(e) for e in open_v.iter()]
+            self.assertIn("ellipse", tags,
+                          f"{eye}: open variant must draw the eye sclera")
+            self.assertNotIn("circle", tags,
+                             f"{eye}: open variant must not draw a pupil")
+
+    def test_32_pupils_have_hidden_variant(self):
+        root = ET.parse(_ART).getroot()
+        for side in ("pupil_left", "pupil_right"):
+            part = next(e for e in root.iter() if e.get("data-part") == side)
+            variants = [e.get("data-variant") for e in part.iter()
+                        if e.get("data-variant")]
+            self.assertIn("hidden", variants,
+                          f"{side}: missing hidden variant")
+
 
 class TActionExistence(unittest.TestCase):
     def test_13_blink(self):
@@ -174,6 +215,19 @@ class TSchemaValidation(unittest.TestCase):
             self.assertNotIn("mouth", pose.get("state", {}).get("parts", {}),
                              f"pose {pid!r} controls mouth")
 
+    def test_33_gaze_pupil_variants_synced(self):
+        for pid, pose in _poses().items():
+            gaze = pose.get("state", {}).get("gaze", {})
+            direction = gaze.get("direction") if isinstance(gaze, dict) else None
+            if direction is None:
+                continue
+            parts = pose.get("state", {}).get("parts", {})
+            for side in ("pupil_left", "pupil_right"):
+                variant = parts.get(side, {}).get("variant")
+                self.assertEqual(
+                    variant, direction,
+                    f"pose {pid!r}: gaze {direction!r} but {side}={variant!r}")
+
 
 class TCharacterQA(unittest.TestCase):
     def test_22_reviewer_pass(self):
@@ -187,48 +241,86 @@ class TCharacterQA(unittest.TestCase):
 
 
 class TRenderer(unittest.TestCase):
-    def test_23_idle_render(self):
-        svg = render_frame(_BUNDLE, 500, 700, 0, _chars(_tl()))
-        self.assertIn("leva", svg)
+    def _assert_variant(self, root, part_id, expected):
+        act = _active_variant(root, part_id)
+        self.assertEqual(act, [expected], f"part {part_id!r}")
 
-    def test_24_blink_observable(self):
+    def _assert_layer(self, root, attr, expected):
+        act = _active_layer(root, attr)
+        self.assertEqual(act, [expected], f"attr {attr!r}")
+
+    def test_23_idle_render(self):
+        root = _parse_frame(render_frame(_BUNDLE, 500, 700, 0, _chars(_tl())))
+        inst = [e for e in root.iter()
+                if e.get("data-character-instance") == "leva"]
+        self.assertEqual(len(inst), 1)
+        self._assert_variant(root, "eye_left", "open")
+        self._assert_variant(root, "eye_right", "open")
+        self._assert_variant(root, "pupil_left", "center")
+        self._assert_variant(root, "pupil_right", "center")
+        self._assert_layer(root, "data-expression", "neutral")
+        self._assert_layer(root, "data-gaze", "center")
+        self._assert_layer(root, "data-viseme", "REST")
+
+    def test_24_blink_closed_state(self):
         p = _poses()
         segs = [
             {"start_ms": 0, "end_ms": 100, "pose": "idle", "viseme": "REST"},
             {"start_ms": 100, "end_ms": 180, "pose": "blink_closed", "viseme": "REST"},
             {"start_ms": 180, "end_ms": 300, "pose": "idle", "viseme": "REST"},
         ]
-        a = render_frame(_BUNDLE, 500, 700, 0, _chars(_tl(dur=300, segs=segs), p))
-        b = render_frame(_BUNDLE, 500, 700, 140, _chars(_tl(dur=300, segs=segs), p))
-        self.assertNotEqual(a, b)
+        tl = _tl(dur=300, segs=segs)
+        open_r = _parse_frame(render_frame(_BUNDLE, 500, 700, 0, _chars(tl, p)))
+        closed_r = _parse_frame(render_frame(_BUNDLE, 500, 700, 140, _chars(tl, p)))
+        self._assert_variant(open_r, "eye_left", "open")
+        self._assert_variant(open_r, "pupil_left", "center")
+        self._assert_variant(closed_r, "eye_left", "closed")
+        self._assert_variant(closed_r, "eye_right", "closed")
+        self._assert_variant(closed_r, "pupil_left", "hidden")
+        self._assert_variant(closed_r, "pupil_right", "hidden")
+        self._assert_layer(closed_r, "data-viseme", "REST")
 
-    def test_25_gaze_observable(self):
+    def test_25_gaze_pupil_sync(self):
         segs = [
             {"start_ms": 0, "end_ms": 500, "pose": "idle", "viseme": "REST"},
             {"start_ms": 500, "end_ms": 1000, "pose": "look_left", "viseme": "REST"},
         ]
-        a = render_frame(_BUNDLE, 500, 700, 0, _chars(_tl(segs=segs)))
-        b = render_frame(_BUNDLE, 500, 700, 750, _chars(_tl(segs=segs)))
-        self.assertNotEqual(a, b)
+        tl = _tl(segs=segs)
+        idle_r = _parse_frame(render_frame(_BUNDLE, 500, 700, 0, _chars(tl)))
+        left_r = _parse_frame(render_frame(_BUNDLE, 500, 700, 750, _chars(tl)))
+        self._assert_layer(idle_r, "data-gaze", "center")
+        self._assert_variant(idle_r, "pupil_left", "center")
+        self._assert_variant(idle_r, "pupil_right", "center")
+        self._assert_layer(left_r, "data-gaze", "left")
+        self._assert_variant(left_r, "pupil_left", "left")
+        self._assert_variant(left_r, "pupil_right", "left")
 
-    def test_26_think_observable(self):
+    def test_26_think_state(self):
         segs = [
             {"start_ms": 0, "end_ms": 200, "pose": "idle", "viseme": "REST"},
             {"start_ms": 200, "end_ms": 1000, "pose": "think", "viseme": "REST"},
             {"start_ms": 1000, "end_ms": 1200, "pose": "idle", "viseme": "REST"},
         ]
-        a = render_frame(_BUNDLE, 500, 700, 0, _chars(_tl(dur=1200, segs=segs)))
-        b = render_frame(_BUNDLE, 500, 700, 600, _chars(_tl(dur=1200, segs=segs)))
-        self.assertNotEqual(a, b)
+        tl = _tl(dur=1200, segs=segs)
+        think_r = _parse_frame(render_frame(_BUNDLE, 500, 700, 600, _chars(tl)))
+        self._assert_layer(think_r, "data-expression", "thinking")
+        self._assert_layer(think_r, "data-gaze", "up")
+        self._assert_variant(think_r, "pupil_left", "up")
+        self._assert_variant(think_r, "pupil_right", "up")
+        head = [e for e in think_r.iter() if e.get("data-part") == "head"]
+        roots = [e for e in head[0].iter() if e.get("data-motion-root") is not None]
+        self.assertEqual(roots[0].get("transform"), "rotate(-4)")
 
-    def test_27_viseme_observable(self):
+    def test_27_viseme_state(self):
         segs = [
             {"start_ms": 0, "end_ms": 500, "pose": "idle", "viseme": "REST"},
             {"start_ms": 500, "end_ms": 1000, "pose": "talk", "viseme": "A"},
         ]
-        a = render_frame(_BUNDLE, 500, 700, 0, _chars(_tl(segs=segs)))
-        b = render_frame(_BUNDLE, 500, 700, 750, _chars(_tl(segs=segs)))
-        self.assertNotEqual(a, b)
+        tl = _tl(segs=segs)
+        rest_r = _parse_frame(render_frame(_BUNDLE, 500, 700, 0, _chars(tl)))
+        a_r = _parse_frame(render_frame(_BUNDLE, 500, 700, 750, _chars(tl)))
+        self._assert_layer(rest_r, "data-viseme", "REST")
+        self._assert_layer(a_r, "data-viseme", "A")
 
     def test_28_deterministic(self):
         c = _chars(_tl())

@@ -7,3 +7,7 @@ state:
       variant: closed
     eye_right:
       variant: closed
+    pupil_left:
+      variant: hidden
+    pupil_right:
+      variant: hidden

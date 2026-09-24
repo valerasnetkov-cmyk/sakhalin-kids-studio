@@ -42,6 +42,13 @@ body, head, eye_left, eye_right, pupil_left, pupil_right,
 mouth, arm_left, arm_right, leg_left, leg_right, tail
 ```
 
+## Eye / pupil separation
+
+- `eye_left` / `eye_right` `open` variants draw only the sclera (white eye shape).
+- Pupil belongs exclusively to `pupil_left` / `pupil_right` parts.
+- Pupil parts define 6 variants: `left`, `center`, `right`, `up`, `down`, `hidden`.
+- `hidden` renders an empty layer — used when the eye is closed.
+
 ## Expressions
 
 - `neutral` — default state
@@ -51,13 +58,17 @@ mouth, arm_left, arm_right, leg_left, leg_right, tail
 
 | Pose | Parts | Expression | Gaze |
 |---|---|---|---|
-| idle | — | neutral | center |
-| blink_closed | eye_left=closed, eye_right=closed | — | — |
+| idle | pupil_left=center, pupil_right=center | neutral | center |
+| blink_closed | eye_left=closed, eye_right=closed, pupil_left=hidden, pupil_right=hidden | — | — |
 | look_left | pupil_left=left, pupil_right=left | — | left |
 | look_right | pupil_left=right, pupil_right=right | — | right |
-| point | arm_right=rotation_deg(-45) | curious | right |
+| point | arm_right=rotation_deg(-45), pupil_left=right, pupil_right=right | curious | right |
 | talk | head=rotation_deg(-3) | — | — |
 | curious | head=rotation_deg(-5) | curious | — |
+
+Gaze and pupils stay in sync: every pose that declares `gaze.direction` also sets
+`pupil_left` / `pupil_right` variants to the same direction. When the eye is closed,
+pupils switch to `hidden`.
 
 No pose controls mouth. Mouth animation is VisemeTimeline only.
 
@@ -83,17 +94,21 @@ No duplicates. Mouth is exclusively controlled by VisemeTimeline.
 
 ## Gaze
 
-All 5 directions supported via pupil variants:
+All 5 directions supported as pupil variants and gaze layers:
 
 ```text
 left, center, right, up, down
 ```
 
+Additional pupil variant `hidden` covers closed-eye states.
+
+Every pose with a declared gaze synchronizes pupil variants to that direction.
+
 ## Blink
 
 Structurally real blink support:
 - `eye_left` and `eye_right` parts have `open` and `closed` variants
-- `blink_closed` pose activates `closed` variant
+- `blink_closed` pose activates `closed` variants and `hidden` pupils
 - `blink` action cycles open → closed → open
 - Blink in `required_actions` passes SKIDS-010 hardened blink rule
 
@@ -122,12 +137,13 @@ Structural PASS is NOT final artistic approval.
 
 ## Renderer compatibility
 
-The Makar SVG is fully compatible with SvgSceneRenderer (SKIDS-008):
-- idle render: deterministic
-- blink state: observable via eye variant change
-- gaze state: observable via pupil variant change
-- point gesture: observable via arm rotation
-- viseme state: observable via mouth viseme switching
+The Makar SVG is fully compatible with SvgSceneRenderer (SKIDS-008), verified by
+state-level assertions on the rendered frame (not just inequality):
+- idle render: deterministic; eyes `open`, pupils `center`, expression `neutral`, gaze `center`, viseme `REST`
+- blink state: eyes `closed`, pupils `hidden`
+- gaze state: pupil variants and gaze layer match the pose direction
+- point gesture: arm_right `rotate(-45)`, expression `curious`, gaze `right`, pupils `right`
+- viseme state: selected `data-viseme` matches the timeline viseme
 
 ## Artistic QA boundary
 

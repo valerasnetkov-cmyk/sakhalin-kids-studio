@@ -5,3 +5,8 @@ state:
   expression: neutral
   gaze:
     direction: center
+  parts:
+    pupil_left:
+      variant: center
+    pupil_right:
+      variant: center

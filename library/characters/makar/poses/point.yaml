@@ -5,6 +5,10 @@ state:
   parts:
     arm_right:
       rotation_deg: -45
+    pupil_left:
+      variant: right
+    pupil_right:
+      variant: right
   expression: curious
   gaze:
     direction: right

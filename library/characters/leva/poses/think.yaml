@@ -5,6 +5,10 @@ state:
   parts:
     head:
       rotation_deg: -4
+    pupil_left:
+      variant: up
+    pupil_right:
+      variant: up
   expression: thinking
   gaze:
     direction: up

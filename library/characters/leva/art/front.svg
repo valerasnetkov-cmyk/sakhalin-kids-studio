@@ -51,8 +51,6 @@
   <g data-part="eye_left" data-default-variant="open">
     <g data-variant="open">
       <ellipse cx="220" cy="190" rx="14" ry="16" fill="white"/>
-      <circle cx="220" cy="192" r="8" fill="#2D2D2D"/>
-      <circle cx="223" cy="189" r="2.5" fill="white"/>
     </g>
     <g data-variant="closed" display="none">
       <path d="M206,192 Q220,200 234,192" stroke="#2D2D2D" stroke-width="2.5" fill="none"/>
@@ -63,8 +61,6 @@
   <g data-part="eye_right" data-default-variant="open">
     <g data-variant="open">
       <ellipse cx="280" cy="190" rx="14" ry="16" fill="white"/>
-      <circle cx="280" cy="192" r="8" fill="#2D2D2D"/>
-      <circle cx="283" cy="189" r="2.5" fill="white"/>
     </g>
     <g data-variant="closed" display="none">
       <path d="M266,192 Q280,200 294,192" stroke="#2D2D2D" stroke-width="2.5" fill="none"/>
@@ -93,6 +89,9 @@
       <circle cx="220" cy="198" r="8" fill="#2D2D2D"/>
       <circle cx="223" cy="195" r="2.5" fill="white"/>
     </g>
+    <g data-variant="hidden" display="none">
+      <rect x="0" y="0" width="0" height="0" fill="none"/>
+    </g>
   </g>
 
   <!-- pupil_right -->
@@ -116,6 +115,9 @@
     <g data-variant="down" display="none">
       <circle cx="280" cy="198" r="8" fill="#2D2D2D"/>
       <circle cx="283" cy="195" r="2.5" fill="white"/>
+    </g>
+    <g data-variant="hidden" display="none">
+      <rect x="0" y="0" width="0" height="0" fill="none"/>
     </g>
   </g>
 

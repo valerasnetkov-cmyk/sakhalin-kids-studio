@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-09-25
+
+### Fixed — Fixture refinements (SKIDS-011, SKIDS-012)
+
+- `library/characters/makar/art/front.svg`, `library/characters/leva/art/front.svg` — `open` eye variants now draw only the sclera; drawn pupils removed so pupils belong exclusively to `pupil_left`/`pupil_right`.
+- Pupil parts (makar, leva) — added `hidden` variant (empty layer) for closed-eye states.
+- `blink_closed` poses (makar, leva) — eyes `closed`, `pupil_left`/`pupil_right` `hidden`.
+- Gaze-pupil synchronization — every pose declaring `gaze.direction` now sets pupil variants to the same direction (makar idle=center, point=right; leva idle=center, think=up).
+- `tests/sakhalin/test_makar_fixture.py`, `tests/sakhalin/test_leva_fixture.py` — strengthened from frame inequality to explicit `data-variant`/`display` state assertions; added tests for eye/pupil separation, hidden pupil variant, and gaze-pupil synchronization (30 → 33 tests each).
+- `docs/sakhalin/MAKAR_FIXTURE.md`, `docs/sakhalin/LEVA_FIXTURE.md` — updated poses, gaze, blink, and renderer compatibility sections.
+
 ## 2026-09-22
 
 ### Added — SKIDS-012
