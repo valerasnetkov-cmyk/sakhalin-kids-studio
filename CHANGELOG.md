@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-09-26
+
+### Added — Higgsfield integration foundation
+
+- `docs/sakhalin/HIGGSFIELD_INTEGRATION.md` — provider boundary, scene routing, character-continuity rules, security invariants, budget flow, and staged rollout.
+- `tools/media/sakhalin/provider.py` — provider-neutral generation request/result/status contract.
+- `tools/media/sakhalin/higgsfield_config.py` — fail-closed environment configuration.
+- `tools/media/sakhalin/higgsfield_provider.py` — guarded Higgsfield adapter with lazy optional SDK import.
+- `tests/sakhalin/test_higgsfield_foundation.py` — negative tests for disabled and invalid configuration states.
+- `.env.example` — safe placeholders only; external generation remains disabled by default.
+
+### Changed — provider safety
+
+- Higgsfield is approved as a future external generative-media provider but does not replace the local Character Runtime.
+- Paid generation remains disabled during Milestone 01.
+- Core-character generation requires approved reference assets after the production rollout gate.
+- Real provider credentials remain outside Git and provider calls must pass deterministic budget controls before production use.
+
 ## 2026-09-21
 
 ### Added — Hypit integration architecture

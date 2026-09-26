@@ -45,6 +45,7 @@ Key documents:
 - `docs/sakhalin/JOB_EXECUTION.md` — resumable/idempotent production jobs and cost handling.
 - `docs/sakhalin/MEDIA_DELIVERY.md` — render profiles, editable delivery, audio/subtitle and technical QA.
 - `docs/sakhalin/HYPIT_INTEGRATION.md` — optional semantic-composition and derivative-production pilot architecture.
+- `docs/sakhalin/HIGGSFIELD_INTEGRATION.md` — approved external generative-media provider boundary and rollout gates.
 - `docs/sakhalin/EDITORIAL_AND_PUBLISHING.md` — editorial contract, claims ledger, publishing and analytics.
 
 ## OpenMontage upstream
@@ -81,6 +82,7 @@ Acceptance focuses on stable identity, two rig profiles, gaze, blink, gesture, R
 - Paid provider calls must pass explicit budget checks.
 - No silent fallback from local core-character animation to regenerated text-to-video characters.
 - Keep authored source files at or below 400 physical lines.
+- Higgsfield generation is disabled by default and requires explicit server-side credentials plus budget approval before paid calls.
 
 ## OpenCode workflow
 
@@ -108,3 +110,15 @@ After the first Character Runtime proof is accepted:
 - Hypit is approved only as an optional future semantic-composition/derivative adapter. It is not a production-state owner or a replacement for the local Character Runtime.
 - `HYPIT-P01` may be evaluated only after the Character Runtime proof is visually accepted; production adoption additionally requires version pinning plus license/security review.
 - These layers must not be implemented during `SKIDS-001 -> SKIDS-013`.
+
+## Higgsfield foundation
+
+Higgsfield is approved as a future generative-media provider behind the project-owned `MediaProvider` boundary. The foundation is intentionally inactive during the current Character Runtime proof.
+
+Safe defaults:
+
+```text
+HIGGSFIELD_ENABLED=false
+```
+
+See `docs/sakhalin/HIGGSFIELD_INTEGRATION.md` for routing, character-continuity, security, and budget rules.
