@@ -10,6 +10,7 @@ from tools.media.sakhalin.higgsfield_config import (
 )
 from tools.media.sakhalin.higgsfield_provider import (
     HiggsfieldDisabledError,
+    HiggsfieldPaidCallsNotReadyError,
     HiggsfieldProvider,
 )
 from tools.media.sakhalin.provider import GenerationKind, GenerationRequest
@@ -52,6 +53,27 @@ class HiggsfieldProviderTests(unittest.TestCase):
         )
 
         with self.assertRaises(HiggsfieldDisabledError):
+            provider.submit(request)
+
+
+    def test_submit_stays_locked_before_budget_gate(self) -> None:
+        provider = HiggsfieldProvider(
+            HiggsfieldConfig.from_env(
+                {
+                    "HIGGSFIELD_ENABLED": "true",
+                    "HF_KEY": "test-id:test-secret",
+                }
+            )
+        )
+        request = GenerationRequest(
+            request_key="test-shot-locked",
+            kind=GenerationKind.IMAGE,
+            prompt="Sakhalin lighthouse",
+            model="example/model",
+            max_cost_usd=1.0,
+        )
+
+        with self.assertRaises(HiggsfieldPaidCallsNotReadyError):
             provider.submit(request)
 
 
