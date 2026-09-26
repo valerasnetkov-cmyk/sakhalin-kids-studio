@@ -24,6 +24,13 @@ class HiggsfieldDependencyError(RuntimeError):
     """Raised when the optional Higgsfield SDK is unavailable."""
 
 
+class HiggsfieldPaidCallsNotReadyError(RuntimeError):
+    """Raised until deterministic budget reservation is implemented."""
+
+
+_PAID_CALLS_READY = False
+
+
 class HiggsfieldProvider:
     """Guarded adapter over the official Higgsfield Python client."""
 
@@ -34,6 +41,7 @@ class HiggsfieldProvider:
 
     def submit(self, request: GenerationRequest) -> GenerationResult:
         self._require_enabled()
+        self._require_paid_calls_ready()
         client = self._load_client()
 
         controller = client.submit(
@@ -87,6 +95,12 @@ class HiggsfieldProvider:
         if not self._config.enabled:
             raise HiggsfieldDisabledError(
                 "Higgsfield generation is disabled by configuration"
+            )
+
+    def _require_paid_calls_ready(self) -> None:
+        if not _PAID_CALLS_READY:
+            raise HiggsfieldPaidCallsNotReadyError(
+                "Paid Higgsfield submission is locked until the budget gate is implemented"
             )
 
     def _load_client(self) -> Any:
