@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-09-26
+
+### Added — SKIDS-005
+
+- `schemas/sakhalin/pose.schema.json` — renderer-independent declarative pose-state contract with bounded transforms and closed gaze directions.
+- `schemas/sakhalin/action.schema.json` — bounded action timeline made of named pose phases.
+- `tests/sakhalin/test_pose_action_schema.py` — positive and negative contract tests, including rejection of embedded code, renderer fields, asset paths, invalid transforms, and unbounded phase counts.
+
+### Changed — SKIDS-005
+
+- Pose and Action identifiers use the same stable lowercase ID pattern as CharacterSpec and RigProfile.
+- Active milestone advances to SKIDS-006 after verification.
+
+# Changelog
+
 ## 2026-09-21
 
 ### Added — Hypit integration architecture
