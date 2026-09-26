@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sakhalin/viseme_timeline",
+  "title": "Sakhalin Kids VisemeTimeline",
+  "description": "Semantic mouth-shape timeline for Russian cartoon lip-sync.",
+  "type": "object",
+  "required": ["version", "character_id", "audio_asset_id", "start_seconds", "events"],
+  "properties": {
+    "version": { "type": "string", "const": "1.0" },
+    "character_id": { "$ref": "#/$defs/identifier" },
+    "audio_asset_id": { "$ref": "#/$defs/identifier" },
+    "start_seconds": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 3600
+    },
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5000,
+      "items": { "$ref": "#/$defs/event" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]*$"
+    },
+    "viseme": {
+      "type": "string",
+      "enum": ["REST", "A", "E", "O", "U", "MBP", "FV", "SH", "L", "S"]
+    },
+    "event": {
+      "type": "object",
+      "required": ["t", "viseme"],
+      "properties": {
+        "t": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 3600
+        },
+        "viseme": { "$ref": "#/$defs/viseme" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

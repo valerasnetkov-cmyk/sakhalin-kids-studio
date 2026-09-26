@@ -2,6 +2,21 @@
 
 ## 2026-09-26
 
+### Added — SKIDS-006
+
+- `schemas/sakhalin/viseme_timeline.schema.json` — closed semantic viseme timeline contract using the documented MVP set: REST, A, E, O, U, MBP, FV, SH, L, S.
+- `tests/sakhalin/test_viseme_timeline_schema.py` — contract tests for allowed visemes, stable identifiers, timestamp bounds, closed fields, and event-count limits.
+
+### Changed — SKIDS-006
+
+- Viseme timeline IDs reuse the CharacterSpec identifier policy.
+- Provider-specific fields remain outside the viseme contract.
+- Event ordering and audio-duration reconciliation remain runtime/QA responsibilities and are not silently approximated in JSON Schema.
+
+# Changelog
+
+## 2026-09-26
+
 ### Added — SKIDS-005
 
 - `schemas/sakhalin/pose.schema.json` — renderer-independent declarative pose-state contract with bounded transforms and closed gaze directions.
