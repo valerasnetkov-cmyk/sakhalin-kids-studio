@@ -98,6 +98,23 @@ Hypit is approved only as a candidate optional adapter; it is not part of the ac
 
 See: `docs/sakhalin/HYPIT_INTEGRATION.md`.
 
+### Higgsfield generative media
+
+Higgsfield is approved behind a provider-neutral `MediaProvider` boundary. Foundation work may exist before SKIDS-013, but paid generation remains disabled until the Character Runtime proof is accepted and an operator explicitly configures credentials and budget.
+
+- [x] HIGGS-P00 — document provider boundary, continuity rules, security invariants, and rollout gate.
+- [x] HIGGS-P00 — add provider-neutral request/result contract.
+- [x] HIGGS-P00 — add fail-closed environment configuration and guarded adapter stub.
+- [x] HIGGS-P00 — add negative tests for disabled/misconfigured provider state.
+- [ ] HIGGS-P01 — after SKIDS-013 approval, add cost estimate/reservation/reconciliation.
+- [ ] HIGGS-P02 — add approved reference-asset upload and provenance binding.
+- [ ] HIGGS-P03 — add persisted submit/status/result/cancel lifecycle.
+- [ ] HIGGS-P04 — add bounded polling and authenticated webhook handling if supported by the provider contract.
+- [ ] HIGGS-P05 — run first paid location establishing-shot smoke test.
+- [ ] HIGGS-P06 — run controlled core-character image-to-video continuity pilot.
+
+See: `docs/sakhalin/HIGGSFIELD_INTEGRATION.md`.
+
 ## Production architecture backlog
 
 These items are approved but deferred until the Character Runtime Proof is accepted.
