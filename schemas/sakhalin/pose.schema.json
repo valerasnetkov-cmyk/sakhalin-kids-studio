@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sakhalin/pose",
+  "title": "Sakhalin Kids Pose",
+  "description": "Declarative character pose state. Renderer-independent.",
+  "type": "object",
+  "required": ["version", "id", "parts"],
+  "properties": {
+    "version": { "type": "string", "const": "1.0" },
+    "id": { "$ref": "#/$defs/identifier" },
+    "duration_hint_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10000
+    },
+    "parts": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/identifier" },
+      "additionalProperties": { "$ref": "#/$defs/part_state" },
+      "minProperties": 1
+    },
+    "gaze": { "$ref": "#/$defs/gaze" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]*$"
+    },
+    "part_state": {
+      "type": "object",
+      "properties": {
+        "rotation": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "translate_x": {
+          "type": "number",
+          "minimum": -2,
+          "maximum": 2
+        },
+        "translate_y": {
+          "type": "number",
+          "minimum": -2,
+          "maximum": 2
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 3
+        },
+        "opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    },
+    "gaze": {
+      "type": "object",
+      "required": ["direction"],
+      "properties": {
+        "direction": {
+          "type": "string",
+          "enum": ["left", "right", "up", "down", "center"]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

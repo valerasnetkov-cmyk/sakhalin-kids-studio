@@ -195,3 +195,13 @@ These are planned extension points, not defects.
 - TTS provider integration.
 - Custom Sakhalin tools until implemented.
 - Custom Sakhalin playbook until implemented.
+
+
+## Sakhalin Pose / Action contracts
+
+Status: VERIFIED for SKIDS-005.
+
+- `Pose` is declarative state only: bounded transforms, opacity, and closed-enum gaze.
+- `Action` is a bounded sequence of named phases referencing pose IDs.
+- Neither contract embeds renderer implementation, arbitrary code, character IDs, or asset paths.
+- Renderer/runtime mapping remains downstream of these contracts.
