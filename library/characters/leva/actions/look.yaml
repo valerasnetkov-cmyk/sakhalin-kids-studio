@@ -1,0 +1,13 @@
+version: "1.0"
+id: look
+rig_profile: sea_lion_cartoon
+phases:
+  - name: settle
+    duration_ms: 220
+    pose: idle
+  - name: look
+    duration_ms: 620
+    pose: look_right
+  - name: return
+    duration_ms: 220
+    pose: idle
