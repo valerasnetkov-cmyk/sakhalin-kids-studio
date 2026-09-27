@@ -1,0 +1,18 @@
+version: "1.0"
+id: talk_neutral
+rig_profile: sea_lion_cartoon
+state:
+  parts:
+    head:
+      rotation_deg: 2
+    flipper_left:
+      rotation_deg: -5
+    flipper_right:
+      rotation_deg: 5
+    eye_left:
+      variant: open
+    eye_right:
+      variant: open
+  expression: neutral
+  gaze:
+    direction: center
