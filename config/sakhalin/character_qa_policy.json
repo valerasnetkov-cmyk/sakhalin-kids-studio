@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "source": "docs/sakhalin/TEAM_CANON.md",
+  "semantic_visemes": ["REST", "A", "E", "O", "U", "MBP", "FV", "SH", "L", "S"],
+  "characters": {
+    "makar": {
+      "species": "fox",
+      "rig_profile": "fox_cartoon",
+      "proof_scope": true
+    },
+    "leva": {
+      "species": "sea_lion",
+      "rig_profile": "sea_lion_cartoon",
+      "proof_scope": true
+    },
+    "tikhon": {
+      "species": "bear",
+      "rig_profile": null,
+      "proof_scope": false
+    },
+    "anna": {
+      "species": "seal",
+      "rig_profile": null,
+      "proof_scope": false
+    },
+    "antoshka": {
+      "species": "human",
+      "rig_profile": null,
+      "proof_scope": false
+    }
+  }
+}
