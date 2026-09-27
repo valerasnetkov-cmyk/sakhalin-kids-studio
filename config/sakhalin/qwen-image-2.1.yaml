@@ -1,0 +1,73 @@
+version: "0.1"
+status: experimental
+purpose: >
+  Research-only configuration for evaluating Qwen-Image-2.1 as an optional
+  character-conditioned image backend for Sakhalin Kids Studio.
+
+activation:
+  enabled_by_default: false
+  production_enabled: false
+  requires_post_skids_013_approval: true
+  requires_commercial_license_review: true
+
+model:
+  id: Qwen/Qwen-Image-2.1
+  release_date: "2026-09-20"
+  visual_generation_parameters_billion: 7
+  supports:
+    text_to_image: true
+    image_editing: true
+    rgba: true
+    multi_reference: true
+    max_reference_images: 10
+    local_editing: true
+
+default_inference:
+  steps: 40
+  seed_policy: fixed_for_benchmark
+  cfg: false
+  output_format: png
+
+character_policy:
+  master_identity_immutable: true
+  allowed_operations:
+    - pose_variant
+    - expression_variant
+    - camera_angle_variant
+    - multi_character_composition
+    - interaction_keyframe
+    - transparent_asset
+    - storyboard_frame
+  forbidden_operations:
+    - redesign
+    - species_change
+    - palette_change
+    - unapproved_costume_change
+    - unapproved_accessory_change
+    - silent_master_replacement
+  approval_required_for:
+    - new_master_reference
+    - permanent_costume
+    - permanent_accessory
+
+benchmark:
+  config: tests/sakhalin/qwen-image-2.1/benchmark.yaml
+  pass_score: 90
+  manual_review_min_score: 80
+  hard_failures:
+    - wrong_species
+    - wrong_core_palette
+    - wrong_signature_clothing
+    - extra_limbs
+    - missing_identity_feature
+    - identity_drift
+
+license:
+  repository_license: Qwen Research License Agreement
+  commercial_use_without_separate_license: false
+  contact: model-business@notice.qwencloud.com
+
+notes:
+  - This file does not enable Qwen in the executable production pipeline.
+  - Milestone 01 remains focused on the local Character Runtime Proof.
+  - Qwen evaluation must not regenerate approved base character identity.
