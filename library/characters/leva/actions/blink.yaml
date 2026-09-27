@@ -1,0 +1,13 @@
+version: "1.0"
+id: blink
+rig_profile: sea_lion_cartoon
+phases:
+  - name: before
+    duration_ms: 180
+    pose: idle
+  - name: close
+    duration_ms: 90
+    pose: blink_closed
+  - name: after
+    duration_ms: 190
+    pose: idle
