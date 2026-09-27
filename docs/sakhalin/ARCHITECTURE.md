@@ -220,14 +220,24 @@ transition
 | character_action | local character runtime |
 | location_establishing | owned footage, затем AI fallback |
 | real_footage | media library |
-| educational_graphic | HyperFrames/Remotion |
-| map | HyperFrames/Remotion |
+| educational_graphic | HyperFrames/Remotion; after CANVAS-P01, optional hand-drawn Canvas adapter |
+| map | HyperFrames/Remotion; after CANVAS-P01, optional hand-drawn Canvas adapter |
 | ai_cinematic | OpenMontage video selector |
 | historical_reconstruction | image/video selector |
 | fantasy_imagination | image/video selector |
 | transition | local composition runtime |
 
 Провайдер не должен быть жёстко прописан в сценарии.
+
+### Hand-drawn Canvas boundary
+
+Hand-drawn Canvas is an approved future supplementary runtime, not a second Character Runtime.
+
+After the `SKIDS-013` visual proof is accepted, it may be piloted for `educational_graphic`, `map`, selected transitions and explicitly hand-drawn historical inserts. Persistent character dialogue, acting, gaze, gestures, visemes and lip-sync remain owned by the local Character Runtime.
+
+Do not add Canvas runtime dependencies during Milestone 01. Do not create parallel per-character Canvas renderers.
+
+Detailed contract and pilot gate: [HAND_DRAWN_CANVAS.md](HAND_DRAWN_CANVAS.md).
 
 ## 9. Semantic composition and derivatives
 
