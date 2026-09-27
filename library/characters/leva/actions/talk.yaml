@@ -1,0 +1,13 @@
+version: "1.0"
+id: talk
+rig_profile: sea_lion_cartoon
+phases:
+  - name: enter
+    duration_ms: 180
+    pose: talk_neutral
+  - name: hold
+    duration_ms: 900
+    pose: talk_neutral
+  - name: settle
+    duration_ms: 180
+    pose: idle
