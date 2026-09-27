@@ -2,6 +2,26 @@
 
 ## 2026-09-28
 
+### Added — SKIDS-011 implementation
+
+- `library/characters/makar/character.yaml` — minimal proof CharacterSpec for Makar.
+- `library/characters/makar/art/front.svg` — structured `fox_cartoon` SVG fixture with all required rig parts, blink variants, gaze layers, expressions, backpack, and all semantic visemes.
+- Makar pose/action fixtures for `idle`, `blink`, `look`, `point`, and `talk`.
+- `tests/sakhalin/test_makar_fixture.py` — CharacterLoader, schema, rig-part, viseme, SVG-safety, renderer, and CharacterQA integration coverage.
+
+### Verification — SKIDS-011
+
+- Static branch verification: all 12 required `fox_cartoon` parts present exactly once.
+- Static branch verification: all 10 semantic visemes present exactly once.
+- All action pose references resolve to fixture pose IDs.
+- No SVG `script` or external `href` detected.
+- Full branch test execution is still pending because the execution environment cannot resolve `github.com` for clone; this is recorded in `plan.md`.
+- Fixture is explicitly technical proof art and does not redefine Makar's production visual identity.
+
+# Changelog
+
+## 2026-09-28
+
 ### Added — SKIDS-010
 
 - `config/sakhalin/character_qa_policy.json` — machine-readable QA mirror of Team Canon for structural checks.
