@@ -83,6 +83,19 @@ Do not use Harness for episode state transitions, publishing, render orchestrati
 
 See: `docs/sakhalin/HARNESS_INTEGRATION.md`.
 
+### Hand-drawn Canvas educational layer
+
+Approved architecture, deferred implementation.
+
+- [ ] CANVAS-P01 — start only after `SKIDS-013` visual acceptance.
+- [ ] Pin the exact `alesha-pro/tools` commit used for `hand-drawn-canvas-animation`.
+- [ ] Keep Canvas as a supplementary runtime for `educational_graphic`, `map`, selected transitions and explicitly hand-drawn historical inserts.
+- [ ] Do not use Canvas as a second persistent-character renderer or lip-sync system.
+- [ ] First pilot: 10–15 second lighthouse explainer with Makar question + Leva diagram explanation.
+- [ ] Verify deterministic rerender, decode, source-media provenance and scene-router isolation from Character Runtime contracts.
+
+See: `docs/sakhalin/HAND_DRAWN_CANVAS.md`.
+
 ### Hypit semantic composition
 
 Hypit is approved only as a candidate optional adapter; it is not part of the active Character Runtime milestone.
