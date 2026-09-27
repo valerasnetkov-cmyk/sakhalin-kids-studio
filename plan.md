@@ -96,6 +96,21 @@ Approved architecture, deferred implementation.
 
 See: `docs/sakhalin/HAND_DRAWN_CANVAS.md`.
 
+### Qwen-Image-2.1 visual R&D
+
+Qwen-Image-2.1 is accepted only as a candidate experimental visual backend. It is not part of the active Character Runtime milestone.
+
+- [ ] QWEN-P01 — start benchmark work only after `SKIDS-013` visual acceptance, unless explicitly approved as parallel R&D.
+- [ ] Keep production integration disabled by default.
+- [ ] Run the 50-case five-character consistency benchmark.
+- [ ] Run the full-cast composition test.
+- [ ] Preserve immutable approved master character art.
+- [ ] Complete commercial-license review before any production/commercial use.
+- [ ] Define a narrow adapter only after the benchmark passes.
+- [ ] Keep the existing local Character Runtime as the fallback and identity source of truth.
+
+See: `docs/sakhalin/QWEN_IMAGE_2_1.md`.
+
 ### Hypit semantic composition
 
 Hypit is approved only as a candidate optional adapter; it is not part of the active Character Runtime milestone.
