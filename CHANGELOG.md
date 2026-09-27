@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-09-28
+
+### Added — SKIDS-010
+
+- `config/sakhalin/character_qa_policy.json` — machine-readable QA mirror of Team Canon for structural checks.
+- `tools/character/sakhalin/character_qa.py` — structural Character QA domain service.
+- `tests/sakhalin/test_character_qa.py` — identity, rig, locks, required assets, viseme, and reference-evidence tests.
+- `docs/sakhalin/CHARACTER_QA.md` — durable QA contract and reference-check semantics.
+
+### Changed — SKIDS-010
+
+- Unknown persistent characters fail closed; excluded `sima` is blocking.
+- Makar and Leva species/rig identity are checked against Team Canon.
+- Required rig parts, CharacterSpec actions/props, and semantic mouth set are blocking requirements.
+- Missing visual-reference evidence is reported as warning, never silently treated as a pass.
+- Explicit palette/proportion/wardrobe/scale/identity mismatches are blocking.
+- Exact visual thresholds remain deferred to SKIDS-011/012 fixture/reference assets rather than being invented in QA code.
+
+# Changelog
+
 ## 2026-09-21
 
 ### Added — SKIDS-009
