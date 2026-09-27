@@ -8,6 +8,7 @@ tracks. It does not interpret actions or render assets.
 from __future__ import annotations
 
 from copy import deepcopy
+import re
 from typing import Any, Mapping, Sequence
 
 SEMANTIC_VISEMES = frozenset(
@@ -30,6 +31,8 @@ _ALLOWED_ACTING_CHANNELS = frozenset(
 )
 
 _FORBIDDEN_MOUTH_AUTHORITY = frozenset({"mouth", "viseme", "lip_sync"})
+_IDENTIFIER_RE = re.compile(r"^[a-z][a-z0-9_-]*$")
+_MAX_EVENTS = 5000
 
 
 class TimelineMergeError(ValueError):
@@ -53,10 +56,7 @@ def merge_character_timelines(
         raise TimelineMergeError("acting and mouth character_id must match")
 
     shifted_mouth = [
-        {
-            "t": mouth["start_seconds"] + event["t"],
-            "viseme": event["viseme"],
-        }
+        {"t": mouth["start_seconds"] + event["t"], "viseme": event["viseme"]}
         for event in mouth["events"]
     ]
 
@@ -74,6 +74,8 @@ def merge_character_timelines(
 def _validate_acting_timeline(timeline: Mapping[str, Any]) -> dict[str, Any]:
     if not isinstance(timeline, Mapping):
         raise TimelineMergeError("acting timeline must be a mapping")
+    if set(timeline) != {"version", "character_id", "events"}:
+        raise TimelineMergeError("acting timeline contains unsupported fields")
     if timeline.get("version") != "1.0":
         raise TimelineMergeError("acting timeline version must be '1.0'")
 
@@ -83,13 +85,16 @@ def _validate_acting_timeline(timeline: Mapping[str, Any]) -> dict[str, Any]:
         raise TimelineMergeError("acting events must be a sequence")
     if len(events) == 0:
         raise TimelineMergeError("acting events must not be empty")
+    if len(events) > _MAX_EVENTS:
+        raise TimelineMergeError("acting events exceed allowed limit")
 
     normalized: list[dict[str, Any]] = []
     previous_t = -1.0
-
     for index, raw_event in enumerate(events):
         if not isinstance(raw_event, Mapping):
             raise TimelineMergeError(f"acting event {index} must be a mapping")
+        if set(raw_event) != {"t", "channel", "value"}:
+            raise TimelineMergeError(f"acting event {index} contains unsupported fields")
 
         t = _require_time(raw_event.get("t"), f"acting event {index}.t")
         if t < previous_t:
@@ -98,13 +103,9 @@ def _validate_acting_timeline(timeline: Mapping[str, Any]) -> dict[str, Any]:
 
         channel = raw_event.get("channel")
         if channel in _FORBIDDEN_MOUTH_AUTHORITY:
-            raise TimelineMergeError(
-                "acting timeline cannot control mouth or viseme state"
-            )
+            raise TimelineMergeError("acting timeline cannot control mouth or viseme state")
         if channel not in _ALLOWED_ACTING_CHANNELS:
-            raise TimelineMergeError(
-                f"acting event {index} has unsupported channel"
-            )
+            raise TimelineMergeError(f"acting event {index} has unsupported channel")
 
         value = raw_event.get("value")
         if not isinstance(value, str) or not value.strip():
@@ -112,23 +113,22 @@ def _validate_acting_timeline(timeline: Mapping[str, Any]) -> dict[str, Any]:
                 f"acting event {index}.value must be a non-empty string"
             )
 
-        if set(raw_event) != {"t", "channel", "value"}:
-            raise TimelineMergeError(
-                f"acting event {index} contains unsupported fields"
-            )
-
         normalized.append({"t": t, "channel": channel, "value": value})
 
-    return {
-        "version": "1.0",
-        "character_id": character_id,
-        "events": normalized,
-    }
+    return {"version": "1.0", "character_id": character_id, "events": normalized}
 
 
 def _validate_mouth_timeline(timeline: Mapping[str, Any]) -> dict[str, Any]:
     if not isinstance(timeline, Mapping):
         raise TimelineMergeError("mouth timeline must be a mapping")
+    if set(timeline) != {
+        "version",
+        "character_id",
+        "audio_asset_id",
+        "start_seconds",
+        "events",
+    }:
+        raise TimelineMergeError("mouth timeline contains unsupported fields")
     if timeline.get("version") != "1.0":
         raise TimelineMergeError("mouth timeline version must be '1.0'")
 
@@ -143,13 +143,16 @@ def _validate_mouth_timeline(timeline: Mapping[str, Any]) -> dict[str, Any]:
         raise TimelineMergeError("mouth events must be a sequence")
     if len(events) == 0:
         raise TimelineMergeError("mouth events must not be empty")
+    if len(events) > _MAX_EVENTS:
+        raise TimelineMergeError("mouth events exceed allowed limit")
 
     normalized: list[dict[str, Any]] = []
     previous_t = -1.0
-
     for index, raw_event in enumerate(events):
         if not isinstance(raw_event, Mapping):
             raise TimelineMergeError(f"mouth event {index} must be a mapping")
+        if set(raw_event) != {"t", "viseme"}:
+            raise TimelineMergeError(f"mouth event {index} contains unsupported fields")
 
         t = _require_time(raw_event.get("t"), f"mouth event {index}.t")
         if t < previous_t:
@@ -159,10 +162,6 @@ def _validate_mouth_timeline(timeline: Mapping[str, Any]) -> dict[str, Any]:
         viseme = raw_event.get("viseme")
         if viseme not in SEMANTIC_VISEMES:
             raise TimelineMergeError(f"mouth event {index} has unknown viseme")
-        if set(raw_event) != {"t", "viseme"}:
-            raise TimelineMergeError(
-                f"mouth event {index} contains unsupported fields"
-            )
 
         normalized.append({"t": t, "viseme": viseme})
 
@@ -176,11 +175,7 @@ def _validate_mouth_timeline(timeline: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def _require_identifier(value: Any, field: str) -> str:
-    if not isinstance(value, str) or not value:
-        raise TimelineMergeError(f"{field} must be a stable identifier")
-    if not value[0].islower() or not all(
-        char.islower() or char.isdigit() or char in "_-" for char in value
-    ):
+    if not isinstance(value, str) or not _IDENTIFIER_RE.fullmatch(value):
         raise TimelineMergeError(f"{field} must be a stable identifier")
     return value
 
