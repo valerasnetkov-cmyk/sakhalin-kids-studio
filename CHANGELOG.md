@@ -2,6 +2,22 @@
 
 ## 2026-09-28
 
+### Added — SKIDS-008
+
+- `tools/character/sakhalin/svg_renderer.py` — deterministic renderer for a narrow safe SVG subset.
+- `tests/sakhalin/test_svg_renderer.py` — determinism, bounds, duplicate-ID, and SVG-injection regression coverage.
+
+### Changed — SKIDS-008
+
+- Renderer accepts only validated path geometry, solid six-digit hex fills, placement, and scale.
+- Arbitrary SVG markup, external hrefs, CSS, scripts, event handlers, and unsupported attributes are rejected.
+- Scene dimensions, character/part counts, path lengths, transforms, and identifiers are bounded.
+- Renderer output is deterministic for identical input and is ready for later Makar/Leva fixture assets.
+
+# Changelog
+
+## 2026-09-28
+
 ### Added — SKIDS-007
 
 - `tools/character/sakhalin/timeline_merger.py` — renderer-neutral merger for acting and mouth tracks.
