@@ -1,0 +1,18 @@
+version: "1.0"
+id: point_right
+rig_profile: fox_cartoon
+state:
+  parts:
+    head:
+      rotation_deg: 4
+    arm_right:
+      rotation_deg: -58
+    tail:
+      rotation_deg: 8
+    eye_left:
+      variant: open
+    eye_right:
+      variant: open
+  expression: curious
+  gaze:
+    direction: right
