@@ -1,0 +1,13 @@
+version: "1.0"
+id: look
+rig_profile: fox_cartoon
+phases:
+  - name: settle
+    duration_ms: 220
+    pose: idle
+  - name: look
+    duration_ms: 600
+    pose: look_left
+  - name: return
+    duration_ms: 220
+    pose: idle
