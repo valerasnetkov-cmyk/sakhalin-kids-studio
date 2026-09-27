@@ -5,7 +5,7 @@
 SKIDS-001 repository scaffolding complete.
 SKIDS-002 CharacterSpec schema complete.
 SKIDS-003 CharacterLoader domain service complete.
-SKIDS-004 RigProfile contract and canonical profiles complete.\nSKIDS-005 Pose/Action declarative contracts complete.\nSKIDS-006 Semantic viseme timeline contract complete.\nSKIDS-007 Acting + mouth timeline merger complete.
+SKIDS-004 RigProfile contract and canonical profiles complete.\nSKIDS-005 Pose/Action declarative contracts complete.\nSKIDS-006 Semantic viseme timeline contract complete.\nSKIDS-007 Acting + mouth timeline merger complete.\nSKIDS-008 Safe deterministic SVG scene renderer complete.
 
 Primary development workflow: OpenCode.
 
@@ -31,7 +31,7 @@ Tasks:
 - [x] SKIDS-005 — pose/action contract.
 - [x] SKIDS-006 — viseme contract.
 - [x] SKIDS-007 — acting + mouth timeline merge.
-- [ ] SKIDS-008 — SVG scene renderer.
+- [x] SKIDS-008 — SVG scene renderer.
 - [ ] SKIDS-009 — HyperFrames or Remotion handoff.
 - [ ] SKIDS-010 — character QA.
 - [ ] SKIDS-011 — Makar fixture assets.
