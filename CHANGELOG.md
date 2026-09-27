@@ -2,6 +2,22 @@
 
 ## 2026-09-28
 
+### Added — SKIDS-009
+
+- `tools/character/sakhalin/render_handoff.py` — bounded manifest builder for Remotion/HyperFrames composition handoff.
+- `tests/sakhalin/test_render_handoff.py` — renderer allowlist, timing, asset-ID, ordering, and mutation-boundary tests.
+
+### Changed — SKIDS-009
+
+- Composition receives stable SVG/audio asset IDs instead of filesystem paths or remote URLs.
+- Only `remotion` and `hyperframes` are accepted render targets.
+- Scene duration, FPS, frame count, and frame indices are bounded.
+- Handoff output explicitly sets `character_mutation_allowed: false`, preserving Character Runtime ownership of identity and acting state.
+
+# Changelog
+
+## 2026-09-28
+
 ### Added — SKIDS-008
 
 - `tools/character/sakhalin/svg_renderer.py` — deterministic renderer for a narrow safe SVG subset.
