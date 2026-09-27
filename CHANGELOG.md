@@ -2,6 +2,27 @@
 
 ## 2026-09-28
 
+### Added — Qwen-Image-2.1 R&D boundary
+
+- `config/sakhalin/qwen-image-2.1.yaml` defines an opt-in, production-disabled experimental model configuration.
+- `docs/sakhalin/QWEN_IMAGE_2_1.md` defines character-identity, licensing, security, benchmark and adoption gates.
+- `tests/sakhalin/qwen-image-2.1/benchmark.yaml` defines 50 character-consistency cases plus a five-character composition test.
+- `plan.md` records QWEN-P01 as a post-`SKIDS-013` candidate pilot.
+
+### Changed — character generation guardrails
+
+- Qwen-generated outputs are candidate variants/keyframes only; approved master character identity remains immutable.
+- No Qwen runtime tool was added to `pipeline_defs/sakhalin-kids.yaml`.
+- Commercial production use remains blocked until licensing is resolved.
+
+### Notes
+
+- Documentation/configuration only; no model dependency, ComfyUI orchestration, provider call or production runtime was enabled.
+- Active implementation remains `SKIDS-005 -> SKIDS-013`.
+
+
+## 2026-09-28
+
 ### Added — hand-drawn Canvas integration boundary
 
 - `docs/sakhalin/HAND_DRAWN_CANVAS.md` defines the approved post-`SKIDS-013` Canvas integration boundary.
