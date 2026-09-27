@@ -10,7 +10,11 @@ SKIDS-005 Pose/Action domain contracts complete.
 SKIDS-006 VisemeTimeline domain contract complete.
 SKIDS-007 deterministic acting/mouth timeline merge complete.
 SKIDS-008 SVG scene renderer complete.
-SKIDS-009 HyperFrames runtime handoff complete.\nSKIDS-010 structural Character QA complete.
+SKIDS-009 HyperFrames runtime handoff complete.
+SKIDS-010 structural Character QA complete.
+SKIDS-011 Makar proof fixture implemented; exact branch runtime verification pending.
+SKIDS-012 Leva proof fixture implemented; exact branch runtime verification pending.
+SKIDS-013 local smoke-render implementation ready; exact end-to-end repository run pending.
 
 Primary development workflow: OpenCode.
 
@@ -39,9 +43,9 @@ Tasks:
 - [x] SKIDS-008 — SVG scene renderer.
 - [x] SKIDS-009 — HyperFrames or Remotion handoff.
 - [x] SKIDS-010 — character QA.
-- [ ] SKIDS-011 — Makar fixture assets. Implementation complete; full branch runtime verification pending because the execution environment cannot resolve github.com.
-- [ ] SKIDS-012 — Leva fixture assets. Implementation complete; full branch runtime verification pending because the execution environment cannot resolve github.com.
-- [ ] SKIDS-013 — 10–15 second render smoke test.
+- [ ] SKIDS-011 — Makar fixture assets. Implementation complete and statically verified; exact branch runtime test remains pending because this execution environment cannot resolve github.com.
+- [ ] SKIDS-012 — Leva fixture assets. Implementation complete and statically verified; exact branch runtime test remains pending because this execution environment cannot resolve github.com.
+- [ ] SKIDS-013 — 12-second render smoke test. Implementation ready; external eSpeak/FFmpeg/ffprobe media chain verified independently, exact repository end-to-end run still pending.
 
 ## Stop condition
 
