@@ -97,7 +97,8 @@ Statuses:
 | `CharacterLoader` domain service | IMPLEMENTED | SKIDS-003; standalone domain service, no OpenMontage coupling |
 | `TimelineMerger` domain service | IMPLEMENTED | SKIDS-007; deterministic acting + mouth merge, no OpenMontage coupling |
 | `SvgSceneRenderer` domain service | IMPLEMENTED | SKIDS-008; deterministic frame-oriented SVG scene renderer, no animation runtime |
-| `HyperFramesHandoff` domain service | IMPLEMENTED | SKIDS-009; deterministic offline HyperFrames workspace generation, no JS animation |\n| `CharacterQA` domain service | IMPLEMENTED | SKIDS-010; structural identity/asset/continuity checks with explicit visual-reference evidence |
+| `HyperFramesHandoff` domain service | IMPLEMENTED | SKIDS-009; deterministic offline HyperFrames workspace generation, no JS animation |
+| `CharacterQA` domain service | IMPLEMENTED | SKIDS-010; structural identity/asset/continuity checks with explicit visual-reference evidence |
 
 ### Sakhalin custom tools (SAKHALIN_EXTENSION_REQUIRED)
 
