@@ -1,0 +1,14 @@
+version: "1.0"
+id: look_right
+rig_profile: sea_lion_cartoon
+state:
+  parts:
+    head:
+      rotation_deg: 4
+    eye_left:
+      variant: open
+    eye_right:
+      variant: open
+  expression: neutral
+  gaze:
+    direction: right
