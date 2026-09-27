@@ -2,6 +2,27 @@
 
 ## 2026-09-28
 
+### Added — SKIDS-013 implementation
+
+- `library/locations/runtime_proof_coast.svg` — deterministic local proof background.
+- `tools/character/sakhalin/runtime_proof.py` — proof timeline, frame-render, asset-hash, and Character QA helpers.
+- `tools/character/sakhalin/proof_media.py` — bounded local speech/FFmpeg/ffprobe helpers without shell execution.
+- `scripts/render-skids-013.py` — orchestration-only local 12-second MP4 smoke renderer.
+- `tests/sakhalin/test_runtime_proof.py` — timing and fixture-viseme helper tests.
+- `docs/sakhalin/RUNTIME_PROOF.md` — run/output contract.
+- `build/skids-013/` is ignored so generated frames, WAV, samples, reports, and MP4 are not committed accidentally.
+
+### Verification — SKIDS-013
+
+- Source modules were split to satisfy the 400-line gate: media 215 lines, runtime 203 lines, orchestration 246 lines.
+- No `shell=True`, `eval`, or `exec` is present in the proof modules.
+- The local external media chain was independently exercised with Russian eSpeak audio, 288 SVG frames at 24 fps, H.264/AAC encode, and ffprobe reporting a 1280×720 12.000-second output.
+- That independent media-chain test validates the local toolchain, not the exact repository Character Runtime execution.
+- Exact end-to-end execution of `scripts/render-skids-013.py` remains pending because the execution environment cannot resolve `github.com` to clone/materialize the whole branch.
+- Milestone 01 must not be declared complete until the exact branch run succeeds and the resulting proof receives visual review.
+
+## 2026-09-28
+
 ### Added — SKIDS-012 implementation
 
 - `library/characters/leva/character.yaml` — minimal proof CharacterSpec for Leva.
@@ -18,8 +39,6 @@
 - No SVG `script` or external `href` detected.
 - Full branch test execution remains pending because the execution environment cannot resolve `github.com` for clone.
 - Fixture is explicitly technical proof art and does not redefine Leva's production visual identity.
-
-# Changelog
 
 ## 2026-09-28
 
@@ -39,8 +58,6 @@
 - Full branch test execution is still pending because the execution environment cannot resolve `github.com` for clone; this is recorded in `plan.md`.
 - Fixture is explicitly technical proof art and does not redefine Makar's production visual identity.
 
-# Changelog
-
 ## 2026-09-28
 
 ### Added — SKIDS-010
@@ -58,8 +75,6 @@
 - Missing visual-reference evidence is reported as warning, never silently treated as a pass.
 - Explicit palette/proportion/wardrobe/scale/identity mismatches are blocking.
 - Exact visual thresholds remain deferred to SKIDS-011/012 fixture/reference assets rather than being invented in QA code.
-
-# Changelog
 
 ## 2026-09-21
 
