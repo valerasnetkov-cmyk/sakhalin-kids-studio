@@ -1,0 +1,110 @@
+version: "0.1"
+name: qwen-image-2.1-character-consistency
+status: planned
+model: Qwen/Qwen-Image-2.1
+
+characters:
+  - makar
+  - leva
+  - tikhon
+  - anna
+  - antoshka
+
+seed_policy:
+  mode: fixed
+  record_per_case: true
+
+tests_per_character:
+  - id: front_neutral
+    category: identity
+    description: Front-facing neutral full-body render.
+  - id: three_quarter
+    category: identity
+    description: Three-quarter full-body render.
+  - id: side
+    category: identity
+    description: Side-view full-body render.
+  - id: happy
+    category: expression
+    description: Happy expression with identity preserved.
+  - id: surprised
+    category: expression
+    description: Surprised expression with identity preserved.
+  - id: thinking
+    category: expression
+    description: Thinking expression with identity preserved.
+  - id: walking
+    category: pose
+    description: Walking pose with silhouette and clothing preserved.
+  - id: running
+    category: pose
+    description: Running pose with silhouette and clothing preserved.
+  - id: signature_object
+    category: interaction
+    description: Character holds an approved signature object.
+  - id: paired_interaction
+    category: composition
+    description: Character interacts with one other approved core character.
+
+team_test:
+  id: full_cast_scene
+  description: >
+    All five core characters appear together in one Sakhalin location with
+    stable identity, correct relative scale and no merging or duplication.
+  required_characters:
+    - makar
+    - leva
+    - tikhon
+    - anna
+    - antoshka
+  checks:
+    - correct_species
+    - stable_identity
+    - correct_relative_scale
+    - correct_palette
+    - correct_signature_clothing
+    - no_character_merging
+    - no_duplicate_characters
+    - no_extra_limbs
+
+scoring:
+  identity: 30
+  proportions: 15
+  face: 15
+  palette: 10
+  clothing: 10
+  accessories: 5
+  style_continuity: 10
+  anatomy: 5
+
+thresholds:
+  pass: 90
+  manual_review: 80
+  reject_below: 80
+
+hard_failures:
+  - wrong_species
+  - wrong_core_palette
+  - wrong_signature_clothing
+  - extra_limbs
+  - missing_identity_feature
+  - identity_drift
+
+artifacts_to_record:
+  - model_revision
+  - seed
+  - prompt
+  - reference_asset_ids
+  - output_asset_id
+  - output_hash
+  - score_breakdown
+  - hard_failure_flags
+  - reviewer
+  - decision
+
+acceptance:
+  benchmark_complete_when:
+    - all_50_character_cases_reviewed
+    - full_cast_scene_reviewed
+    - no_unresolved_hard_failure_in_accepted_assets
+    - licensing_status_recorded
