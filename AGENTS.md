@@ -259,7 +259,7 @@ Stop after the proof and evaluate visual quality before expanding to all five ch
 
 Do not prematurely implement the full 4–6 minute production pipeline.
 
-Post-proof infrastructure is documented but deferred. In particular, do not add PostgreSQL, distributed workers, object storage, ComfyUI production orchestration, Hermes, Harness, Hypit, Langfuse, automated YouTube publishing, or editable delivery infrastructure during Milestone 01 unless the user explicitly changes scope.
+Post-proof infrastructure is documented but deferred. In particular, do not add PostgreSQL, distributed workers, object storage, ComfyUI production orchestration, Hermes, Harness, Hypit, hand-drawn Canvas runtime integration, Langfuse, automated YouTube publishing, or editable delivery infrastructure during Milestone 01 unless the user explicitly changes scope.
 
 ## Milestone 01 acceptance
 
@@ -312,6 +312,7 @@ If a required check cannot run, state what was not verified and why.
 - Expensive jobs must eventually be idempotent and resumable; Milestone 01 may remain sequential.
 - ComfyUI, WhisperX, OpenTimelineIO, restic, PostgreSQL, Langfuse, Hermes, Harness, and Hypit are planned/candidate integrations, not assumed installed dependencies.
 - If Hypit is evaluated, pin an exact release/commit for the pilot and complete license/security review before production adoption.
+- Treat hand-drawn Canvas as a post-`SKIDS-013` supplementary educational/map runtime only. It must not replace Character Runtime, own core-character identity, or introduce a second lip-sync path. See `docs/sakhalin/HAND_DRAWN_CANVAS.md`.
 
 ## Generated and upstream files
 
