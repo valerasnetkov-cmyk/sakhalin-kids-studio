@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-09-28
+
+### Added — SKIDS-007
+
+- `tools/character/sakhalin/timeline_merger.py` — renderer-neutral merger for acting and mouth tracks.
+- `tests/sakhalin/test_timeline_merger.py` — coverage for track isolation, ordering, identifiers, event bounds, and closed payload fields.
+
+### Changed — SKIDS-007
+
+- Lip-sync remains a separate mouth track and cannot control head/body/acting channels.
+- Acting and mouth inputs must share the same character ID.
+- Mouth events are offset by `start_seconds` without mutating source inputs.
+- Root/event payloads are closed, stable identifiers use the same ASCII policy as project schemas, and event counts are bounded.
+
+# Changelog
+
 ## 2026-09-26
 
 ### Added — SKIDS-006
