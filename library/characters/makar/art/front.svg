@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-180 -360 360 620" data-rig-profile="fox_cartoon">
+  <g data-part="tail">
+    <g data-motion-root="">
+      <path d="M -70 120 C -150 80 -165 -20 -110 -55 C -75 -78 -52 -43 -66 -13 C -88 32 -101 62 -55 80 Z" fill="#D96A1B" stroke="#5A3427" stroke-width="8"/>
+      <path d="M -116 -49 C -142 -41 -157 -21 -158 4 C -143 -7 -127 -5 -113 6 C -100 -7 -92 -26 -92 -40 Z" fill="#F4E5D0"/>
+    </g>
+  </g>
+
+  <g data-part="leg_left">
+    <g data-motion-root="">
+      <rect x="-70" y="145" width="45" height="96" rx="20" fill="#D96A1B" stroke="#5A3427" stroke-width="8"/>
+      <ellipse cx="-48" cy="238" rx="31" ry="14" fill="#3F4650"/>
+    </g>
+  </g>
+  <g data-part="leg_right">
+    <g data-motion-root="">
+      <rect x="25" y="145" width="45" height="96" rx="20" fill="#D96A1B" stroke="#5A3427" stroke-width="8"/>
+      <ellipse cx="48" cy="238" rx="31" ry="14" fill="#3F4650"/>
+    </g>
+  </g>
+
+  <g data-part="body">
+    <g data-motion-root="">
+      <path d="M -92 35 C -87 -46 -55 -82 0 -82 C 55 -82 87 -46 92 35 L 78 160 C 46 187 -47 187 -78 160 Z" fill="#2F6FA3" stroke="#5A3427" stroke-width="8"/>
+      <path d="M -58 28 C -47 -8 -26 -27 0 -27 C 27 -27 47 -8 58 28 L 48 129 C 23 143 -24 143 -48 129 Z" fill="#F4E5D0"/>
+    </g>
+  </g>
+
+  <g data-part="backpack">
+    <g data-motion-root="">
+      <rect x="-108" y="-2" width="42" height="118" rx="18" fill="#425F42" stroke="#5A3427" stroke-width="7"/>
+      <rect x="-101" y="20" width="28" height="38" rx="7" fill="#D6A83E"/>
+    </g>
+  </g>
+
+  <g data-part="arm_left">
+    <g data-motion-root="">
+      <rect x="-112" y="-20" width="40" height="132" rx="20" fill="#D96A1B" stroke="#5A3427" stroke-width="8"/>
+      <circle cx="-92" cy="111" r="21" fill="#F4E5D0" stroke="#5A3427" stroke-width="7"/>
+    </g>
+  </g>
+  <g data-part="arm_right">
+    <g data-motion-root="">
+      <rect x="72" y="-20" width="40" height="132" rx="20" fill="#D96A1B" stroke="#5A3427" stroke-width="8"/>
+      <circle cx="92" cy="111" r="21" fill="#F4E5D0" stroke="#5A3427" stroke-width="7"/>
+    </g>
+  </g>
+
+  <g data-part="head">
+    <g data-motion-root="">
+      <path d="M -87 -165 L -119 -264 L -42 -215 C -13 -232 14 -232 42 -215 L 119 -264 L 87 -165 C 109 -111 82 -45 0 -42 C -82 -45 -109 -111 -87 -165 Z" fill="#E87922" stroke="#5A3427" stroke-width="9"/>
+      <path d="M -96 -238 L -73 -179 L -43 -209 Z" fill="#6E3C32"/>
+      <path d="M 96 -238 L 73 -179 L 43 -209 Z" fill="#6E3C32"/>
+      <ellipse cx="0" cy="-91" rx="54" ry="43" fill="#F4E5D0"/>
+      <ellipse cx="0" cy="-116" rx="14" ry="10" fill="#3A302C"/>
+    </g>
+  </g>
+
+  <g data-part="eye_left" data-default-variant="open">
+    <g data-variant="open"><ellipse cx="-35" cy="-143" rx="13" ry="18" fill="#FFFFFF" stroke="#5A3427" stroke-width="5"/></g>
+    <g data-variant="closed" display="none"><path d="M -48 -143 Q -35 -132 -22 -143" fill="none" stroke="#5A3427" stroke-width="6" stroke-linecap="round"/></g>
+  </g>
+  <g data-part="eye_right" data-default-variant="open">
+    <g data-variant="open"><ellipse cx="35" cy="-143" rx="13" ry="18" fill="#FFFFFF" stroke="#5A3427" stroke-width="5"/></g>
+    <g data-variant="closed" display="none"><path d="M 22 -143 Q 35 -132 48 -143" fill="none" stroke="#5A3427" stroke-width="6" stroke-linecap="round"/></g>
+  </g>
+
+  <g data-part="pupil_left">
+    <g data-gaze="left" display="none"><circle cx="-40" cy="-142" r="6" fill="#2B2928"/></g>
+    <g data-gaze="center"><circle cx="-35" cy="-142" r="6" fill="#2B2928"/></g>
+    <g data-gaze="right" display="none"><circle cx="-30" cy="-142" r="6" fill="#2B2928"/></g>
+    <g data-gaze="up" display="none"><circle cx="-35" cy="-148" r="6" fill="#2B2928"/></g>
+    <g data-gaze="down" display="none"><circle cx="-35" cy="-136" r="6" fill="#2B2928"/></g>
+  </g>
+  <g data-part="pupil_right">
+    <g data-gaze="left" display="none"><circle cx="30" cy="-142" r="6" fill="#2B2928"/></g>
+    <g data-gaze="center"><circle cx="35" cy="-142" r="6" fill="#2B2928"/></g>
+    <g data-gaze="right" display="none"><circle cx="40" cy="-142" r="6" fill="#2B2928"/></g>
+    <g data-gaze="up" display="none"><circle cx="35" cy="-148" r="6" fill="#2B2928"/></g>
+    <g data-gaze="down" display="none"><circle cx="35" cy="-136" r="6" fill="#2B2928"/></g>
+  </g>
+
+  <g data-expression="neutral">
+    <path d="M -55 -172 Q -35 -181 -17 -171" fill="none" stroke="#5A3427" stroke-width="6" stroke-linecap="round"/>
+    <path d="M 17 -171 Q 35 -181 55 -172" fill="none" stroke="#5A3427" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g data-expression="curious" display="none">
+    <path d="M -55 -178 Q -35 -194 -15 -180" fill="none" stroke="#5A3427" stroke-width="6" stroke-linecap="round"/>
+    <path d="M 17 -168 Q 36 -174 55 -166" fill="none" stroke="#5A3427" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <g data-part="mouth">
+    <g data-viseme="REST"><path d="M -18 -74 Q 0 -68 18 -74" fill="none" stroke="#5A3427" stroke-width="6" stroke-linecap="round"/></g>
+    <g data-viseme="A" display="none"><ellipse cx="0" cy="-70" rx="17" ry="21" fill="#6C2F35"/></g>
+    <g data-viseme="E" display="none"><ellipse cx="0" cy="-70" rx="24" ry="10" fill="#6C2F35"/></g>
+    <g data-viseme="O" display="none"><ellipse cx="0" cy="-70" rx="13" ry="17" fill="#6C2F35"/></g>
+    <g data-viseme="U" display="none"><ellipse cx="0" cy="-70" rx="9" ry="14" fill="#6C2F35"/></g>
+    <g data-viseme="MBP" display="none"><path d="M -18 -70 L 18 -70" stroke="#5A3427" stroke-width="7" stroke-linecap="round"/></g>
+    <g data-viseme="FV" display="none"><path d="M -18 -74 Q 0 -62 18 -74" fill="#FFFFFF" stroke="#5A3427" stroke-width="5"/></g>
+    <g data-viseme="SH" display="none"><ellipse cx="0" cy="-70" rx="15" ry="10" fill="#6C2F35"/></g>
+    <g data-viseme="L" display="none"><ellipse cx="0" cy="-70" rx="16" ry="13" fill="#6C2F35"/><path d="M 0 -73 L 0 -61" stroke="#F08A8A" stroke-width="5"/></g>
+    <g data-viseme="S" display="none"><path d="M -20 -72 Q 0 -64 20 -72" fill="none" stroke="#5A3427" stroke-width="5"/></g>
+  </g>
+</svg>
