@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-09-28
+
+### Added — hand-drawn Canvas integration boundary
+
+- `docs/sakhalin/HAND_DRAWN_CANVAS.md` defines the approved post-`SKIDS-013` Canvas integration boundary.
+- Canvas is reserved for educational graphics, maps, selected transitions, doodle-over-footage and explicitly hand-drawn historical inserts.
+- `CANVAS-P01` is defined as a 10–15 second lighthouse explainer pilot after Character Runtime visual acceptance.
+
+### Changed — architecture and agent guardrails
+
+- `educational_graphic` and `map` may use an optional hand-drawn Canvas adapter only after the pilot gate.
+- Persistent character dialogue, acting, gaze, gestures, visemes and lip-sync remain owned by the local Character Runtime.
+- `AGENTS.md` and `plan.md` explicitly defer Canvas runtime integration from Milestone 01.
+
+### Notes
+
+- Documentation only: no Canvas runtime dependency or renderer was added.
+- Active implementation remains `SKIDS-005 -> SKIDS-013`.
+
+
 ## 2026-09-21
 
 ### Added — Hypit integration architecture
