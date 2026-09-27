@@ -78,6 +78,16 @@ class TestMerge(unittest.TestCase):
         self.assertEqual(len(merged["tracks"]["acting"]), 2)
 
 
+class TestRootValidation(unittest.TestCase):
+    def test_extra_acting_root_field_is_rejected(self):
+        with self.assertRaises(TimelineMergeError):
+            merge_character_timelines(_acting(provider="example"), _mouth())
+
+    def test_extra_mouth_root_field_is_rejected(self):
+        with self.assertRaises(TimelineMergeError):
+            merge_character_timelines(_acting(), _mouth(provider="example"))
+
+
 class TestIdentity(unittest.TestCase):
     def test_character_mismatch_is_rejected(self):
         with self.assertRaises(TimelineMergeError):
@@ -90,6 +100,10 @@ class TestIdentity(unittest.TestCase):
     def test_invalid_audio_asset_identifier_is_rejected(self):
         with self.assertRaises(TimelineMergeError):
             merge_character_timelines(_acting(), _mouth(audio_asset_id="../audio.wav"))
+
+    def test_unicode_identifier_is_rejected(self):
+        with self.assertRaises(TimelineMergeError):
+            merge_character_timelines(_acting(character_id="éclair"), _mouth())
 
 
 class TestActingIsolation(unittest.TestCase):
@@ -167,6 +181,18 @@ class TestTimelineValidation(unittest.TestCase):
             merge_character_timelines(_acting(events=[]), _mouth())
         with self.assertRaises(TimelineMergeError):
             merge_character_timelines(_acting(), _mouth(events=[]))
+
+    def test_event_count_is_bounded(self):
+        acting_events = [
+            {"t": 0.0, "channel": "action", "value": "idle"}
+            for _ in range(5001)
+        ]
+        with self.assertRaises(TimelineMergeError):
+            merge_character_timelines(_acting(events=acting_events), _mouth())
+
+        mouth_events = [{"t": 0.0, "viseme": "REST"} for _ in range(5001)]
+        with self.assertRaises(TimelineMergeError):
+            merge_character_timelines(_acting(), _mouth(events=mouth_events))
 
 
 if __name__ == "__main__":
