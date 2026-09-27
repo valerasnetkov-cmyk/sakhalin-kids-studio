@@ -2,6 +2,27 @@
 
 ## 2026-09-28
 
+### Added — SKIDS-012 implementation
+
+- `library/characters/leva/character.yaml` — minimal proof CharacterSpec for Leva.
+- `library/characters/leva/art/front.svg` — structured `sea_lion_cartoon` SVG fixture with all required rig parts, blink variants, gaze layers, scarf, expressions, and all semantic visemes.
+- Leva pose/action fixtures for `idle`, `blink`, `look`, `think`, and `talk`.
+- `tests/sakhalin/test_leva_fixture.py` — CharacterLoader, schema, rig-part, viseme, SVG-safety, renderer, and CharacterQA integration coverage.
+
+### Verification — SKIDS-012
+
+- Static branch verification: all 9 required `sea_lion_cartoon` parts present exactly once.
+- Static branch verification: all 10 semantic visemes present exactly once.
+- Fox-only arm/leg/tail parts are absent from the Leva fixture.
+- All action pose references resolve to fixture pose IDs.
+- No SVG `script` or external `href` detected.
+- Full branch test execution remains pending because the execution environment cannot resolve `github.com` for clone.
+- Fixture is explicitly technical proof art and does not redefine Leva's production visual identity.
+
+# Changelog
+
+## 2026-09-28
+
 ### Added — SKIDS-011 implementation
 
 - `library/characters/makar/character.yaml` — minimal proof CharacterSpec for Makar.
