@@ -1,0 +1,7 @@
+version: "1.0"
+id: idle
+rig_profile: fox_cartoon
+phases:
+  - name: hold
+    duration_ms: 1000
+    pose: idle
