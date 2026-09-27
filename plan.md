@@ -39,7 +39,7 @@ Tasks:
 - [x] SKIDS-008 — SVG scene renderer.
 - [x] SKIDS-009 — HyperFrames or Remotion handoff.
 - [x] SKIDS-010 — character QA.
-- [ ] SKIDS-011 — Makar fixture assets.
+- [ ] SKIDS-011 — Makar fixture assets. Implementation complete; full branch runtime verification pending because the execution environment cannot resolve github.com.
 - [ ] SKIDS-012 — Leva fixture assets.
 - [ ] SKIDS-013 — 10–15 second render smoke test.
 
