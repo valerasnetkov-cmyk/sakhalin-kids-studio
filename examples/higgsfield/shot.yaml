@@ -1,0 +1,54 @@
+version: "1.0"
+
+episode_id: "EP-001"
+scene_id: "SC-007"
+scene_type: ai_cinematic
+
+creative_intent:
+  purpose: "cinematic establishing insert"
+  factual_status: "illustrative"
+  documentary_claim: false
+
+location:
+  id: "aniva_lighthouse"
+  source_preference:
+    - owned_media
+    - approved_stock
+    - generated_fallback
+
+cast: []
+
+camera:
+  framing: wide
+  movement: slow_dolly_in
+  lens_hint: medium_wide
+  duration_seconds: 8
+
+generation:
+  allowed: true
+  provider_preference:
+    - higgsfield
+  prompt: >
+    Windswept Sakhalin coastline near a lighthouse, cinematic but natural,
+    physically plausible weather and sea motion, no invented signage,
+    no people, no text.
+  aspect_ratio: "16:9"
+  references:
+    - asset_id: "aniva_location_ref_v1"
+      role: location
+
+policy:
+  core_character_generation: false
+  max_attempts: 2
+  max_cost_usd: 2.00
+  require_human_approval: true
+
+provenance:
+  mark_as_generated: true
+  preserve_provider_request_id: true
+  preserve_input_asset_versions: true
+
+qa:
+  require_ffprobe: true
+  require_frame_sampling: true
+  require_location_plausibility_review: true

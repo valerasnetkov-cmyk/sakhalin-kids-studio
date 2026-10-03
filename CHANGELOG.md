@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-10-04
+
+### Added — Higgsfield provider integration specification
+
+- `docs/sakhalin/HIGGSFIELD_INTEGRATION.md` defines Higgsfield as a bounded future provider below OpenMontage/Sakhalin scene routing.
+- `schemas/sakhalin/higgsfield_job.schema.json` adds a constrained job envelope for future adapter work.
+- `examples/higgsfield/shot.yaml` adds a scene-level example for a budget-bounded AI cinematic insert.
+- `library/templates/character-ai-reference.md` and `library/templates/location-spec.md` add reusable reference templates without changing canonical character ownership.
+- `HIGGS-P01` is defined as a post-`SKIDS-013` 10–20 second non-dialogue pilot; `HIGGS-P02` is gated behind P01 for optional character-reference testing.
+
+### Notes
+
+- Documentation/schema/templates only: no Higgsfield dependency, API key, CLI, provider call, or paid generation was enabled.
+- Active implementation remains `SKIDS-005 -> SKIDS-013`.
+
 ## 2026-09-28
 
 ### Added — hand-drawn Canvas integration boundary

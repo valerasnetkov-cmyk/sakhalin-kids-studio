@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sakhalin-kids.local/schemas/higgsfield_job.schema.json",
+  "title": "HiggsfieldJob",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["job_id", "episode_id", "scene_id", "scene_type", "input", "policy"],
+  "properties": {
+    "job_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,80}$"},
+    "episode_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,80}$"},
+    "scene_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,80}$"},
+    "scene_type": {
+      "enum": [
+        "location_establishing",
+        "ai_cinematic",
+        "historical_reconstruction",
+        "fantasy_imagination",
+        "transition"
+      ]
+    },
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {"const": "higgsfield"},
+        "model": {"type": ["string", "null"], "maxLength": 120}
+      }
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt", "aspect_ratio", "duration_seconds", "references"],
+      "properties": {
+        "prompt": {"type": "string", "minLength": 1, "maxLength": 4000},
+        "aspect_ratio": {"enum": ["16:9", "9:16", "1:1"]},
+        "duration_seconds": {"type": "number", "minimum": 1, "maximum": 30},
+        "references": {
+          "type": "array",
+          "maxItems": 16,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["asset_id", "role"],
+            "properties": {
+              "asset_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,120}$"},
+              "role": {"enum": ["location", "character_reference", "prop", "style_reference"]}
+            }
+          }
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allow_core_character_generation", "max_attempts", "max_cost_usd"],
+      "properties": {
+        "allow_core_character_generation": {"type": "boolean", "default": false},
+        "max_attempts": {"type": "integer", "minimum": 1, "maximum": 2},
+        "max_cost_usd": {"type": "number", "exclusiveMinimum": 0, "maximum": 100}
+      }
+    }
+  }
+}
