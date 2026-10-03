@@ -1,0 +1,37 @@
+version: "1.0"
+id: leva-proof
+duration_ms: 12000
+cues:
+  - {start_ms: 0, end_ms: 6300, viseme: REST}
+  - {start_ms: 6300, end_ms: 6390, viseme: SH}
+  - {start_ms: 6390, end_ms: 6490, viseme: O}
+  - {start_ms: 6490, end_ms: 6570, viseme: L}
+  - {start_ms: 6570, end_ms: 6670, viseme: O}
+  - {start_ms: 6670, end_ms: 6770, viseme: SH}
+  - {start_ms: 6770, end_ms: 6900, viseme: E}
+  - {start_ms: 6900, end_ms: 6970, viseme: REST}
+  - {start_ms: 6970, end_ms: 7050, viseme: FV}
+  - {start_ms: 7050, end_ms: 7150, viseme: O}
+  - {start_ms: 7150, end_ms: 7230, viseme: MBP}
+  - {start_ms: 7230, end_ms: 7310, viseme: L}
+  - {start_ms: 7310, end_ms: 7410, viseme: O}
+  - {start_ms: 7410, end_ms: 7520, viseme: S}
+  - {start_ms: 7520, end_ms: 7640, viseme: REST}
+  - {start_ms: 7640, end_ms: 7730, viseme: S}
+  - {start_ms: 7730, end_ms: 7830, viseme: A}
+  - {start_ms: 7830, end_ms: 7910, viseme: FV}
+  - {start_ms: 7910, end_ms: 8010, viseme: A}
+  - {start_ms: 8010, end_ms: 8090, viseme: S}
+  - {start_ms: 8090, end_ms: 8200, viseme: E}
+  - {start_ms: 8200, end_ms: 8300, viseme: REST}
+  - {start_ms: 8300, end_ms: 8380, viseme: L}
+  - {start_ms: 8380, end_ms: 8480, viseme: A}
+  - {start_ms: 8480, end_ms: 8560, viseme: S}
+  - {start_ms: 8560, end_ms: 8640, viseme: MBP}
+  - {start_ms: 8640, end_ms: 8740, viseme: E}
+  - {start_ms: 8740, end_ms: 8830, viseme: L}
+  - {start_ms: 8830, end_ms: 8930, viseme: O}
+  - {start_ms: 8930, end_ms: 9010, viseme: MBP}
+  - {start_ms: 9010, end_ms: 9120, viseme: S}
+  - {start_ms: 9120, end_ms: 9250, viseme: E}
+  - {start_ms: 9250, end_ms: 12000, viseme: REST}

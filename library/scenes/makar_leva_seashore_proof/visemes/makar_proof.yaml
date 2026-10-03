@@ -1,0 +1,32 @@
+version: "1.0"
+id: makar-proof
+duration_ms: 12000
+cues:
+  - {start_ms: 0, end_ms: 1700, viseme: REST}
+  - {start_ms: 1700, end_ms: 1790, viseme: L}
+  - {start_ms: 1790, end_ms: 1890, viseme: O}
+  - {start_ms: 1890, end_ms: 1970, viseme: FV}
+  - {start_ms: 1970, end_ms: 2080, viseme: A}
+  - {start_ms: 2080, end_ms: 2180, viseme: REST}
+  - {start_ms: 2180, end_ms: 2290, viseme: A}
+  - {start_ms: 2290, end_ms: 2360, viseme: REST}
+  - {start_ms: 2360, end_ms: 2430, viseme: MBP}
+  - {start_ms: 2430, end_ms: 2530, viseme: O}
+  - {start_ms: 2530, end_ms: 2610, viseme: SH}
+  - {start_ms: 2610, end_ms: 2700, viseme: E}
+  - {start_ms: 2700, end_ms: 2770, viseme: MBP}
+  - {start_ms: 2770, end_ms: 2890, viseme: U}
+  - {start_ms: 2890, end_ms: 2970, viseme: REST}
+  - {start_ms: 2970, end_ms: 3050, viseme: MBP}
+  - {start_ms: 3050, end_ms: 3150, viseme: O}
+  - {start_ms: 3150, end_ms: 3230, viseme: L}
+  - {start_ms: 3230, end_ms: 3350, viseme: E}
+  - {start_ms: 3350, end_ms: 3430, viseme: REST}
+  - {start_ms: 3430, end_ms: 3500, viseme: S}
+  - {start_ms: 3500, end_ms: 3590, viseme: O}
+  - {start_ms: 3590, end_ms: 3670, viseme: L}
+  - {start_ms: 3670, end_ms: 3770, viseme: O}
+  - {start_ms: 3770, end_ms: 3850, viseme: S}
+  - {start_ms: 3850, end_ms: 3940, viseme: O}
+  - {start_ms: 3940, end_ms: 4080, viseme: E}
+  - {start_ms: 4080, end_ms: 12000, viseme: REST}

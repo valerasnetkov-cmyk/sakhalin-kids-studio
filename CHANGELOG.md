@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-10-04
+
+### Added — SKIDS-013
+
+- `tools/character/sakhalin/character_runtime_proof.py` — proof scene builder: loads seashore fixtures, merges acting + Russian viseme timelines, generates the Milestone 01 FFmpeg tone fallback audio, builds the offline HyperFrames workspace (1280x720, 12000 ms, 74 snapshots).
+- `library/locations/seashore_proof.svg` — owned seashore background (sky, sun, clouds, hills, sea, waves, sand).
+- `library/scenes/makar_leva_seashore_proof/` — dialogue (two exact Russian lines), actions (makar: blink/gaze/talk/point; leva: blink/gaze/think/talk), and scene-long viseme timelines aligned with the audio windows.
+- `tools/character/sakhalin/rotation_pivot.py` — rewrites renderer-emitted origin-relative `rotate(angle)` to anatomical `rotate(angle cx cy)` at the HTML embedding boundary (renderer, fixtures, CharacterReviewer unchanged).
+- `tests/sakhalin/test_rotation_pivot.py` — 8 pivot normalization tests.
+- `tests/sakhalin/test_character_runtime_proof.py` — 17 proof tests: dialogue text, action/viseme contracts, lip-sync span vs audio windows, blink/speech separation, rig profiles, pivot application, offline workspace, MP4 probe (skips when unrendered).
+- `docs/sakhalin/CHARACTER_RUNTIME_PROOF.md` — scene, repro commands, render notes, known limitations, verification record.
+
+### Changed — SKIDS-013
+
+- `tools/character/sakhalin/hyperframes_handoff.py` — optional `rotation_pivots` pass-through; snapshot SVGs routed through pivot normalization before the HTML embedding boundary (398 lines, ≤400 gate).
+- plan.md SKIDS-013 marked complete; Milestone 01 stopped for visual evaluation.
+
 ## 2026-09-25
 
 ### Fixed — Fixture refinements (SKIDS-011, SKIDS-012)

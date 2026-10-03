@@ -1,0 +1,31 @@
+version: "1.0"
+id: leva-proof
+rig_profile: sea_lion_cartoon
+phases:
+  - name: opening-idle
+    duration_ms: 1000
+    pose: idle
+  - name: notice-makar
+    duration_ms: 600
+    pose: look_left
+  - name: listen-pause
+    duration_ms: 520
+    pose: idle
+  - name: blink-close
+    duration_ms: 80
+    pose: blink_closed
+  - name: blink-open
+    duration_ms: 120
+    pose: idle
+  - name: listen-makar
+    duration_ms: 3080
+    pose: look_left
+  - name: contemplate
+    duration_ms: 900
+    pose: think
+  - name: answer
+    duration_ms: 3050
+    pose: talk
+  - name: closing-idle
+    duration_ms: 2650
+    pose: idle

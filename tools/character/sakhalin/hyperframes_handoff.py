@@ -12,6 +12,7 @@ import re
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
+from tools.character.sakhalin.rotation_pivot import apply_rotation_pivots
 from tools.character.sakhalin.svg_scene_renderer import (
     SvgRenderError,
     render_frame,
@@ -102,6 +103,21 @@ def _intervals_from_bounds(
 # SVG snapshot generation
 # ---------------------------------------------------------------------------
 
+_NS_DECL_RE = re.compile(r'\s+xmlns:ns\d+="[^"]*"')
+_NS_TAG_RE = re.compile(r"</?ns\d+:")
+
+
+def _svg_for_html(svg_str: str) -> str:
+    """Normalize lxml-namespaced SVG for inline HTML parsing.
+
+    Browsers parse inline SVG with the HTML parser, which does not resolve
+    nsN: element prefixes; unprefixed SVG tags are required for painting.
+    """
+    out = _NS_DECL_RE.sub("", svg_str)
+    return _NS_TAG_RE.sub(
+        lambda m: "</" if m.group(0).startswith("</") else "<", out,
+    )
+
 
 def _render_snapshots(
     asset_root: Path,
@@ -109,6 +125,8 @@ def _render_snapshots(
     height: int,
     intervals: List[Tuple[int, int]],
     characters: List[dict],
+    background_path: str | None = None,
+    rotation_pivots: dict | None = None,
 ) -> List[dict]:
     """Render one SVG frame per interval start timestamp.
 
@@ -116,7 +134,10 @@ def _render_snapshots(
     """
     snapshots = []
     for start_ms, end_ms in intervals:
-        svg_str = render_frame(asset_root, width, height, start_ms, characters)
+        svg_str = _svg_for_html(apply_rotation_pivots(render_frame(
+            asset_root, width, height, start_ms, characters,
+            background_path=background_path,
+        ), rotation_pivots))
         snapshots.append({
             "start_ms": start_ms,
             "end_ms": end_ms,
@@ -141,22 +162,30 @@ def _build_index_html(
 ) -> str:
     """Build the HyperFrames index.html entry point.
 
-    No <script> tags — offline/self-contained, no CDN, no custom JS.
-    HyperFrames runtime loads compositions from the manifest.
+    Root div is the discoverable composition host; the data-composition-src
+    mount references the sub-composition file. data-no-timeline marks the
+    snapshot-driven (non-GSAP) timeline. No <script>, no CDN.
     """
+    mount_id = f"{composition_id}-mount"
     return (
         "<!DOCTYPE html>\n"
         '<html lang="en">\n'
         "<head>\n"
         '  <meta charset="utf-8" />\n'
-        '  <meta name="viewport" content="width=device-width, initial-scale=1" />\n'
+        f'  <meta name="viewport" content="width={width}, height={height}" />\n'
         "  <title>Sakhalin Kids — Character Scene</title>\n"
         f'  <link rel="stylesheet" href="{css_rel_path}" />\n'
-        f'  <meta name="hf-composition" content="{composition_rel_path}" />\n'
-        f'  <meta name="hf-duration" content="{duration_s:.3f}" />\n'
         "</head>\n"
         "<body>\n"
-        '  <div id="hf-root"></div>\n'
+        f'  <div id="hf-root" data-composition-id="{composition_id}" '
+        f'data-start="0" data-duration="{duration_s:.3f}" '
+        f'data-width="{width}" data-height="{height}" data-no-timeline>\n'
+        f'    <div id="{mount_id}" class="clip" '
+        f'data-composition-id="{composition_id}" data-no-timeline '
+        f'data-start="0" data-duration="{duration_s:.3f}" '
+        f'data-track-index="0" data-composition-src="{composition_rel_path}">'
+        "</div>\n"
+        "  </div>\n"
         "</body>\n"
         "</html>\n"
     )
@@ -188,8 +217,13 @@ def _build_styles_css() -> str:
         "}\n"
         "\n"
         "[data-composition-id] svg {\n"
+        "  display: block;\n"
         "  width: 100%;\n"
         "  height: 100%;\n"
+        "}\n"
+        "\n"
+        "[data-composition-id] .clip {\n"
+        "  display: block;\n"
         "}\n"
     )
 
@@ -225,12 +259,14 @@ def _build_composition_html(
         "      }",
         "    </style>",
     ]
-    for snap in snapshots:
+    for i, snap in enumerate(snapshots):
         start_s = round(snap["start_ms"] / 1000.0, 6)
         dur_s = snap["duration_s"]
         svg_str = snap["svg"]
         parts.append(
-            f'    <div data-start="{start_s:.3f}" data-duration="{dur_s:.3f}">'
+            f'    <div id="{composition_id}-clip-{i}" class="clip" '
+            f'data-start="{start_s:.3f}" data-duration="{dur_s:.3f}" '
+            f'data-track-index="0">'
         )
         parts.append(f"      {svg_str}")
         parts.append("    </div>")
@@ -293,25 +329,16 @@ def build_hyperframes_workspace(
     height: int,
     characters: List[dict],
     composition_id: str = "sakhalin-scene",
+    background_path: str | None = None,
+    rotation_pivots: dict | None = None,
 ) -> dict:
     """Build a deterministic, offline HyperFrames workspace.
 
-    Parameters
-    ----------
-    asset_root:
-        Directory containing SVG character assets.
-    output_dir:
-        Target workspace directory (created if missing).
-    width, height:
-        Output dimensions.
-    characters:
-        List of character dicts (same format as SvgSceneRenderer.render_frame).
-    composition_id:
-        Unique composition identifier.
-
-    Returns
-    -------
-    Manifest dict with workspace_path, composition_path, duration_s, etc.
+    asset_root holds SVG assets; output_dir is created if missing; characters
+    are render_frame dicts; background_path is an optional SVG relative to
+    asset_root; rotation_pivots maps instance_id to per-part rotation pivots.
+    Returns a manifest dict (workspace_path, composition_path,
+    duration_s, snapshot_count, ...).
     """
     asset_root = Path(asset_root)
     output_dir = Path(output_dir)
@@ -324,7 +351,11 @@ def build_hyperframes_workspace(
     intervals = _intervals_from_bounds(bounds, duration_ms)
     duration_s = round(duration_ms / 1000.0, 6)
 
-    snapshots = _render_snapshots(asset_root, width, height, intervals, chars)
+    snapshots = _render_snapshots(
+        asset_root, width, height, intervals, chars,
+        background_path=background_path,
+        rotation_pivots=rotation_pivots,
+    )
 
     comp_dir = output_dir / "compositions"
     assets_dir = output_dir / "assets"

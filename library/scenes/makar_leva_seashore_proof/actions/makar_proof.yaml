@@ -1,0 +1,37 @@
+version: "1.0"
+id: makar-proof
+rig_profile: fox_cartoon
+phases:
+  - name: opening-idle
+    duration_ms: 1000
+    pose: idle
+  - name: blink-close
+    duration_ms: 80
+    pose: blink_closed
+  - name: blink-open
+    duration_ms: 120
+    pose: idle
+  - name: gaze-leva
+    duration_ms: 500
+    pose: look_right
+  - name: speech-start
+    duration_ms: 300
+    pose: talk
+  - name: point-anticipation
+    duration_ms: 180
+    pose: idle
+  - name: point-hold
+    duration_ms: 820
+    pose: point
+  - name: point-settle
+    duration_ms: 260
+    pose: idle
+  - name: speech-finish
+    duration_ms: 900
+    pose: talk
+  - name: listen-leva
+    duration_ms: 600
+    pose: look_right
+  - name: closing-idle
+    duration_ms: 7240
+    pose: idle

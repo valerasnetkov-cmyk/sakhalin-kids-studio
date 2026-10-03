@@ -138,8 +138,11 @@ class TConversion(unittest.TestCase):
       comp=t/'out'/f'compositions/{r["composition_id"]}.html'
       html=comp.read_text(encoding='utf-8')
       import re
-      # Only snapshot divs have data-start attribute
-      snapshot_divs=re.findall(r'<div data-start="([\d.]+)" data-duration="([\d.]+)"',html)
+      # Snapshot clip divs carry id/class before the timing attributes
+      snapshot_divs=re.findall(
+          r'<div id="[^"]*-clip-\d+" class="clip" data-start="([\d.]+)"'
+          r' data-duration="([\d.]+)"',
+          html)
       durations=[float(d) for _,d in snapshot_divs]
       self.assertAlmostEqual(sum(durations),0.6,places=3)
 
@@ -268,5 +271,93 @@ class TBoundaryEdgeCases(unittest.TestCase):
     b,d=_collect_boundaries([_ch('f.svg',tl,[_fox('idle')])])
     self.assertEqual(d,500)
     self.assertEqual(len(b),6)
+
+_BG_SVG = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">'
+           '<rect id="bg-sea" width="1280" height="720" fill="#4AA3DF"/></svg>')
+
+class THyperFramesContract(unittest.TestCase):
+  """Index root/mount structure required by hyperframes lint/discovery."""
+
+  def _build(self, td):
+    t=Path(td); (t/'a.svg').write_text(_FOX_SVG,encoding='utf-8')
+    tl=_tl(dur=100,poses=['idle'])
+    return build_hyperframes_workspace(t,t/'o',640,480,
+      [_ch('a.svg',tl,[_fox('idle')])]), t
+
+  def test_index_root_composition_host(self):
+    with tempfile.TemporaryDirectory() as td:
+      r,_=self._build(td)
+      idx=(Path(r['workspace_path'])/'index.html').read_text(encoding='utf-8')
+      self.assertIn('data-composition-id="', idx)
+      self.assertIn('data-width="640"', idx)
+      self.assertIn('data-height="480"', idx)
+      self.assertIn('data-no-timeline', idx)
+
+  def test_index_mounts_subcomposition(self):
+    with tempfile.TemporaryDirectory() as td:
+      r,_=self._build(td)
+      idx=(Path(r['workspace_path'])/'index.html').read_text(encoding='utf-8')
+      comp_rel=f'compositions/{r["composition_id"]}.html'
+      self.assertIn(f'data-composition-src="{comp_rel}"', idx)
+      # every data-composition-src host must carry data-composition-id
+      import re
+      hosts=re.findall(r'<div[^>]*data-composition-src="[^"]*"[^>]*>', idx) + \
+            re.findall(r'<div[^>]*>[^<]*</div>', idx)
+      for tag in re.findall(r'<div[^>]*data-composition-src="[^"]*+"[^>]*>', idx):
+        self.assertIn('data-composition-id=', tag)
+
+  def test_snapshot_divs_have_id_and_clip_class(self):
+    with tempfile.TemporaryDirectory() as td:
+      r,_=self._build(td)
+      comp=(Path(r['workspace_path'])/'compositions'/
+            f'{r["composition_id"]}.html').read_text(encoding='utf-8')
+      self.assertIn('class="clip"', comp)
+      import re
+      self.assertRegex(comp,
+        r'<div id="[^"]+-clip-0" class="clip" data-start=')
+
+class TBackgroundPath(unittest.TestCase):
+  def test_background_rendered_when_provided(self):
+    with tempfile.TemporaryDirectory() as td:
+      t=Path(td)
+      (t/'a.svg').write_text(_FOX_SVG,encoding='utf-8')
+      (t/'bg.svg').write_text(_BG_SVG,encoding='utf-8')
+      tl=_tl(dur=100,poses=['idle'])
+      r=build_hyperframes_workspace(t,t/'o',640,480,
+        [_ch('a.svg',tl,[_fox('idle')])], background_path='bg.svg')
+      comp=(Path(r['workspace_path'])/'compositions'/
+            f'{r["composition_id"]}.html').read_text(encoding='utf-8')
+      self.assertIn('bg-sea', comp)
+
+  def test_no_background_by_default(self):
+    with tempfile.TemporaryDirectory() as td:
+      t=Path(td)
+      (t/'a.svg').write_text(_FOX_SVG,encoding='utf-8')
+      (t/'bg.svg').write_text(_BG_SVG,encoding='utf-8')
+      tl=_tl(dur=100,poses=['idle'])
+      r=build_hyperframes_workspace(t,t/'o',640,480,
+        [_ch('a.svg',tl,[_fox('idle')])])
+      comp=(Path(r['workspace_path'])/'compositions'/
+            f'{r["composition_id"]}.html').read_text(encoding='utf-8')
+      self.assertNotIn('bg-sea', comp)
+
+class THtmlNamespaceNormalization(unittest.TestCase):
+  def test_snapshot_svg_has_no_ns_prefixes(self):
+    # The HTML parser does not resolve lxml nsN: element prefixes;
+    # prefixed graphic elements would not paint in the browser.
+    with tempfile.TemporaryDirectory() as td:
+      t=Path(td)
+      (t/'a.svg').write_text(_FOX_SVG,encoding='utf-8')
+      (t/'bg.svg').write_text(_BG_SVG,encoding='utf-8')
+      tl=_tl(dur=100,poses=['idle'])
+      r=build_hyperframes_workspace(t,t/'o',640,480,
+        [_ch('a.svg',tl,[_fox('idle')])], background_path='bg.svg')
+      comp=(Path(r['workspace_path'])/'compositions'/
+            f'{r["composition_id"]}.html').read_text(encoding='utf-8')
+      self.assertNotIn('<ns0:', comp)
+      self.assertNotIn('</ns0:', comp)
+      self.assertNotIn('xmlns:ns0=', comp)
+      self.assertIn('<rect', comp)
+      self.assertIn('<g data-character-instance', comp)
 
 if __name__=='__main__': unittest.main()

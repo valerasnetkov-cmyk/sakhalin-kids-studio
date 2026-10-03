@@ -14,6 +14,7 @@ SKIDS-009 HyperFrames runtime handoff complete.
 SKIDS-010 character QA complete.
 SKIDS-011 Makar fixture assets complete.
 SKIDS-012 Leva fixture assets complete.
+SKIDS-013 Character Runtime Proof render complete (awaiting visual evaluation).
 
 Primary development workflow: OpenCode.
 
@@ -44,7 +45,7 @@ Tasks:
 - [x] SKIDS-010 — character QA.
 - [x] SKIDS-011 — Makar fixture assets.
 - [x] SKIDS-012 — Leva fixture assets.
-- [ ] SKIDS-013 — 10–15 second render smoke test.
+- [x] SKIDS-013 — 10–15 second render smoke test.
 
 ## Stop condition
 

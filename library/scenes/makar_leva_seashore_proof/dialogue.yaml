@@ -1,0 +1,22 @@
+version: "1.0"
+scene_id: makar_leva_seashore_proof
+
+lines:
+  - id: line_001
+    character_id: makar
+    text: "Лёва, а почему море солёное?"
+    voice_profile: makar
+
+    acting:
+      emotion: curious
+      gaze: leva
+      gesture: point_to_sea
+
+  - id: line_002
+    character_id: leva
+    text: "Хороший вопрос. Давайте разберёмся."
+    voice_profile: leva
+
+    acting:
+      emotion: thoughtful
+      gaze: makar
