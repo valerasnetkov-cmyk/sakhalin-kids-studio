@@ -45,6 +45,7 @@ Key documents:
 - `docs/sakhalin/JOB_EXECUTION.md` — resumable/idempotent production jobs and cost handling.
 - `docs/sakhalin/MEDIA_DELIVERY.md` — render profiles, editable delivery, audio/subtitle and technical QA.
 - `docs/sakhalin/HYPIT_INTEGRATION.md` — optional semantic-composition and derivative-production pilot architecture.
+- `docs/sakhalin/HIGGSFIELD_INTEGRATION.md` — bounded future Higgsfield provider integration and pilot gates.
 - `docs/sakhalin/EDITORIAL_AND_PUBLISHING.md` — editorial contract, claims ledger, publishing and analytics.
 
 ## OpenMontage upstream
@@ -107,4 +108,5 @@ After the first Character Runtime proof is accepted:
 - DeepSeek Harness is planned only for bounded cognitive workflows such as research, script review, factual QA, and production QA.
 - Hypit is approved only as an optional future semantic-composition/derivative adapter. It is not a production-state owner or a replacement for the local Character Runtime.
 - `HYPIT-P01` may be evaluated only after the Character Runtime proof is visually accepted; production adoption additionally requires version pinning plus license/security review.
+- `HIGGS-P01` may evaluate Higgsfield only after the Character Runtime proof is accepted; it remains an external provider below OpenMontage/Sakhalin routing and never becomes the core-character runtime.
 - These layers must not be implemented during `SKIDS-001 -> SKIDS-013`.
