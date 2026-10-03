@@ -83,6 +83,21 @@ Do not use Harness for episode state transitions, publishing, render orchestrati
 
 See: `docs/sakhalin/HARNESS_INTEGRATION.md`.
 
+### Higgsfield visual-generation provider
+
+Approved architecture, deferred implementation.
+
+- [ ] HIGGS-P01 — start only after `SKIDS-013` visual acceptance.
+- [ ] Implement a narrow provider adapter that follows OpenMontage selector/provider conventions.
+- [ ] Use Higgsfield first for one 10–20 second non-dialogue cinematic or reconstruction insert.
+- [ ] Keep real Sakhalin media first for documentary/location scenes.
+- [ ] Prohibit mutation or silent replacement of canonical core-character assets.
+- [ ] Record provider request ID, input asset versions, prompt/config hash, checksum, attempts and reconciled cost.
+- [ ] Compare cost per usable second and visual value with the existing provider path.
+- [ ] Only after HIGGS-P01 passes, consider HIGGS-P02 for a non-dialogue core-character cinematic insert using locked references.
+
+See: `docs/sakhalin/HIGGSFIELD_INTEGRATION.md`.
+
 ### Hand-drawn Canvas educational layer
 
 Approved architecture, deferred implementation.
